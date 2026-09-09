@@ -1,0 +1,21 @@
+uuid: 02d52377-a63c-426c-8572-2a5e972c048f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faculty_featured
+    - node.type.faculty
+id: node.faculty.field_faculty_featured
+field_name: field_faculty_featured
+entity_type: node
+bundle: faculty
+label: 'Featured Faculty'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Featured
+  off_label: 'Not Featured'
+field_type: boolean

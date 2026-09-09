@@ -1,0 +1,22 @@
+uuid: 7137e6c0-b1b2-4535-a8e3-7923f4b5242f
+langcode: en
+status: true
+dependencies:
+  theme:
+    - knovara
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: knovara_primary_local_tasks
+theme: knovara
+region: highlighted
+weight: -5
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

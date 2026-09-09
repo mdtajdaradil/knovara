@@ -1,0 +1,25 @@
+uuid: 4dbba738-8608-4ac6-a496-7b5a557be78b
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:94fd8163-7cf0-42ba-bd45-090387fde932'
+  module:
+    - block_content
+  theme:
+    - knovara
+id: knovara_knovaratopbar
+theme: knovara
+region: top_bar
+weight: 0
+provider: null
+plugin: 'block_content:94fd8163-7cf0-42ba-bd45-090387fde932'
+settings:
+  id: 'block_content:94fd8163-7cf0-42ba-bd45-090387fde932'
+  label: 'Knovara Top Bar'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

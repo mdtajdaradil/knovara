@@ -1,0 +1,23 @@
+uuid: 5efefc5c-80d5-4705-9a56-de58a1d36527
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_years_of_experience
+    - node.type.faculty
+id: node.faculty.field_years_of_experience
+field_name: field_years_of_experience
+entity_type: node
+bundle: faculty
+label: 'Years of Experience'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: 50
+  prefix: ''
+  suffix: ''
+field_type: integer

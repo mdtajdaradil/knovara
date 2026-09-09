@@ -1,0 +1,8 @@
+uuid: 7f481f0a-efa8-490f-9432-69d1f28afbb3
+langcode: en
+status: true
+dependencies: {  }
+id: footer-learner
+label: Learner
+description: ''
+locked: false

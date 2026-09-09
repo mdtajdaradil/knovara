@@ -1,0 +1,23 @@
+uuid: 1024c180-92c4-4304-bc96-aeb023acff9a
+langcode: en
+status: false
+dependencies:
+  module:
+    - search
+  theme:
+    - knovara
+_core:
+  default_config_hash: yEBET0cqDbk8dkWzaJw-8CKft0961VBflsISoSR6Lj8
+id: knovara_search_form_narrow
+theme: knovara
+region: primary_menu
+weight: -4
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (narrow)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

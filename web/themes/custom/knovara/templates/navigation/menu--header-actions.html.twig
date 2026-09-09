@@ -1,0 +1,35 @@
+{#
+    /**
+     * @file
+     * Header action links for the Knovara theme.
+     */
+    #}
+    
+    {% if items %}
+      <ul{{ attributes.addClass('header-actions-menu') }}>
+    
+        {% for item in items %}
+    
+          {% set link_classes = [
+            'button',
+            'button--small',
+            'header-actions-menu__link'
+          ] %}
+    
+          {# First link is secondary; final link is the main CTA. #}
+          {% if not loop.last %}
+            {% set link_classes = link_classes|merge([
+              'button--ghost'
+            ]) %}
+          {% endif %}
+    
+          <li{{ item.attributes.addClass('header-actions-menu__item') }}>
+            {{ link(item.title, item.url, {
+              'class': link_classes
+            }) }}
+          </li>
+    
+        {% endfor %}
+    
+      </ul>
+    {% endif %}

@@ -1,0 +1,23 @@
+uuid: 3c1b0075-5821-4c3f-b9eb-a8fe19366440
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faculty_rating
+    - node.type.faculty
+id: node.faculty.field_faculty_rating
+field_name: field_faculty_rating
+entity_type: node
+bundle: faculty
+label: 'Learner Rating'
+description: 'Average learner rating between 0 and 5. Enter one decimal value, for example 4.9.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: 5.0
+  prefix: ''
+  suffix: ''
+field_type: decimal

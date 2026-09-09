@@ -1,0 +1,25 @@
+uuid: a8904f27-586c-463e-9d5e-643eb509112f
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:28266b3b-f4ee-4d5a-b3fe-1d1f06b17a89'
+  module:
+    - block_content
+  theme:
+    - knovara
+id: knovara_knovarafooterstandards
+theme: knovara
+region: footer_bottom
+weight: 0
+provider: null
+plugin: 'block_content:28266b3b-f4ee-4d5a-b3fe-1d1f06b17a89'
+settings:
+  id: 'block_content:28266b3b-f4ee-4d5a-b3fe-1d1f06b17a89'
+  label: 'Knovara Footer Standards'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

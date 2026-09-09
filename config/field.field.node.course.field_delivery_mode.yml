@@ -1,0 +1,21 @@
+uuid: 1b445a98-aeeb-46df-84c6-b90e41903a59
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_delivery_mode
+    - node.type.course
+  module:
+    - options
+id: node.course.field_delivery_mode
+field_name: field_delivery_mode
+entity_type: node
+bundle: course
+label: 'Delivery Mode'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

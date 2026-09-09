@@ -1,0 +1,23 @@
+uuid: 443a4d42-51cb-4ba1-9437-fde2db7ac95d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faculty_courses_taught
+    - node.type.faculty
+id: node.faculty.field_faculty_courses_taught
+field_name: field_faculty_courses_taught
+entity_type: node
+bundle: faculty
+label: 'Courses Taught'
+description: 'Total number of courses taught by this faculty member.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,32 @@
+{#
+  /**
+   * @file
+   * Main HTML document template for the Knovara theme.
+   */
+  #}
+  
+  <!DOCTYPE html>
+  <html{{ html_attributes }}>
+    <head>
+      <head-placeholder token="{{ placeholder_token }}">
+  
+      <title>{{ head_title|safe_join(' | ') }}</title>
+  
+      <meta name="theme-color" content="#10233f">
+  
+      <css-placeholder token="{{ placeholder_token }}">
+      <js-placeholder token="{{ placeholder_token }}">
+    </head>
+  
+    <body{{ attributes }}>
+      <a class="skip-link" href="#main-content">
+        {{ 'Skip to main content'|t }}
+      </a>
+  
+      {{ page_top }}
+      {{ page }}
+      {{ page_bottom }}
+  
+      <js-bottom-placeholder token="{{ placeholder_token }}">
+    </body>
+  </html>

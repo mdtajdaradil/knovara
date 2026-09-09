@@ -1,0 +1,19 @@
+uuid: f7cddc16-e235-4e5b-830e-9dcc57a315aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faculty_summary
+    - node.type.faculty
+id: node.faculty.field_faculty_summary
+field_name: field_faculty_summary
+entity_type: node
+bundle: faculty
+label: 'Faculty Summary'
+description: 'Write a short introduction for faculty cards and listings.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

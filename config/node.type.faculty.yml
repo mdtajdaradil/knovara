@@ -1,0 +1,17 @@
+uuid: f2aa102e-c4c0-4c88-a69a-0ab92e990736
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Faculty
+type: faculty
+description: 'Faculty members, instructors and industry mentors associated with Knovara.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

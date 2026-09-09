@@ -1,0 +1,8 @@
+uuid: 13954692-dead-4f0e-880f-476dfd511286
+langcode: en
+status: true
+dependencies: {  }
+id: footer-company
+label: Company
+description: ''
+locked: false

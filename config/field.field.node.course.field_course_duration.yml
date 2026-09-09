@@ -1,0 +1,19 @@
+uuid: 0898c04a-961d-4685-b090-6681c08da57d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_course_duration
+    - node.type.course
+id: node.course.field_course_duration
+field_name: field_course_duration
+entity_type: node
+bundle: course
+label: 'Course Duration'
+description: 'Examples: 8 weeks, 2 days or 12 hours.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

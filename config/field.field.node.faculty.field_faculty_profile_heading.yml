@@ -1,0 +1,19 @@
+uuid: 727b40bd-d841-4896-8f98-b0c7e4352951
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faculty_profile_heading
+    - node.type.faculty
+id: node.faculty.field_faculty_profile_heading
+field_name: field_faculty_profile_heading
+entity_type: node
+bundle: faculty
+label: 'Faculty Profile Heading'
+description: 'Main heading displayed in the About section of the faculty profile.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

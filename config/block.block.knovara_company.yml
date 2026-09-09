@@ -1,0 +1,25 @@
+uuid: e625417c-589a-4330-89b9-c1a48ab01f2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer-company
+  module:
+    - system
+  theme:
+    - knovara
+id: knovara_company
+theme: knovara
+region: footer_top
+weight: -8
+provider: null
+plugin: 'system_menu_block:footer-company'
+settings:
+  id: 'system_menu_block:footer-company'
+  label: Company
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

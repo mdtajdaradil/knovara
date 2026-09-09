@@ -1,0 +1,53 @@
+{#
+    /**
+     * @file
+     * User account menu template for the Knovara theme.
+     */
+    #}
+    
+    {% import _self as menus %}
+    
+    {{ menus.account_links(items, attributes, 0) }}
+    
+    {% macro account_links(items, attributes, menu_level) %}
+    
+      {% import _self as menus %}
+    
+      {% if items %}
+    
+        {% if menu_level == 0 %}
+          <ul{{ attributes.addClass('account-menu') }}>
+        {% else %}
+          <ul class="account-menu__submenu">
+        {% endif %}
+    
+          {% for item in items %}
+    
+            <li{{ item.attributes.addClass('account-menu__item') }}>
+    
+              {{ link(item.title, item.url, {
+                'class': [
+                  'button',
+                  'button--ghost',
+                  'button--small',
+                  'account-menu__link'
+                ]
+              }) }}
+    
+              {% if item.below %}
+                {{ menus.account_links(
+                  item.below,
+                  attributes,
+                  menu_level + 1
+                ) }}
+              {% endif %}
+    
+            </li>
+    
+          {% endfor %}
+    
+        </ul>
+    
+      {% endif %}
+    
+    {% endmacro %}

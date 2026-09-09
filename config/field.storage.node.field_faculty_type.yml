@@ -1,0 +1,30 @@
+uuid: 0bac7ff5-a50e-4c11-8d3f-cfe0d5509824
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_faculty_type
+field_name: field_faculty_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: faculty
+      label: Faculty
+    -
+      value: guest_faculty
+      label: 'Guest Faculty'
+    -
+      value: industry_mentor
+      label: 'Industry Mentor'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

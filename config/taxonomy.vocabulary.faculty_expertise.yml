@@ -1,0 +1,9 @@
+uuid: 1cdb022c-251c-40b1-b3d1-95ea79e0302d
+langcode: en
+status: true
+dependencies: {  }
+name: 'Faculty Expertise'
+vid: faculty_expertise
+description: 'Areas of expertise associated with Knovara faculty.'
+weight: 0
+new_revision: false

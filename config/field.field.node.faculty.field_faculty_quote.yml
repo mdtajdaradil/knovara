@@ -1,0 +1,19 @@
+uuid: 160d7abb-a08d-447a-8580-d7cf9818ecaa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faculty_quote
+    - node.type.faculty
+id: node.faculty.field_faculty_quote
+field_name: field_faculty_quote
+entity_type: node
+bundle: faculty
+label: 'Faculty Quote'
+description: 'A short highlighted quotation from the faculty member. Do not add quotation marks.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

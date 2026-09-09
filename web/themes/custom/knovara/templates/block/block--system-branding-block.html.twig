@@ -1,0 +1,34 @@
+{#
+    /**
+     * @file
+     * Custom Site Branding block for the Knovara theme.
+     */
+    #}
+    
+    {% extends "block.html.twig" %}
+    
+    {% block content %}
+    
+      {% set branding_name = site_name|default('KNOVARA') %}
+      {% set branding_slogan = site_slogan|default('LEARN WITH DIRECTION') %}
+    
+      <a
+        class="brand"
+        href="{{ path('<front>') }}"
+        rel="home"
+        aria-label="{{ 'Knovara home'|t }}"
+      >
+        <span class="brand__mark" aria-hidden="true">
+          <span>K</span>
+        </span>
+    
+        <span class="brand__text">
+          {{ branding_name|upper }}
+    
+          <small>
+            {{ branding_slogan|upper }}
+          </small>
+        </span>
+      </a>
+    
+    {% endblock %}

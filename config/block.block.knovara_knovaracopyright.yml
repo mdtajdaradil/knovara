@@ -1,0 +1,25 @@
+uuid: fdb4ff13-8c90-43a8-a487-bc1080d95242
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:28a62b56-dc37-451d-bab0-1c216e421b3a'
+  module:
+    - block_content
+  theme:
+    - knovara
+id: knovara_knovaracopyright
+theme: knovara
+region: footer_bottom
+weight: 0
+provider: null
+plugin: 'block_content:28a62b56-dc37-451d-bab0-1c216e421b3a'
+settings:
+  id: 'block_content:28a62b56-dc37-451d-bab0-1c216e421b3a'
+  label: 'Knovara Copyright'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

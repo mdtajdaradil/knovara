@@ -1,0 +1,19 @@
+uuid: cca5b987-9240-420f-b137-530a8bf9aa9e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faculty_email
+    - node.type.faculty
+id: node.faculty.field_faculty_email
+field_name: field_faculty_email
+entity_type: node
+bundle: faculty
+label: 'Public Email'
+description: 'Enter only an email address that can be displayed publicly.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

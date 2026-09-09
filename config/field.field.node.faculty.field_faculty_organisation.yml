@@ -1,0 +1,19 @@
+uuid: f2c077ae-8fb1-498f-918e-77a41efc1d66
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faculty_organisation
+    - node.type.faculty
+id: node.faculty.field_faculty_organisation
+field_name: field_faculty_organisation
+entity_type: node
+bundle: faculty
+label: 'Current Organisation'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,25 @@
+uuid: 76d44e59-bbaf-4d0f-8ed0-d35e38a6553c
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:b84bae39-a234-44f6-beb2-78b7ab3f01ba'
+  module:
+    - block_content
+  theme:
+    - knovara
+id: knovara_knovarafooterbranding
+theme: knovara
+region: footer_top
+weight: -10
+provider: null
+plugin: 'block_content:b84bae39-a234-44f6-beb2-78b7ab3f01ba'
+settings:
+  id: 'block_content:b84bae39-a234-44f6-beb2-78b7ab3f01ba'
+  label: 'Knovara Footer Branding'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

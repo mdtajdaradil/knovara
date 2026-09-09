@@ -1,0 +1,25 @@
+uuid: da360f80-c080-401e-b7ff-f74d1360ef8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.header-actions
+  module:
+    - system
+  theme:
+    - knovara
+id: knovara_headeractions
+theme: knovara
+region: header_actions
+weight: 0
+provider: null
+plugin: 'system_menu_block:header-actions'
+settings:
+  id: 'system_menu_block:header-actions'
+  label: 'Header actions'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

@@ -1,0 +1,20 @@
+uuid: b98f0c05-332d-44d0-a49b-63d7a78bf7cd
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_years_of_experience
+field_name: field_years_of_experience
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

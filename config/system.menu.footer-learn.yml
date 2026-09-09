@@ -1,0 +1,8 @@
+uuid: 64f5874f-daef-489c-aad1-29594e5467c9
+langcode: en
+status: true
+dependencies: {  }
+id: footer-learn
+label: Learn
+description: ''
+locked: false

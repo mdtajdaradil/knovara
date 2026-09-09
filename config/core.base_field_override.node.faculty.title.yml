@@ -1,0 +1,18 @@
+uuid: 2b04fcc6-bf2b-4ec2-a9ba-55ec81713aae
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.faculty
+id: node.faculty.title
+field_name: title
+entity_type: node
+bundle: faculty
+label: 'Faculty name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

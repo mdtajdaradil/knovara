@@ -1,0 +1,23 @@
+uuid: 6d375150-b559-4765-8116-4887ac23c9a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_course_price
+    - node.type.course
+id: node.course.field_course_price
+field_name: field_course_price
+entity_type: node
+bundle: course
+label: 'Course Price'
+description: '4999.00'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

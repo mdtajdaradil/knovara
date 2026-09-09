@@ -1,0 +1,68 @@
+uuid: da2a4ed8-92a5-474a-bc27-37b934267f9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.faculty.body
+    - field.field.node.faculty.field_faculty_courses_taught
+    - field.field.node.faculty.field_faculty_email
+    - field.field.node.faculty.field_faculty_expertise
+    - field.field.node.faculty.field_faculty_featured
+    - field.field.node.faculty.field_faculty_lead
+    - field.field.node.faculty.field_faculty_linkedin
+    - field.field.node.faculty.field_faculty_organisation
+    - field.field.node.faculty.field_faculty_photo
+    - field.field.node.faculty.field_faculty_profile_heading
+    - field.field.node.faculty.field_faculty_qualifications
+    - field.field.node.faculty.field_faculty_quote
+    - field.field.node.faculty.field_faculty_rating
+    - field.field.node.faculty.field_faculty_role
+    - field.field.node.faculty.field_faculty_summary
+    - field.field.node.faculty.field_faculty_teaching_approach
+    - field.field.node.faculty.field_faculty_teaching_image
+    - field.field.node.faculty.field_faculty_type
+    - field.field.node.faculty.field_faculty_website
+    - field.field.node.faculty.field_years_of_experience
+    - node.type.faculty
+  module:
+    - text
+    - user
+id: node.faculty.teaser
+targetEntityType: node
+bundle: faculty
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_faculty_courses_taught: true
+  field_faculty_email: true
+  field_faculty_expertise: true
+  field_faculty_featured: true
+  field_faculty_lead: true
+  field_faculty_linkedin: true
+  field_faculty_organisation: true
+  field_faculty_photo: true
+  field_faculty_profile_heading: true
+  field_faculty_qualifications: true
+  field_faculty_quote: true
+  field_faculty_rating: true
+  field_faculty_role: true
+  field_faculty_summary: true
+  field_faculty_teaching_approach: true
+  field_faculty_teaching_image: true
+  field_faculty_type: true
+  field_faculty_website: true
+  field_years_of_experience: true

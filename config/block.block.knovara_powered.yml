@@ -1,0 +1,22 @@
+uuid: fe0105c1-24c8-4e2d-a32f-b2327ce04fe4
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - knovara
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: knovara_powered
+theme: knovara
+region: footer_bottom
+weight: -8
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

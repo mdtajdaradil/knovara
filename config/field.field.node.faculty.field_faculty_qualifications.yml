@@ -1,0 +1,22 @@
+uuid: 6fd6d80a-4be8-4729-8ce1-c987d3261df4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faculty_qualifications
+    - node.type.faculty
+  module:
+    - text
+id: node.faculty.field_faculty_qualifications
+field_name: field_faculty_qualifications
+entity_type: node
+bundle: faculty
+label: Qualifications
+description: 'Add degrees, certifications and relevant professional qualifications.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

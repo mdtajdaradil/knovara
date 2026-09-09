@@ -1,0 +1,158 @@
+{#
+/**
+* @file
+* Common page layout for the Knovara theme.
+*
+* This template contains:
+* - Top bar
+* - Header
+* - Primary navigation
+* - Header actions
+* - Main content regions
+* - Sidebar
+* - Footer
+*/
+#}
+
+<div class="site-page">
+
+  <header class="site-header" role="banner">
+
+    {% if page.top_bar %}
+    <div class="topbar">
+      <div class="shell topbar__inner">
+        {{ page.top_bar }}
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="shell site-nav">
+
+      {% if page.header %}
+      <div class="site-branding">
+        {{ page.header }}
+      </div>
+      {% endif %}
+
+      {% if page.primary_menu %}
+      <button class="icon-button nav-toggle" type="button" aria-label="{{ 'Open navigation'|t }}" aria-expanded="false"
+        aria-controls="primary-navigation" data-menu-toggle>
+        <span aria-hidden="true">☰</span>
+      </button>
+
+      <div class="primary-nav" id="primary-navigation" data-primary-nav>
+        {{ page.primary_menu }}
+      </div>
+      {% endif %}
+
+      {% if page.header_actions %}
+      <div class="nav-actions">
+        {{ page.header_actions }}
+      </div>
+      {% endif %}
+
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    {# Global regions Faculty detail par render nahi honge. #}
+    {% if not is_faculty_detail %}
+  
+      {% if page.hero %}
+        <div class="hero-region">
+          {{ page.hero }}
+        </div>
+      {% endif %}
+  
+      {% if page.highlighted %}
+        <section class="section section--compact section--soft">
+          <div class="shell">
+            {{ page.highlighted }}
+          </div>
+        </section>
+      {% endif %}
+  
+      {% if page.breadcrumb %}
+        <div class="shell">
+          {{ page.breadcrumb }}
+        </div>
+      {% endif %}
+  
+    {% endif %}
+  
+    {% block main_content %}
+  
+      {% if is_faculty_detail %}
+  
+        {#
+          Faculty node apna hero aur sections khud render karega.
+          Yahan section/shell wrapper nahi lagana hai.
+        #}
+        {{ page.content }}
+  
+      {% else %}
+  
+        <section class="section">
+          <div class="shell">
+  
+            {% if page.sidebar %}
+              <div class="detail-grid">
+  
+                <div class="main-content">
+                  {{ page.content }}
+                </div>
+  
+                <aside
+                  class="detail-rail"
+                  role="complementary"
+                  aria-label="{{ 'Sidebar'|t }}"
+                >
+                  {{ page.sidebar }}
+                </aside>
+  
+              </div>
+            {% else %}
+              <div class="main-content">
+                {{ page.content }}
+              </div>
+            {% endif %}
+  
+          </div>
+        </section>
+  
+      {% endif %}
+  
+    {% endblock %}
+  
+  </main>
+
+  {% if page.footer_top or page.footer or page.footer_bottom %}
+  <footer class="site-footer" role="contentinfo">
+    <div class="shell">
+
+      {% if page.footer_top %}
+      <div class="footer-grid">
+        {{ page.footer_top }}
+      </div>
+      {% endif %}
+
+      {% if page.footer %}
+      <div class="footer-content">
+        {{ page.footer }}
+      </div>
+      {% endif %}
+
+      {% if page.footer_bottom %}
+      <div class="footer-bottom">
+        {{ page.footer_bottom }}
+      </div>
+      {% endif %}
+
+    </div>
+  </footer>
+  {% endif %}
+
+  <div class="visually-hidden" aria-live="polite" data-live-region></div>
+
+</div>

@@ -1,0 +1,198 @@
+uuid: 7473a2f3-9b61-400d-86ea-5ab66b22f475
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.faculty.body
+    - field.field.node.faculty.field_faculty_courses_taught
+    - field.field.node.faculty.field_faculty_email
+    - field.field.node.faculty.field_faculty_expertise
+    - field.field.node.faculty.field_faculty_featured
+    - field.field.node.faculty.field_faculty_lead
+    - field.field.node.faculty.field_faculty_linkedin
+    - field.field.node.faculty.field_faculty_organisation
+    - field.field.node.faculty.field_faculty_photo
+    - field.field.node.faculty.field_faculty_profile_heading
+    - field.field.node.faculty.field_faculty_qualifications
+    - field.field.node.faculty.field_faculty_quote
+    - field.field.node.faculty.field_faculty_rating
+    - field.field.node.faculty.field_faculty_role
+    - field.field.node.faculty.field_faculty_summary
+    - field.field.node.faculty.field_faculty_teaching_approach
+    - field.field.node.faculty.field_faculty_teaching_image
+    - field.field.node.faculty.field_faculty_type
+    - field.field.node.faculty.field_faculty_website
+    - field.field.node.faculty.field_years_of_experience
+    - node.type.faculty
+  module:
+    - image
+    - link
+    - text
+    - user
+id: node.faculty.default
+targetEntityType: node
+bundle: faculty
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_faculty_courses_taught:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_faculty_email:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_faculty_expertise:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_faculty_lead:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_faculty_linkedin:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_faculty_organisation:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_faculty_photo:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_faculty_profile_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_faculty_qualifications:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_faculty_quote:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_faculty_rating:
+    type: number_decimal
+    label: hidden
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_faculty_role:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_faculty_summary:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_faculty_teaching_approach:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  field_faculty_teaching_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  field_faculty_website:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_years_of_experience:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  field_faculty_featured: true
+  field_faculty_type: true
+  links: true

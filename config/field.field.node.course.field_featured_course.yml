@@ -1,0 +1,21 @@
+uuid: 4a36fbc0-f027-4a01-89f8-804bc89e224e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured_course
+    - node.type.course
+id: node.course.field_featured_course
+field_name: field_featured_course
+entity_type: node
+bundle: course
+label: 'Featured Course'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Featured
+  off_label: 'Not featured'
+field_type: boolean

@@ -1,0 +1,22 @@
+uuid: 064f3607-7cd2-4d98-a317-34a0463dd5b5
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - knovara
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: knovara_content
+theme: knovara
+region: content
+weight: -6
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

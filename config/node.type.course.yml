@@ -1,0 +1,17 @@
+uuid: 6f60f41e-1606-42d9-8d9a-dbacec6fcc56
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Course
+type: course
+description: 'Courses offered through the Knovara learning platform.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

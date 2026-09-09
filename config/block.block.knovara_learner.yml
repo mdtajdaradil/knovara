@@ -1,0 +1,25 @@
+uuid: bc9ad788-548b-41cc-8a77-b1ea81fb187d
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer-learner
+  module:
+    - system
+  theme:
+    - knovara
+id: knovara_learner
+theme: knovara
+region: footer_top
+weight: -7
+provider: null
+plugin: 'system_menu_block:footer-learner'
+settings:
+  id: 'system_menu_block:footer-learner'
+  label: Learner
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

@@ -1,0 +1,20 @@
+uuid: 44ab87e4-0ccf-44aa-aa3d-a84c6295b48c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_faculty_courses_taught
+field_name: field_faculty_courses_taught
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

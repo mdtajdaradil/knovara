@@ -1,0 +1,22 @@
+uuid: 3499d614-6e1d-4a69-8277-819af87b2fa7
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - knovara
+_core:
+  default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
+id: knovara_help
+theme: knovara
+region: highlighted
+weight: -3
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

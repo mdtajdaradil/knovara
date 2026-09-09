@@ -1,0 +1,9 @@
+uuid: 6ac5d75f-e653-446a-83e3-644f746bd64d
+langcode: en
+status: true
+dependencies: {  }
+name: 'Course Categories'
+vid: course_categories
+description: 'Categories used to organise and filter Knovara courses.'
+weight: 0
+new_revision: false

@@ -1,0 +1,445 @@
+{#
+    /**
+     * @file
+     * Front-page template for the Knovara theme.
+     *
+     * The common header and footer come from page.html.twig.
+     */
+    #}
+    
+    {% extends '@knovara/layout/page.html.twig' %}
+    
+    {% block main_content %}
+    
+      <section class="hero">
+        <div class="shell hero__grid">
+    
+          <div class="hero__copy">
+            <span class="eyebrow">
+              Practical learning, measurable progress
+            </span>
+    
+            <h1>Build skills that move your future forward.</h1>
+    
+            <p class="hero__lead">
+              Expert-led courses, live workshops and practical resources
+              for students and professionals who want to learn by doing.
+            </p>
+    
+            <form
+              class="search-box"
+              action="{{ base_path }}search/node"
+              method="get"
+              role="search"
+            >
+              <label>
+                <span aria-hidden="true">⌕</span>
+    
+                <span class="visually-hidden">
+                  Search courses and resources
+                </span>
+    
+                <input
+                  name="keys"
+                  type="search"
+                  placeholder="What do you want to learn?"
+                >
+              </label>
+    
+              <button
+                class="button button--teal"
+                type="submit"
+              >
+                Search
+              </button>
+            </form>
+    
+            <div class="proof-list">
+              <span>Expert-led courses</span>
+              <span>Flexible schedules</span>
+              <span>Secure enrollment</span>
+            </div>
+          </div>
+    
+          <div
+            class="hero__visual"
+            aria-label="Knovara learning illustration"
+          >
+            <div class="orbit"></div>
+    
+            <div class="learning-card">
+              <div
+                class="learning-card__code"
+                aria-hidden="true"
+              >
+                &lt;/&gt;
+              </div>
+    
+              <strong>Learn. Build. Progress.</strong>
+    
+              <p>
+                A guided path from foundational skills to a
+                portfolio-ready project.
+              </p>
+            </div>
+    
+            <div class="float-card float-card--one">
+              <strong>24 practical courses</strong>
+              <span>Built around outcomes</span>
+            </div>
+    
+            <div class="float-card float-card--two">
+              <strong>Nextgadas workshop</strong>
+              <span>REST API · 12 September</span>
+            </div>
+          </div>
+    
+        </div>
+      </section>
+    
+      <section class="section">
+        <div class="shell">
+    
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Browse by subject</span>
+              <h2>Choose your learning path</h2>
+            </div>
+    
+            <a
+              class="text-link"
+              href="{{ base_path }}courses"
+            >
+              View all courses
+            </a>
+          </div>
+    
+          <div class="grid grid--4">
+    
+            <a
+              class="stat-card"
+              href="{{ base_path }}courses"
+            >
+              <strong>12</strong>
+              <span>Technology courses</span>
+            </a>
+    
+            <a
+              class="stat-card"
+              href="{{ base_path }}courses"
+            >
+              <strong>08</strong>
+              <span>Design courses</span>
+            </a>
+    
+            <a
+              class="stat-card"
+              href="{{ base_path }}courses"
+            >
+              <strong>10</strong>
+              <span>Business courses</span>
+            </a>
+    
+            <a
+              class="stat-card"
+              href="{{ base_path }}courses"
+            >
+              <strong>06</strong>
+              <span>Communication courses</span>
+            </a>
+    
+          </div>
+        </div>
+      </section>
+    
+      <section class="section section--soft">
+        <div class="shell">
+    
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Featured learning</span>
+              <h2>Courses built around real outcomes</h2>
+            </div>
+    
+            <a
+              class="text-link"
+              href="{{ base_path }}courses"
+            >
+              Explore all courses
+            </a>
+          </div>
+    
+          <div class="grid grid--3">
+    
+            <article
+              class="card"
+              data-category="technology"
+            >
+              <div class="card__art">
+                <span class="badge badge--gold">
+                  Beginner
+                </span>
+              </div>
+    
+              <div class="card__body">
+                <h3>
+                  <a href="{{ base_path }}course-detail">
+                    Web Development Essentials
+                  </a>
+                </h3>
+    
+                <p>
+                  Build accessible, responsive websites through
+                  practical projects.
+                </p>
+    
+                <div class="card__meta">
+                  <span>8 weeks · Online</span>
+                  <strong>₹4,999</strong>
+                </div>
+              </div>
+            </article>
+    
+            <article
+              class="card"
+              data-category="design"
+            >
+              <div class="card__art card__art--violet">
+                <span class="badge badge--gold">
+                  Beginner
+                </span>
+              </div>
+    
+              <div class="card__body">
+                <h3>
+                  <a href="{{ base_path }}course-detail">
+                    Product Design Fundamentals
+                  </a>
+                </h3>
+    
+                <p>
+                  Turn user needs into clear interfaces and tested
+                  experiences.
+                </p>
+    
+                <div class="card__meta">
+                  <span>6 weeks · Online</span>
+                  <strong>₹3,999</strong>
+                </div>
+              </div>
+            </article>
+    
+            <article
+              class="card"
+              data-category="communication"
+            >
+              <div class="card__art card__art--gold">
+                <span class="badge badge--gold">
+                  Workshop
+                </span>
+              </div>
+    
+              <div class="card__body">
+                <h3>
+                  <a href="{{ base_path }}course-detail">
+                    Communication for Careers
+                  </a>
+                </h3>
+    
+                <p>
+                  Present ideas confidently in interviews and
+                  collaborative teams.
+                </p>
+    
+                <div class="card__meta">
+                  <span>2 days · Online</span>
+                  <strong>₹999</strong>
+                </div>
+              </div>
+            </article>
+    
+          </div>
+        </div>
+      </section>
+    
+      <section class="section">
+        <div class="shell">
+    
+          <div class="detail-grid">
+    
+            <div>
+              <span class="eyebrow">Why Knovara</span>
+    
+              <h2>A clear path from learning to doing</h2>
+    
+              <p class="lead">
+                Every course connects guided lessons, practical
+                assignments, expert feedback and evidence of achievement.
+              </p>
+    
+              <div class="actions actions--spaced">
+                <a
+                  class="button"
+                  href="{{ base_path }}about"
+                >
+                  How learning works
+                </a>
+    
+                <a
+                  class="button button--outline"
+                  href="{{ base_path }}faculty"
+                >
+                  Meet the faculty
+                </a>
+              </div>
+            </div>
+    
+            <div class="stats-grid stats-grid--2">
+    
+              <div class="stat-card">
+                <strong>24</strong>
+                <span>Practical courses</span>
+              </div>
+    
+              <div class="stat-card">
+                <strong>12</strong>
+                <span>Expert faculty</span>
+              </div>
+    
+              <div class="stat-card">
+                <strong>18</strong>
+                <span>Live workshops</span>
+              </div>
+    
+              <div class="stat-card">
+                <strong>4</strong>
+                <span>Learning tracks</span>
+              </div>
+    
+            </div>
+          </div>
+    
+        </div>
+      </section>
+    
+      <section class="section section--soft">
+        <div class="shell">
+    
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Upcoming events</span>
+              <h2>Learn live with the community</h2>
+            </div>
+    
+            <a
+              class="text-link"
+              href="{{ base_path }}events"
+            >
+              View all events
+            </a>
+          </div>
+    
+          <div class="grid grid--2">
+    
+            <article
+              class="card"
+              data-category="online"
+            >
+              <div class="card__body">
+    
+                <div class="cluster">
+                  <span class="badge badge--gold">12 Sep</span>
+                  <span class="badge">Online</span>
+                </div>
+    
+                <h3>
+                  <a href="{{ base_path }}event-detail">
+                    Building Your First REST API
+                  </a>
+                </h3>
+    
+                <p>
+                  A guided, hands-on workshop using a real
+                  learning project.
+                </p>
+    
+                <div class="card__meta">
+                  <span>11:00 AM IST</span>
+    
+                  <a
+                    class="text-link"
+                    href="{{ base_path }}event-detail"
+                  >
+                    View event
+                  </a>
+                </div>
+    
+              </div>
+            </article>
+    
+            <article
+              class="card"
+              data-category="hybrid"
+            >
+              <div class="card__body">
+    
+                <div class="cluster">
+                  <span class="badge badge--gold">18 Sep</span>
+                  <span class="badge">Hybrid</span>
+                </div>
+    
+                <h3>
+                  <a href="{{ base_path }}event-detail">
+                    Career Portfoliolname Review
+                  </a>
+                </h3>
+    
+                <p>
+                  Get practical feedback from faculty and industry
+                  mentors.
+                </p>
+    
+                <div class="card__meta">
+                  <span>11:00 AM IST</span>
+    
+                  <a
+                    class="text-link"
+                    href="{{ base_path }}event-detail"
+                  >
+                    View event
+                  </a>
+                </div>
+    
+              </div>
+            </article>
+    
+          </div>
+        </div>
+      </section>
+    
+      <section class="section">
+        <div class="shell">
+    
+          <div class="cta">
+            <div>
+              <span class="eyebrow">Personal guidance</span>
+              <h2>Not sure where to begin?</h2>
+    
+              <p>
+                Share your goal and a course advisor will help you
+                choose a focused learning path.
+              </p>
+            </div>
+    
+            <a
+              class="button button--gold"
+              href="{{ base_path }}contact"
+            >
+              Request guidance
+            </a>
+          </div>
+    
+        </div>
+      </section>
+    
+    {% endblock %}

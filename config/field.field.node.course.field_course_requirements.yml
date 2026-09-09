@@ -1,0 +1,22 @@
+uuid: b23f2cc4-210f-48e7-8eef-de5db59641b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_course_requirements
+    - node.type.course
+  module:
+    - text
+id: node.course.field_course_requirements
+field_name: field_course_requirements
+entity_type: node
+bundle: course
+label: 'Course Requirements'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

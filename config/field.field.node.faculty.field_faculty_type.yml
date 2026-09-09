@@ -1,0 +1,21 @@
+uuid: 1c2e6508-c197-4169-aa4e-5a735a783f00
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faculty_type
+    - node.type.faculty
+  module:
+    - options
+id: node.faculty.field_faculty_type
+field_name: field_faculty_type
+entity_type: node
+bundle: faculty
+label: 'Faculty Type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

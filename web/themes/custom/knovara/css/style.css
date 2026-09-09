@@ -2669,3 +2669,63 @@ progress::-moz-progress-bar {
     padding-inline: 12px;
   }
 }
+
+.faculty-filter-form {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.faculty-filter-form .views-exposed-form,
+.faculty-filter-form form,
+.faculty-filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+}
+
+.faculty-filter-controls {
+  flex-wrap: wrap;
+}
+
+.faculty-filter-search {
+  flex: 1 1 520px;
+  min-width: 260px;
+}
+
+.faculty-filter-search .form-item {
+  margin: 0;
+}
+
+.faculty-filter-search .filter-search {
+  width: 100%;
+}
+
+.faculty-filter-chips {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.faculty-filter-native,
+.faculty-filter-actions {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .faculty-filter-form {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  .faculty-filter-search {
+    flex-basis: 100%;
+    min-width: 100%;
+  }
+
+  .faculty-filter-chips {
+    width: 100%;
+  }
+}

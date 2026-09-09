@@ -16,3 +16,11 @@ faculty-detail:
       css/faculty-detail.css: {}
   dependencies:
     - knovara/global
+
+faculty-filter:
+  version: 1.x
+  js:
+    js/faculty-filter.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

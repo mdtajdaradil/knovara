@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.faculty.body
+    - field.field.node.faculty.field_faculty_category
     - field.field.node.faculty.field_faculty_courses_taught
     - field.field.node.faculty.field_faculty_email
     - field.field.node.faculty.field_faculty_expertise
@@ -26,6 +27,7 @@ dependencies:
     - field.field.node.faculty.field_years_of_experience
     - node.type.faculty
   module:
+    - image
     - text
     - user
 id: node.faculty.teaser
@@ -39,14 +41,26 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
-    weight: 101
+    weight: 0
+    region: content
+  field_faculty_photo:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 2
     region: content
 hidden:
+  field_faculty_category: true
   field_faculty_courses_taught: true
   field_faculty_email: true
   field_faculty_expertise: true
@@ -54,7 +68,6 @@ hidden:
   field_faculty_lead: true
   field_faculty_linkedin: true
   field_faculty_organisation: true
-  field_faculty_photo: true
   field_faculty_profile_heading: true
   field_faculty_qualifications: true
   field_faculty_quote: true

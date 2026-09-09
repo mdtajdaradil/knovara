@@ -56,8 +56,11 @@
 
   <main id="main-content" class="site-main">
 
-    {# Global regions Faculty detail par render nahi honge. #}
-    {% if not is_faculty_detail %}
+    {#
+      Faculty listing aur Faculty detail apna hero, breadcrumb
+      aur sections khud render karte hain.
+    #}
+    {% if not is_faculty_detail and not is_faculty_listing %}
   
       {% if page.hero %}
         <div class="hero-region">
@@ -83,11 +86,11 @@
   
     {% block main_content %}
   
-      {% if is_faculty_detail %}
+      {% if is_faculty_detail or is_faculty_listing %}
   
         {#
-          Faculty node apna hero aur sections khud render karega.
-          Yahan section/shell wrapper nahi lagana hai.
+          No outer section/shell wrapper.
+          Faculty Twig templates contain their own full-width sections.
         #}
         {{ page.content }}
   
@@ -106,8 +109,7 @@
                 <aside
                   class="detail-rail"
                   role="complementary"
-                  aria-label="{{ 'Sidebar'|t }}"
-                >
+                  aria-label="{{ 'Sidebar'|t }}">
                   {{ page.sidebar }}
                 </aside>
   

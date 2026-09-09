@@ -1,0 +1,16 @@
+{#
+    /**
+     * @file
+     * Three-column grid for the Faculty Directory View.
+     */
+    #}
+    
+    {% if title %}
+      <h3>{{ title }}</h3>
+    {% endif %}
+    
+    <div class="grid grid--3" id="faculty-list">
+      {% for row in rows %}
+        {{ row.content }}
+      {% endfor %}
+    </div>

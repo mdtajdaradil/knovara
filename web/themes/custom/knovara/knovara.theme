@@ -5,10 +5,40 @@
  */
 function knovara_preprocess_page(array &$variables): void {
   $route_match = \Drupal::routeMatch();
+  $route_name = $route_match->getRouteName();
   $node = $route_match->getParameter('node');
 
   $variables['is_faculty_detail'] =
-    $route_match->getRouteName() === 'entity.node.canonical'
+    $route_name === 'entity.node.canonical'
     && $node instanceof \Drupal\node\NodeInterface
     && $node->bundle() === 'faculty';
+
+  $variables['is_faculty_listing'] =
+    $route_name === 'view.faculty_directory.page_1';
+}
+
+/**
+ * Implements hook_preprocess_views_exposed_form().
+ */
+function knovara_preprocess_views_exposed_form(array &$variables): void {
+  $form = &$variables['form'];
+
+  if (
+    ($form['#id'] ?? '') !==
+    'views-exposed-form-faculty-directory-page-1'
+  ) {
+    return;
+  }
+
+  if (isset($form['search'])) {
+    $form['search']['#title_display'] = 'invisible';
+    $form['search']['#attributes']['class'][] = 'filter-search';
+    $form['search']['#attributes']['placeholder'] = 'Search faculty';
+    $form['search']['#attributes']['aria-label'] = 'Search faculty';
+    $form['search']['#attributes']['autocomplete'] = 'off';
+  }
+
+  if (isset($form['type'])) {
+    $form['type']['#title_display'] = 'invisible';
+  }
 }

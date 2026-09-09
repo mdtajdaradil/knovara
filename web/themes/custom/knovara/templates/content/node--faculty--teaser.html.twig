@@ -1,0 +1,75 @@
+{#
+    /**
+     * @file
+     * Faculty card used on the /faculty listing page.
+     */
+    #}
+    
+    {% set profile_url = url('entity.node.canonical', {
+      'node': node.id()
+    }) %}
+    
+    {% set faculty_category =
+      node.field_faculty_category.value|default('')
+    %}
+    
+    {% set category_labels = {
+      'technology': 'Technology'|t,
+      'design': 'Design'|t,
+      'business': 'Business'|t,
+    } %}
+    
+    {% set classes = [
+      'card',
+      'faculty-card',
+      node.field_faculty_featured.value
+        ? 'faculty-card--featured',
+    ] %}
+    
+    <article{{ attributes
+      .addClass(classes)
+      .setAttribute(
+        'data-category',
+        faculty_category|clean_class
+      )
+    }}>
+    
+      {% if content.field_faculty_photo %}
+        <div class="faculty-card__image">
+          <a
+            href="{{ profile_url }}"
+            aria-label="{{ 'View profile of @name'|t({
+              '@name': node.label
+            }) }}"
+          >
+            {{ content.field_faculty_photo }}
+          </a>
+        </div>
+      {% endif %}
+    
+      <h3>
+        <a href="{{ profile_url }}">
+          {{ label }}
+        </a>
+      </h3>
+    
+      {% if faculty_category %}
+        <span class="role">
+          {{ category_labels[faculty_category]
+            |default(faculty_category|capitalize)
+          }}
+          {{ 'Faculty'|t }}
+        </span>
+      {% endif %}
+    
+      {% if node.field_faculty_summary.value %}
+        <p>
+          {{ node.field_faculty_summary.value }}
+        </p>
+      {% endif %}
+    
+      <a class="text-link" href="{{ profile_url }}">
+        {{ 'View profile'|t }}
+      </a>
+    
+    </article>

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.faculty.body
+    - field.field.node.faculty.field_faculty_category
     - field.field.node.faculty.field_faculty_courses_taught
     - field.field.node.faculty.field_faculty_email
     - field.field.node.faculty.field_faculty_expertise
@@ -27,6 +28,7 @@ dependencies:
   module:
     - image
     - link
+    - options
     - text
     - user
 id: node.faculty.default
@@ -40,6 +42,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 5
+    region: content
+  field_faculty_category:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 18
     region: content
   field_faculty_courses_taught:
     type: number_integer

@@ -12,7 +12,7 @@ field_name: field_delivery_mode
 entity_type: node
 bundle: course
 label: 'Delivery Mode'
-description: ''
+description: 'Select how the course will be delivered.'
 required: true
 translatable: false
 default_value: {  }

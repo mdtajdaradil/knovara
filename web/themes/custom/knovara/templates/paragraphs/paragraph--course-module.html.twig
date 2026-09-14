@@ -1,0 +1,20 @@
+{#
+/**
+* @file
+* Course Module paragraph rendered as one accessible accordion item.
+*/
+#}
+
+{% set module_title = paragraph.field_module_title.value|default('Course module'|t) %}
+{% set panel_id = 'course-module-' ~ paragraph.id() %}
+
+<div{{ attributes.addClass('accordion__item') }}>
+  <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="{{ panel_id }}"
+    data-accordion-trigger>
+    {{ module_title }}
+  </button>
+
+  <div class="accordion__panel" id="{{ panel_id }}" hidden>
+    {{ content.field_module_summary }}
+  </div>
+  </div>

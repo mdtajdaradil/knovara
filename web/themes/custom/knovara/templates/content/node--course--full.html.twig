@@ -1,0 +1,238 @@
+{#
+/**
+* @file
+* Full Course detail page.
+*
+* The page layout is owned by this template. Ensure page.html.twig treats
+* Course canonical routes as self-contained (see the package README).
+*/
+#}
+
+{{ attach_library('knovara/course-detail') }}
+
+{% set category = node.field_course_category.entity
+? node.field_course_category.entity.label()
+: ''
+%}
+{% set level = node.field_course_level.value|default('') %}
+{% set summary = node.field_course_summary.value|default('') %}
+{% set duration = node.field_course_duration.value|default('') %}
+{% set lessons = node.field_course_lessons.value|default(null) %}
+{% set projects = node.field_course_projects.value|default(null) %}
+{% set certificate_included = node.field_course_certificate.value == '1' %}
+{% set overview_heading = node.field_course_overview_heading.value|default('') %}
+{% set price = node.field_course_price.value|default(null) %}
+{% set payment_note = node.field_course_payment_note.value|default('') %}
+{% set start_date = node.field_course_start_date.value|default('') %}
+
+{% set enrollment_status_value = node.field_enrollment_status.value|default('') %}
+{% set enrollment_status_labels = {
+'open': 'Enrollment open'|t,
+'enrollment_open': 'Enrollment open'|t,
+'closed': 'Enrollment closed'|t,
+'enrollment_closed': 'Enrollment closed'|t,
+'coming_soon': 'Coming soon'|t,
+'waitlist': 'Waitlist open'|t
+} %}
+{% set enrollment_status = enrollment_status_labels[enrollment_status_value]|default(
+enrollment_status_value|replace({'_': ' ', '-': ' '})|title
+) %}
+
+{% set instructor = node.field_course_instructor.entity %}
+{% set enroll_item = node.field_course_enroll_link.0|default(null) %}
+{% set enroll_url = enroll_item ? enroll_item.url : null %}
+{% set enroll_label = enroll_item and enroll_item.title
+? enroll_item.title
+: 'Enroll now'|t
+%}
+
+{% set classes = [
+'course-detail-node',
+'node',
+'node--type-course',
+not node.isPublished() ? 'node--unpublished'
+] %}
+
+<article{{ attributes.addClass(classes) }}>
+
+  <section class="page-hero page-hero--dark">
+    <div class="shell">
+      <nav class="breadcrumb" aria-label="{{ 'Breadcrumb'|t }}">
+        <a href="{{ path('<front>') }}">{{ 'Home'|t }}</a>
+        <span aria-hidden="true">/</span>
+        <a href="{{ base_path }}courses">{{ 'Courses'|t }}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ label }}</span>
+      </nav>
+
+      {{ title_prefix }}
+
+      {% if category or level %}
+      <span class="eyebrow">
+        {% if category %}{{ category }}{% endif %}
+        {% if category and level %} · {% endif %}
+        {% if level %}{{ level|replace({'_': ' ', '-': ' '})|title }}{% endif %}
+      </span>
+      {% endif %}
+
+      <h1{{ title_attributes }}>{{ label }}</h1>
+
+        {{ title_suffix }}
+
+        {% if summary %}
+        <p class="lead">{{ summary }}</p>
+        {% endif %}
+
+        {% if duration or lessons is not null or projects is not null or certificate_included %}
+        <div class="meta-row" aria-label="{{ 'Course highlights'|t }}">
+          {% if duration %}
+          <span>{{ duration }}</span>
+          {% endif %}
+
+          {% if lessons is not null %}
+          <span>{{ lessons }} {{ lessons == 1 ? 'lesson'|t : 'lessons'|t }}</span>
+          {% endif %}
+
+          {% if projects is not null %}
+          <span>
+            {{ projects }}
+            {{ projects == 1 ? 'practical project'|t : 'practical projects'|t }}
+          </span>
+          {% endif %}
+
+          {% if certificate_included %}
+          <span>{{ 'Certificate included'|t }}</span>
+          {% endif %}
+        </div>
+        {% endif %}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell detail-grid">
+
+      <div class="prose">
+        <span class="eyebrow">{{ 'Course overview'|t }}</span>
+
+        {% if overview_heading %}
+        <h2>{{ overview_heading }}</h2>
+        {% endif %}
+
+        {% if not node.body.isEmpty() %}
+        <div class="course-rich-text">
+          {{ content.body }}
+        </div>
+        {% endif %}
+
+        {% if not node.field_learning_outcomes.isEmpty() %}
+        <h3>{{ 'What you will learn'|t }}</h3>
+        <div class="feature-list course-rich-text">
+          {{ content.field_learning_outcomes }}
+        </div>
+        {% endif %}
+
+        {% if not node.field_course_curriculum.isEmpty() %}
+        <h3>{{ 'Curriculum'|t }}</h3>
+        <div class="accordion course-curriculum" data-course-curriculum>
+          {{ content.field_course_curriculum }}
+        </div>
+        {% endif %}
+
+        {% if not node.field_capstone_project.isEmpty() %}
+        <h3>{{ 'Capstone project'|t }}</h3>
+        <div class="course-rich-text">
+          {{ content.field_capstone_project }}
+        </div>
+        {% endif %}
+
+        {% if not node.field_course_requirements.isEmpty() %}
+        <h3>{{ 'Requirements'|t }}</h3>
+        <div class="course-rich-text">
+          {{ content.field_course_requirements }}
+        </div>
+        {% endif %}
+      </div>
+
+      <aside class="detail-rail" aria-label="{{ 'Enrollment summary'|t }}">
+        {% if enrollment_status %}
+        <span class="badge">{{ enrollment_status }}</span>
+        {% endif %}
+
+        {% if price is not null %}
+        <p class="price">₹{{ price|number_format(0, '.', ',') }}</p>
+        {% endif %}
+
+        {% if payment_note %}
+        <p class="muted">{{ payment_note }}</p>
+        {% endif %}
+
+        {% if enroll_url %}
+        <a class="button button--teal button--block" href="{{ enroll_url }}">
+          {{ enroll_label }}
+        </a>
+        {% endif %}
+
+        {% if start_date or not node.field_course_benefits.isEmpty() %}
+        <ul class="feature-list course-benefits">
+          {% if start_date %}
+          <li>{{ 'Starts @date'|t({'@date': start_date|date('j F')}) }}</li>
+          {% endif %}
+
+          {% for benefit in node.field_course_benefits %}
+          {% if benefit.value|trim %}
+          <li>{{ benefit.value }}</li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if instructor %}
+        <div class="divider"></div>
+
+        {% set instructor_name = instructor.label() %}
+        {% set instructor_role = instructor.field_faculty_role.value|default('Lead faculty'|t) %}
+        {% set instructor_photo = instructor.field_faculty_photo.0|default(null) %}
+
+        <a class="cluster course-instructor" href="{{ path('entity.node.canonical', {'node': instructor.id()}) }}"
+          aria-label="{{ 'View @name’s faculty profile'|t({'@name': instructor_name}) }}">
+          {% if instructor_photo and instructor_photo.entity %}
+          <img class="avatar avatar--small course-instructor__photo"
+            src="{{ file_url(instructor_photo.entity.uri.value) }}"
+            alt="{{ instructor_photo.alt ?: ('Portrait of @name'|t({'@name': instructor_name})) }}" loading="lazy"
+            decoding="async">
+          {% else %}
+          <span class="avatar avatar--small" aria-hidden="true">
+            {{ instructor_name|slice(0, 1)|upper }}
+          </span>
+          {% endif %}
+
+          <span class="course-instructor__text">
+            <strong>{{ instructor_name }}</strong>
+            <small>{{ instructor_role }}</small>
+          </span>
+        </a>
+        {% endif %}
+      </aside>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="cta">
+        <div>
+          <span class="eyebrow">{{ 'Personal guidance'|t }}</span>
+          <h2>{{ 'Not sure where to begin?'|t }}</h2>
+          <p>
+            {{ 'Share your goal and a course advisor will help you choose a focused learning path.'|t }}
+          </p>
+        </div>
+
+        <a class="button button--gold" href="{{ base_path }}contact">
+          {{ 'Request guidance'|t }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  </article>

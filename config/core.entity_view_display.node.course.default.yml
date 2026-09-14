@@ -4,13 +4,22 @@ status: true
 dependencies:
   config:
     - field.field.node.course.body
+    - field.field.node.course.field_capstone_project
+    - field.field.node.course.field_course_benefits
     - field.field.node.course.field_course_category
+    - field.field.node.course.field_course_certificate
     - field.field.node.course.field_course_code
+    - field.field.node.course.field_course_curriculum
     - field.field.node.course.field_course_duration
+    - field.field.node.course.field_course_enroll_link
     - field.field.node.course.field_course_image
     - field.field.node.course.field_course_instructor
+    - field.field.node.course.field_course_lessons
     - field.field.node.course.field_course_level
+    - field.field.node.course.field_course_overview_heading
+    - field.field.node.course.field_course_payment_note
     - field.field.node.course.field_course_price
+    - field.field.node.course.field_course_projects
     - field.field.node.course.field_course_requirements
     - field.field.node.course.field_course_start_date
     - field.field.node.course.field_course_summary
@@ -22,7 +31,9 @@ dependencies:
     - node.type.course
   module:
     - datetime
+    - entity_reference_revisions
     - image
+    - link
     - options
     - text
     - user
@@ -36,134 +47,209 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 17
+    region: content
+  field_capstone_project:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  field_course_benefits:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 22
     region: content
   field_course_category:
     type: entity_reference_label
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 102
+    weight: 3
+    region: content
+  field_course_certificate:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 10
     region: content
   field_course_code:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 112
+    weight: 0
+    region: content
+  field_course_curriculum:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 19
     region: content
   field_course_duration:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 106
+    weight: 7
+    region: content
+  field_course_enroll_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 24
     region: content
   field_course_image:
     type: image
-    label: above
+    label: hidden
     settings:
       image_link: ''
       image_style: ''
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 109
+    weight: 2
     region: content
   field_course_instructor:
     type: entity_reference_label
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 116
+    weight: 15
+    region: content
+  field_course_lessons:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 8
     region: content
   field_course_level:
     type: list_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 105
+    weight: 4
+    region: content
+  field_course_overview_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 16
+    region: content
+  field_course_payment_note:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 23
     region: content
   field_course_price:
     type: number_decimal
-    label: above
+    label: hidden
     settings:
       thousand_separator: ''
       decimal_separator: .
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 108
+    weight: 11
+    region: content
+  field_course_projects:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 9
     region: content
   field_course_requirements:
     type: text_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 115
+    weight: 21
     region: content
   field_course_start_date:
     type: datetime_default
-    label: above
+    label: hidden
     settings:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 113
+    weight: 12
     region: content
   field_course_summary:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 103
+    weight: 1
     region: content
   field_delivery_mode:
     type: list_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 107
+    weight: 5
     region: content
   field_enrollment_status:
     type: list_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 111
+    weight: 13
     region: content
   field_featured_course:
     type: boolean
-    label: above
+    label: hidden
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 110
+    weight: 14
     region: content
   field_learning_outcomes:
     type: text_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 114
+    weight: 18
     region: content
   field_learning_type:
     type: list_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 104
+    weight: 6
     region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 100
-    region: content
-hidden: {  }
+hidden:
+  links: true

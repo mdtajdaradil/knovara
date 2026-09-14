@@ -1,0 +1,21 @@
+uuid: 886ec89a-0a27-4325-a383-f5c58952aa01
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_course_certificate
+    - node.type.course
+id: node.course.field_course_certificate
+field_name: field_course_certificate
+entity_type: node
+bundle: course
+label: 'Certificate Included'
+description: 'Enable when successful completion includes a certificate.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Certificate included'
+  off_label: 'Certificate not included'
+field_type: boolean

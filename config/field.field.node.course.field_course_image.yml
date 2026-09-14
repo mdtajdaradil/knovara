@@ -13,7 +13,7 @@ entity_type: node
 bundle: course
 label: 'Course Image'
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -22,9 +22,9 @@ settings:
   handler_settings: {  }
   file_directory: courses
   file_extensions: 'png jpg jpeg webp'
-  max_filesize: '50 MB'
-  max_resolution: 720x405
-  min_resolution: 720x405
+  max_filesize: '5 MB'
+  max_resolution: ''
+  min_resolution: 1200x750
   alt_field: true
   alt_field_required: true
   title_field: false

@@ -1,0 +1,23 @@
+uuid: bee09f17-38a6-4314-abc6-bf6ede22c6cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_course_projects
+    - node.type.course
+id: node.course.field_course_projects
+field_name: field_course_projects
+entity_type: node
+bundle: course
+label: 'Practical Projects'
+description: 'Enter the number of practical projects. Leave blank if not applicable.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: 99
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -10,7 +10,7 @@ field_name: field_featured_course
 entity_type: node
 bundle: course
 label: 'Featured Course'
-description: ''
+description: 'Enable this option to show the course in featured course listings.'
 required: false
 translatable: false
 default_value: {  }

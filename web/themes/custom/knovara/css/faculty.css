@@ -1,0 +1,268 @@
+/**
+ * @file
+ * Faculty directory, cards, filters and profile pages.
+ *
+ * Generated from the original Knovara CSS without changing selectors.
+ */
+
+.faculty-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 23px;
+}
+
+.faculty-card__image {
+  aspect-ratio: 9 / 11;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--soft);
+}
+
+.faculty-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform .3s ease;
+}
+
+.faculty-card:hover .faculty-card__image img {
+  transform: scale(1.025);
+}
+
+.faculty-card .text-link {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.faculty-card h3 {
+  margin: 18px 0 2px;
+}
+
+.faculty-card .role {
+  color: var(--teal-dark);
+  font-size: .82rem;
+  font-weight: 800;
+}
+
+.faculty-card p {
+  color: var(--muted);
+  font-size: .86rem;
+}
+
+.page-hero--faculty {
+  padding-block: 64px;
+}
+
+.page-hero--faculty .page-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(420px, 1.1fr);
+  align-items: center;
+  gap: clamp(40px, 6vw, 76px);
+}
+
+.page-hero--faculty .page-hero__content {
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero--faculty .lead {
+  max-width: 590px;
+}
+
+.page-hero--faculty .page-hero__media {
+  aspect-ratio: 7 / 5;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(16, 35, 63, .12);
+  border-radius: var(--radius-lg);
+  background: var(--soft);
+  box-shadow: var(--shadow);
+}
+
+.page-hero--faculty .page-hero__media::after {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(255, 255, 255, .5);
+  border-radius: calc(var(--radius-lg) - 8px);
+  content: "";
+  pointer-events: none;
+}
+
+.page-hero--faculty .page-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.faculty-contact-card {
+  text-align: center;
+}
+
+.faculty-profile-avatar {
+  width: 108px;
+  height: 108px;
+  margin: 0 auto 1.35rem;
+  padding: 4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #efb748, #178d86);
+}
+
+.faculty-profile-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 3px solid #fff;
+  border-radius: 50%;
+}
+
+.faculty-contact-card .muted {
+  text-align: left;
+}
+
+.faculty-contact-card .divider {
+  margin-inline: 0;
+}
+
+.faculty-story-image {
+  position: relative;
+  margin: 2rem 0 2.75rem;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  border: 1px solid #dfe5e8;
+  border-radius: 20px;
+  background: #e9f4f2;
+  box-shadow: 0 18px 45px rgba(16, 35, 63, 0.12);
+}
+
+.faculty-story-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 350ms ease;
+}
+
+.faculty-filter-form {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.faculty-filter-form .views-exposed-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+}
+
+.faculty-filter-form form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+}
+
+.faculty-filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+}
+
+.faculty-filter-controls {
+  flex-wrap: wrap;
+}
+
+.faculty-filter-search {
+  flex: 1 1 520px;
+  min-width: 260px;
+}
+
+.faculty-filter-search .form-item {
+  margin: 0;
+}
+
+.faculty-filter-search .filter-search {
+  width: 100%;
+}
+
+.faculty-filter-chips {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.faculty-filter-native {
+  display: none;
+}
+
+.faculty-filter-actions {
+  display: none;
+}
+
+.faculty-contact-links {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.faculty-contact-links .field {
+  margin: 0;
+}
+
+@media (max-width: 620px) {
+  .faculty-card {
+    padding: 18px;
+  }
+}
+
+@media (hover: hover) {
+  .faculty-story-image:hover img {
+    transform: scale(1.015);
+  }
+}
+
+@media (max-width: 700px) {
+  .faculty-profile-avatar {
+    width: 96px;
+    height: 96px;
+  }
+
+  .faculty-story-image {
+    margin-block: 1.5rem 2.25rem;
+    border-radius: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faculty-story-image img {
+    transition: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .faculty-filter-form {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  .faculty-filter-search {
+    flex-basis: 100%;
+    min-width: 100%;
+  }
+
+  .faculty-filter-chips {
+    width: 100%;
+  }
+}

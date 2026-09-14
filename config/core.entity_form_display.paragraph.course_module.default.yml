@@ -1,0 +1,34 @@
+uuid: a772a887-8346-4056-8a87-9be09b79c4bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.course_module.field_module_summary
+    - field.field.paragraph.course_module.field_module_title
+    - paragraphs.paragraphs_type.course_module
+  module:
+    - text
+id: paragraph.course_module.default
+targetEntityType: paragraph
+bundle: course_module
+mode: default
+content:
+  field_module_summary:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_module_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -122,8 +122,8 @@ display:
           plugin_id: text
           empty: true
           content:
-            value: "<div class=\"faculty-no-results\">\r\n  <h3>No faculty found</h3>\r\n  <p>Try changing your search or selecting another category.</p>\r\n</div>"
-            format: basic_html
+            value: "<div class=\"faculty-no-results\">\r\n  <h3>No faculty found</h3>\r\n  <p>Try changing your search or selecting another category.</p>\r\n<a class=\"button button--ghost\" href=\"/faculty\">Clear filters</a>\r\n</div>"
+            format: full_html
           tokenize: false
       sorts:
         title:
@@ -270,7 +270,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
-      css_class: faculty-directory-view
+      css_class: ''
       use_ajax: true
       header: {  }
       footer: {  }

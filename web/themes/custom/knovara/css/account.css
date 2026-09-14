@@ -1,0 +1,174 @@
+/**
+ * @file
+ * Authentication, checkout and confirmation pages.
+ *
+ * Generated from the original Knovara CSS without changing selectors.
+ */
+
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap input {
+  padding-right: 74px;
+}
+
+.password-toggle {
+  min-height: 36px;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  border: 0;
+  border-radius: 7px;
+  padding: 0 9px;
+  color: var(--teal-dark);
+  background: var(--soft);
+  font-size: .72rem;
+  font-weight: 800;
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(300px, .85fr) minmax(520px, 1.15fr);
+  background: var(--bg);
+}
+
+.auth-aside {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(34px, 6vw, 72px);
+  color: #fff;
+  background: radial-gradient(circle at 30% 25%, rgba(23, 141, 134, .75), transparent 30%), var(--navy);
+}
+
+.auth-aside .brand {
+  color: #fff;
+}
+
+.auth-aside h1 {
+  max-width: 560px;
+  color: #fff;
+}
+
+.auth-aside p {
+  max-width: 510px;
+  color: #c9d6e2;
+}
+
+.auth-main {
+  display: grid;
+  place-items: center;
+  padding: 45px 25px;
+}
+
+.auth-card {
+  width: min(560px, 100%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: clamp(26px, 5vw, 46px);
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+}
+
+.auth-card h2 {
+  font-size: 2.45rem;
+}
+
+.auth-card form {
+  margin-top: 27px;
+}
+
+.auth-footer {
+  margin-top: 23px;
+  color: var(--muted);
+  font-size: .84rem;
+  text-align: center;
+}
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 370px;
+  align-items: start;
+  gap: 35px;
+}
+
+.order-summary {
+  position: sticky;
+  top: 130px;
+  border-radius: var(--radius);
+  padding: 25px;
+  color: #fff;
+  background: var(--navy);
+}
+
+.order-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .13);
+  color: #cbd8e4;
+}
+
+.order-line--total {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+.success-wrap {
+  min-height: 72vh;
+  display: grid;
+  place-items: center;
+  padding: 70px 20px;
+  background: var(--bg);
+}
+
+.success-card {
+  width: min(720px, 100%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: clamp(28px, 7vw, 64px);
+}
+
+.success-icon {
+  width: 82px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 24px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--teal);
+  font-size: 2rem;
+}
+
+@media (max-width: 1040px) {
+  .checkout-grid {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 860px) {
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary {
+    position: static;
+  }
+
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-aside {
+    min-height: auto;
+    gap: 55px;
+    padding: 42px 25px;
+  }
+}

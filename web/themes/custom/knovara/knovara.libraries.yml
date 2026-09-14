@@ -1,26 +1,93 @@
 global:
-  version: 1.x
   css:
-    theme:
-      css/style.css: {}
+    base:
+      css/layout.css: {}
+    component:
+      css/components.css: {}
   js:
     js/main.js: {}
   dependencies:
     - core/drupal
     - core/once
 
-faculty-detail:
-  version: 1.x
+home:
   css:
     theme:
-      css/faculty-detail.css: {}
+      css/home.css: {}
+  dependencies:
+    - knovara/global
+
+faculty:
+  css:
+    theme:
+      css/faculty.css: {}
   dependencies:
     - knovara/global
 
 faculty-filter:
-  version: 1.x
   js:
     js/faculty-filter.js: {}
   dependencies:
+    - knovara/faculty
     - core/drupal
     - core/once
+
+courses:
+  css:
+    theme:
+      css/courses.css: {}
+  dependencies:
+    - knovara/global
+
+course-filter:
+  js:
+    js/course-filter.js: {}
+  dependencies:
+    - knovara/courses
+    - core/drupal
+    - core/once
+
+course-detail:
+  css:
+    theme:
+      css/course-detail.css: {}
+  js:
+    js/course-detail.js: {}
+  dependencies:
+    - knovara/courses
+    - core/drupal
+    - core/once
+
+account:
+  css:
+    theme:
+      css/account.css: {}
+  dependencies:
+    - knovara/global
+
+learner:
+  css:
+    theme:
+      css/learner.css: {}
+  dependencies:
+    - knovara/global
+    - knovara/courses
+
+events:
+  css:
+    theme:
+      css/events.css: {}
+  dependencies:
+    - knovara/global
+
+# Safe migration library: keeps all current pages styled while the remaining
+# Twig templates are converted to page-specific attach_library() calls.
+all-pages:
+  dependencies:
+    - knovara/global
+    - knovara/home
+    - knovara/faculty
+    - knovara/courses
+    - knovara/account
+    - knovara/learner
+    - knovara/events

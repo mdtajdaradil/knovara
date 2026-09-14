@@ -12,7 +12,7 @@ field_name: field_course_start_date
 entity_type: node
 bundle: course
 label: 'Course Start Date'
-description: ''
+description: 'Select a start date for scheduled courses. Leave blank for self-paced courses.'
 required: false
 translatable: false
 default_value: {  }

@@ -1,0 +1,35 @@
+{#
+/**
+* @file
+* Exposed filters for the Course Catalog.
+*/
+#}
+
+{% if q is not empty %}
+{{ q }}
+{% endif %}
+
+<div class="course-filter-controls" data-course-filter-controls>
+
+  {% if form.course_search is defined %}
+  <div class="course-filter-search">
+    {{ form.course_search }}
+  </div>
+  {% endif %}
+
+  {% if form.course_category is defined %}
+  <div class="course-filter-native" hidden>
+    {{ form.course_category }}
+  </div>
+  {% endif %}
+
+  <div class="course-filter-chips" data-course-filter-chips role="group"
+    aria-label="{{ 'Filter courses by category'|t }}"></div>
+
+  <div class="course-filter-actions" hidden>
+    {{ form.actions }}
+  </div>
+
+  {{ form|without('course_search', 'course_category', 'actions') }}
+
+</div>

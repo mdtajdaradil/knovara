@@ -5,13 +5,22 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.course.body
+    - field.field.node.course.field_capstone_project
+    - field.field.node.course.field_course_benefits
     - field.field.node.course.field_course_category
+    - field.field.node.course.field_course_certificate
     - field.field.node.course.field_course_code
+    - field.field.node.course.field_course_curriculum
     - field.field.node.course.field_course_duration
+    - field.field.node.course.field_course_enroll_link
     - field.field.node.course.field_course_image
     - field.field.node.course.field_course_instructor
+    - field.field.node.course.field_course_lessons
     - field.field.node.course.field_course_level
+    - field.field.node.course.field_course_overview_heading
+    - field.field.node.course.field_course_payment_note
     - field.field.node.course.field_course_price
+    - field.field.node.course.field_course_projects
     - field.field.node.course.field_course_requirements
     - field.field.node.course.field_course_start_date
     - field.field.node.course.field_course_summary
@@ -22,39 +31,84 @@ dependencies:
     - field.field.node.course.field_learning_type
     - node.type.course
   module:
-    - text
+    - image
+    - options
     - user
 id: node.course.teaser
 targetEntityType: node
 bundle: course
 mode: teaser
 content:
-  body:
-    type: text_summary_or_trimmed
+  field_course_duration:
+    type: string
     label: hidden
     settings:
-      trim_length: 600
+      link_to_entity: false
     third_party_settings: {  }
-    weight: 101
+    weight: 3
     region: content
-  links:
+  field_course_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_course_level:
+    type: list_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 1
+    region: content
+  field_course_price:
+    type: number_decimal
+    label: hidden
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_course_summary:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_delivery_mode:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
     region: content
 hidden:
+  body: true
+  field_capstone_project: true
+  field_course_benefits: true
   field_course_category: true
+  field_course_certificate: true
   field_course_code: true
-  field_course_duration: true
-  field_course_image: true
+  field_course_curriculum: true
+  field_course_enroll_link: true
   field_course_instructor: true
-  field_course_level: true
-  field_course_price: true
+  field_course_lessons: true
+  field_course_overview_heading: true
+  field_course_payment_note: true
+  field_course_projects: true
   field_course_requirements: true
   field_course_start_date: true
-  field_course_summary: true
-  field_delivery_mode: true
   field_enrollment_status: true
   field_featured_course: true
   field_learning_outcomes: true
   field_learning_type: true
+  links: true

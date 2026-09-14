@@ -1,0 +1,301 @@
+/**
+ * @file
+ * Course rows, catalog cards, filters, detail features and accordions.
+ */
+
+ .detail-rail .price {
+  margin: 8px 0 18px;
+  color: var(--navy);
+  font-family: Georgia, serif;
+  font-size: 2rem;
+}
+
+.feature-list {
+  margin: 19px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feature-list li {
+  position: relative;
+  padding: 7px 0 7px 27px;
+  color: #4b5869;
+  font-size: .87rem;
+}
+
+.feature-list li::before {
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+  content: "✓";
+  font-weight: 900;
+}
+
+.accordion {
+  display: grid;
+  gap: 10px;
+}
+
+.accordion__item {
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: var(--paper);
+}
+
+.accordion__trigger {
+  width: 100%;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 0;
+  border-radius: 13px;
+  padding: 13px 17px;
+  color: var(--navy);
+  background: transparent;
+  font-weight: 800;
+  text-align: left;
+}
+
+.accordion__trigger::after {
+  content: "+";
+  font-size: 1.35rem;
+}
+
+.accordion__trigger[aria-expanded="true"]::after {
+  content: "−";
+}
+
+.accordion__panel {
+  padding: 0 17px 17px;
+  color: var(--muted);
+}
+
+.course-row {
+  display: grid;
+  grid-template-columns: 85px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 11px;
+}
+
+.course-row + .course-row {
+  margin-top: 10px;
+}
+
+.course-row__art {
+  height: 68px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--navy), var(--teal));
+  font-family: Georgia, serif;
+  font-size: 1.4rem;
+}
+
+.course-row h3 {
+  margin: 0 0 3px;
+  font-size: .95rem;
+}
+
+.course-row p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .75rem;
+}
+
+.course-row progress {
+  max-width: 230px;
+}
+
+/* Course Catalog cards. The grid itself uses the same .grid.grid--3
+ * component as the Faculty Directory. */
+
+.course-catalog-page .course-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+.course-catalog-page .course-card .card__art {
+  position: relative;
+  min-height: 0;
+  padding: 0;
+  aspect-ratio: 8 / 5;
+  overflow: hidden;
+}
+
+.course-catalog-page .course-card .card__art img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.course-catalog-page .course-card .card__art .badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+}
+
+.course-catalog-page .course-card .card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.course-catalog-page .course-card .card__meta {
+  margin-top: auto;
+}
+
+/* Course Catalog exposed filters. These declarations intentionally mirror
+ * the working Faculty Directory filter layout. Generic .filter-bar,
+ * .filter-search, .filter-chip, and .result-count visuals stay in the shared
+ * component stylesheet and are not overridden here. */
+
+.course-filter-form {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.course-filter-form .views-exposed-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+}
+
+.course-filter-form form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+}
+
+.course-filter-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+}
+
+.course-filter-search {
+  flex: 1 1 520px;
+  min-width: 260px;
+}
+
+.course-filter-search .form-item {
+  margin: 0;
+}
+
+.course-filter-search .filter-search {
+  width: 100%;
+}
+
+.course-filter-chips {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.course-filter-native,
+.course-filter-actions {
+  display: none;
+}
+
+.course-catalog-page .view-empty {
+  padding: 48px 24px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+  text-align: center;
+}
+
+.course-catalog-page .view-empty h2 {
+  margin: 0 0 10px;
+  color: var(--navy);
+}
+
+.course-catalog-page .view-empty p {
+  margin: 0 0 22px;
+  color: var(--muted);
+}
+
+@media (max-width: 767px) {
+  .course-filter-form {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  .course-filter-search {
+    flex-basis: 100%;
+    min-width: 100%;
+  }
+
+  .course-filter-chips {
+    width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .course-row {
+    grid-template-columns: 65px minmax(0, 1fr);
+  }
+
+  .course-row .button {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Course Detail: remove Drupal editor list bullets.
+ * The custom checkmark from .feature-list li::before remains visible.
+ */
+
+ .course-detail-node .feature-list ul {
+  margin: 0;
+  padding: 0;
+  list-style: none !important;
+}
+
+.course-detail-node .feature-list ul li::marker {
+  content: "";
+}
+
+/* Prevent Drupal field wrappers from adding unwanted spacing. */
+
+.course-detail-node .course-curriculum > .field {
+  margin: 0;
+}
+
+.course-detail-node .accordion__panel > .field {
+  margin: 0;
+}
+
+.course-detail-node .accordion__panel .field__item > :first-child {
+  margin-top: 0;
+}
+
+.course-detail-node .accordion__panel .field__item > :last-child {
+  margin-bottom: 0;
+}
+
+/* Course detail accordion spacing.
+ * Works even when Drupal does not output .field__items.
+ */
+
+.course-detail-node .accordion .accordion__item {
+  margin-bottom: 10px;
+}

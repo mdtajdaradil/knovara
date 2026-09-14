@@ -1,79 +1,52 @@
 {#
-    /**
-     * @file
-     * Exposed filters for the Faculty Directory.
-     */
-    #}
-    
-    {% if q is not empty %}
-      {{ q }}
-    {% endif %}
-    
-    <div
-      class="faculty-filter-controls"
-      data-faculty-filter-controls
-    >
-    
-      {% if form.search is defined %}
-        <div class="faculty-filter-search">
-          {{ form.search }}
-        </div>
-      {% endif %}
-    
-      {% if form.type is defined %}
-        <div class="faculty-filter-native" hidden>
-          {{ form.type }}
-        </div>
-      {% endif %}
-    
-      <div
-        class="faculty-filter-chips"
-        role="group"
-        aria-label="{{ 'Filter faculty by category'|t }}"
-      >
-    
-        <button
-          class="filter-chip"
-          type="button"
-          data-filter-value="__all__"
-          aria-pressed="true"
-        >
-          {{ 'All'|t }}
-        </button>
-    
-        <button
-          class="filter-chip"
-          type="button"
-          data-filter-value="technology"
-          aria-pressed="false"
-        >
-          {{ 'Technology'|t }}
-        </button>
-    
-        <button
-          class="filter-chip"
-          type="button"
-          data-filter-value="design"
-          aria-pressed="false"
-        >
-          {{ 'Design'|t }}
-        </button>
-    
-        <button
-          class="filter-chip"
-          type="button"
-          data-filter-value="business"
-          aria-pressed="false"
-        >
-          {{ 'Business'|t }}
-        </button>
-    
-      </div>
-    
-      <div class="faculty-filter-actions" hidden>
-        {{ form.actions }}
-      </div>
-    
-      {{ form|without('search', 'type', 'actions') }}
-    
-    </div>
+/**
+* @file
+* Exposed filters for the Faculty Directory.
+*/
+#}
+
+{% if q is not empty %}
+{{ q }}
+{% endif %}
+
+<div class="faculty-filter-controls" data-faculty-filter-controls>
+
+  {% if form.search is defined %}
+  <div class="faculty-filter-search">
+    {{ form.search }}
+  </div>
+  {% endif %}
+
+  {% if form.type is defined %}
+  <div class="faculty-filter-native" hidden>
+    {{ form.type }}
+  </div>
+  {% endif %}
+
+  <div class="faculty-filter-chips" role="group" aria-label="{{ 'Filter faculty by category'|t }}">
+
+    <button class="filter-chip" type="button" data-filter-value="__all__" aria-pressed="true">
+      {{ 'All'|t }}
+    </button>
+
+    <button class="filter-chip" type="button" data-filter-value="technology" aria-pressed="false">
+      {{ 'Technology'|t }}
+    </button>
+
+    <button class="filter-chip" type="button" data-filter-value="design" aria-pressed="false">
+      {{ 'Design'|t }}
+    </button>
+
+    <button class="filter-chip" type="button" data-filter-value="business" aria-pressed="false">
+      {{ 'Business'|t }}
+    </button>
+
+  </div>
+
+  <div class="faculty-filter-actions" hidden>
+    {{ form.actions }}
+  </div>
+
+  {{ form|without('search', 'type', 'actions') }}
+
+</div>

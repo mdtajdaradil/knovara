@@ -12,8 +12,8 @@ field_name: field_course_level
 entity_type: node
 bundle: course
 label: 'Course Level'
-description: ''
-required: false
+description: 'Select the difficulty level of the course.'
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

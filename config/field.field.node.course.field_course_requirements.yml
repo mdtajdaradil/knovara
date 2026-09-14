@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_course_requirements
+    - filter.format.basic_html
     - node.type.course
   module:
     - text
@@ -12,11 +13,12 @@ field_name: field_course_requirements
 entity_type: node
 bundle: course
 label: 'Course Requirements'
-description: ''
+description: 'Add prerequisites only when the course requires prior knowledge or tools.'
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  allowed_formats: {  }
+  allowed_formats:
+    - basic_html
 field_type: text_long

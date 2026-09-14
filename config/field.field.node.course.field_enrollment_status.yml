@@ -12,12 +12,10 @@ field_name: field_enrollment_status
 entity_type: node
 bundle: course
 label: 'Enrollment Status'
-description: ''
+description: 'Select the current enrollment availability.'
 required: true
 translatable: false
-default_value:
-  -
-    value: open_for_enrollment
+default_value: {  }
 default_value_callback: ''
 settings: {  }
 field_type: list_string

@@ -1,0 +1,23 @@
+uuid: 4cf985ef-9a5c-4925-abe1-557cbc3500cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_course_lessons
+    - node.type.course
+id: node.course.field_course_lessons
+field_name: field_course_lessons
+entity_type: node
+bundle: course
+label: 'Number of Lessons'
+description: 'Enter the total number of lessons. Enter numbers only.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: 999
+  prefix: ''
+  suffix: ''
+field_type: integer

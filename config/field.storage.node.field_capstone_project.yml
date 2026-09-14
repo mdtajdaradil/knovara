@@ -1,0 +1,19 @@
+uuid: f7412254-2acd-42f9-ad08-eacea54157ae
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_capstone_project
+field_name: field_capstone_project
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

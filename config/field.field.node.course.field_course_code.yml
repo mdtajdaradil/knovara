@@ -10,8 +10,8 @@ field_name: field_course_code
 entity_type: node
 bundle: course
 label: 'Course Code'
-description: WEB-101
-required: false
+description: 'Enter a unique course code, for example KN-WEB-101.'
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

@@ -10,7 +10,7 @@ field_name: field_course_summary
 entity_type: node
 bundle: course
 label: 'Course Summary'
-description: 'Write a short description for course cards and listings.'
+description: 'Write a concise summary for the course card and detail-page hero. Maximum 255 characters.'
 required: true
 translatable: false
 default_value: {  }

@@ -1,0 +1,71 @@
+{#
+/**
+* @file
+* Course card for the /courses listing (Course node, Teaser view mode).
+*
+* Keep the image field visible in Manage display > Teaser so Drupal's image
+* formatter handles the image style, alt text, and file URL.
+*/
+#}
+
+{{ attach_library('knovara/courses') }}
+
+{% set category = node.field_course_category.entity.name.value|default('') %}
+{% set level = node.field_course_level.value|default('') %}
+{% set summary = node.field_course_summary.value|default('') %}
+{% set duration = node.field_course_duration.value|default('') %}
+{% set delivery_mode = node.field_delivery_mode.value|default('') %}
+{% set price = node.field_course_price.value|default(null) %}
+
+{% set card_attributes = attributes.addClass('card', 'course-card') %}
+
+{% if category %}
+{% set card_attributes = card_attributes.setAttribute(
+'data-category',
+category|clean_class
+) %}
+{% endif %}
+
+<article{{ card_attributes }}>
+
+  <div class="card__art">
+    {{ content.field_course_image }}
+
+    {% if level %}
+    <span class="badge badge--gold">
+      {{ level|replace({'_': ' ', '-': ' '})|title }}
+    </span>
+    {% endif %}
+  </div>
+
+  <div class="card__body">
+
+    {{ title_prefix }}
+    <h3{{ title_attributes }}>
+      <a href="{{ url }}">{{ label }}</a>
+      </h3>
+      {{ title_suffix }}
+
+      {% if summary %}
+      <p>{{ summary }}</p>
+      {% endif %}
+
+      {% if duration or delivery_mode or price is not null %}
+      <div class="card__meta">
+        <span>
+          {% if duration %}{{ duration }}{% endif %}
+          {% if duration and delivery_mode %} · {% endif %}
+          {% if delivery_mode %}
+          {{ delivery_mode|replace({'_': ' ', '-': ' '})|title }}
+          {% endif %}
+        </span>
+
+        {% if price is not null %}
+        <strong>₹{{ price|number_format(0, '.', ',') }}</strong>
+        {% endif %}
+      </div>
+      {% endif %}
+
+  </div>
+
+  </article>

@@ -12,7 +12,7 @@ field_name: body
 entity_type: node
 bundle: course
 label: 'Course Description'
-description: ''
+description: 'Enter the complete course overview. Do not repeat the course title.'
 required: true
 translatable: true
 default_value: {  }

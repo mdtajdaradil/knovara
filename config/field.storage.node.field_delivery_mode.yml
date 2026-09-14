@@ -15,11 +15,11 @@ settings:
       value: online
       label: Online
     -
-      value: in_person
-      label: 'In person'
-    -
       value: hybrid
       label: Hybrid
+    -
+      value: in_person
+      label: 'In person'
   allowed_values_function: ''
 module: options
 locked: false

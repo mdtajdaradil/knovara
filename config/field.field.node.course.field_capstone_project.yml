@@ -1,0 +1,22 @@
+uuid: 82fa5c20-1d56-40e1-9fc8-9280db99d070
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_capstone_project
+    - node.type.course
+  module:
+    - text
+id: node.course.field_capstone_project
+field_name: field_capstone_project
+entity_type: node
+bundle: course
+label: 'Capstone Project'
+description: 'Describe the final project learners will complete. Leave blank if the course has no capstone.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

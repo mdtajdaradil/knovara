@@ -1,0 +1,19 @@
+uuid: 234db645-ecde-431f-b4da-9da8e070305e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_module_title
+    - paragraphs.paragraphs_type.course_module
+id: paragraph.course_module.field_module_title
+field_name: field_module_title
+entity_type: paragraph
+bundle: course_module
+label: 'Module Title'
+description: 'Enter the complete module heading, for example Module 1 · Semantic foundations.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,23 +1,25 @@
 name: Knovara
 type: theme
-description: 'Custom Drupal theme for the Knovara learning platform.'
+description: "Custom Drupal theme for the Knovara learning platform."
 package: Custom
 core_version_requirement: ^10 || ^11
 base theme: false
 
+# Transitional safe mode. After every page template has its page-specific
+# library attached, replace knovara/all-pages with knovara/global.
 libraries:
-  - knovara/global
+  - knovara/all-pages
 
 regions:
-  top_bar: 'Top bar'
-  header: 'Header'
-  primary_menu: 'Primary menu'
-  header_actions: 'Header actions'
-  hero: 'Hero'
-  highlighted: 'Highlighted'
-  breadcrumb: 'Breadcrumb'
-  content: 'Content'
-  sidebar: 'Sidebar'
-  footer_top: 'Footer top'
-  footer: 'Footer'
-  footer_bottom: 'Footer bottom'
+  top_bar: "Top bar"
+  header: "Header"
+  primary_menu: "Primary menu"
+  header_actions: "Header actions"
+  hero: "Hero"
+  highlighted: "Highlighted"
+  breadcrumb: "Breadcrumb"
+  content: "Content"
+  sidebar: "Sidebar"
+  footer_top: "Footer top"
+  footer: "Footer"
+  footer_bottom: "Footer bottom"

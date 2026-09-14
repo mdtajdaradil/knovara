@@ -1,0 +1,19 @@
+uuid: c17aed30-3bcd-4221-b2c0-215c6facb85e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_course_payment_note
+    - node.type.course
+id: node.course.field_course_payment_note
+field_name: field_course_payment_note
+entity_type: node
+bundle: course
+label: 'Payment Note'
+description: 'Add a short payment and access note shown below the course price.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

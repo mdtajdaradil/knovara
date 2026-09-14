@@ -8,13 +8,25 @@ function knovara_preprocess_page(array &$variables): void {
   $route_name = $route_match->getRouteName();
   $node = $route_match->getParameter('node');
 
+  // Course canonical detail page.
+  $variables['is_course_detail'] =
+    $route_name === 'entity.node.canonical'
+    && $node instanceof \Drupal\node\NodeInterface
+    && $node->bundle() === 'course';
+
+  // Faculty canonical detail page.
   $variables['is_faculty_detail'] =
     $route_name === 'entity.node.canonical'
     && $node instanceof \Drupal\node\NodeInterface
     && $node->bundle() === 'faculty';
 
+  // Faculty listing View page.
   $variables['is_faculty_listing'] =
     $route_name === 'view.faculty_directory.page_1';
+
+  // Courses listing View page.
+  $variables['is_courses_listing'] =
+    $route_name === 'view.course_catalog.page_1';
 }
 
 /**

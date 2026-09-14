@@ -1,0 +1,243 @@
+/**
+ * @file
+ * Homepage hero and marketing sections.
+ *
+ * Generated from the original Knovara CSS without changing selectors.
+ */
+
+.hero {
+  overflow: hidden;
+  position: relative;
+  background: radial-gradient(circle at 84% 18%, #dff1ed 0, transparent 31%), var(--bg);
+}
+
+.hero::after {
+  width: 360px;
+  height: 360px;
+  position: absolute;
+  right: -150px;
+  bottom: -220px;
+  border: 1px dashed rgba(23, 141, 134, .3);
+  border-radius: 50%;
+  content: "";
+}
+
+.hero__grid {
+  min-height: 630px;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 64px;
+}
+
+.hero__copy {
+  position: relative;
+  z-index: 1;
+  padding: 80px 0;
+}
+
+.hero__lead {
+  max-width: 610px;
+  margin: 22px 0 28px;
+  color: var(--muted);
+  font-size: 1.11rem;
+}
+
+.hero__visual {
+  min-height: 440px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.orbit {
+  width: 390px;
+  height: 390px;
+  position: absolute;
+  border: 1px dashed rgba(23, 141, 134, .38);
+  border-radius: 50%;
+}
+
+.learning-card {
+  width: min(350px, 86%);
+  min-height: 390px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  overflow: hidden;
+  position: relative;
+  border-radius: 175px 175px 25px 25px;
+  padding: 32px;
+  color: #fff;
+  background: linear-gradient(155deg, var(--teal), var(--navy));
+  box-shadow: var(--shadow);
+}
+
+.learning-card::before {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  border: 2px solid rgba(255, 255, 255, .22);
+  border-radius: 50%;
+  content: "";
+  transform: translateX(-50%);
+}
+
+.learning-card__code {
+  color: var(--gold);
+  font-family: Georgia, serif;
+  font-size: 4.5rem;
+  text-align: center;
+}
+
+.learning-card strong {
+  font-family: Georgia, serif;
+  font-size: 1.65rem;
+}
+
+.learning-card p {
+  margin: 7px 0 0;
+  color: #d8e7ef;
+}
+
+.float-card {
+  z-index: 3;
+  position: absolute;
+  min-width: 180px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 15px;
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+}
+
+.float-card--one {
+  top: 58px;
+  left: -5px;
+}
+
+.float-card--two {
+  right: -4px;
+  bottom: 55px;
+}
+
+.float-card strong {
+  display: block;
+}
+
+.float-card span {
+  display: block;
+}
+
+.float-card strong {
+  color: var(--navy);
+  font-size: .88rem;
+}
+
+.float-card span {
+  color: var(--muted);
+  font-size: .73rem;
+}
+
+.search-box {
+  max-width: 620px;
+  display: flex;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 7px;
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+}
+
+.search-box label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  padding-left: 11px;
+}
+
+.search-box input {
+  width: 100%;
+  min-height: 44px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+
+.proof-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 21px;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+.proof-list span::before {
+  margin-right: 7px;
+  color: var(--teal);
+  content: "✓";
+  font-weight: 900;
+}
+
+@media (max-width: 860px) {
+  .hero__grid {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hero__copy {
+    padding-bottom: 25px;
+  }
+
+  .hero__visual {
+    min-height: 430px;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero__copy {
+    padding-top: 58px;
+  }
+
+  .hero__visual {
+    min-height: 360px;
+  }
+
+  .orbit {
+    width: 320px;
+    height: 320px;
+  }
+
+  .learning-card {
+    min-height: 330px;
+  }
+
+  .float-card {
+    min-width: 150px;
+    padding: 11px;
+  }
+
+  .float-card--one {
+    left: 0;
+  }
+
+  .float-card--two {
+    right: 0;
+  }
+
+  .search-box {
+    display: grid;
+  }
+
+  .search-box label {
+    padding: 0 8px;
+  }
+}

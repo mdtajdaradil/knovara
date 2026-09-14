@@ -1,0 +1,10 @@
+uuid: 082e60d0-3498-4fa7-8d64-138417472724
+langcode: en
+status: true
+dependencies: {  }
+id: course_module
+label: 'Course Module'
+icon_uuid: null
+icon_default: null
+description: 'A curriculum module containing a module title and summary.'
+behavior_plugins: {  }

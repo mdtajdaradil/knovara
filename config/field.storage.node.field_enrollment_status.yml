@@ -12,8 +12,8 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: open_for_enrollment
-      label: 'Open for enrollment'
+      value: open
+      label: 'Enrollment open'
     -
       value: coming_soon
       label: 'Coming soon'

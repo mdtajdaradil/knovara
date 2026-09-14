@@ -1,0 +1,115 @@
+{#
+/**
+* @file
+* Course Catalog listing page.
+*
+* This follows the same page architecture as the Faculty Directory View:
+* one self-contained hero, one exposed-filter row, one result count, the
+* rendered rows, pager, and the shared guidance CTA.
+*/
+#}
+
+{{ attach_library('knovara/course-filter') }}
+
+{% set view_classes = [
+dom_id ? 'js-view-dom-id-' ~ dom_id,
+'course-catalog-page',
+] %}
+
+<div{{ attributes.addClass(view_classes) }}>
+
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    <section class="page-hero">
+        <div class="shell">
+
+            <nav class="breadcrumb" aria-label="{{ 'Breadcrumb'|t }}">
+                <a href="{{ path('<front>') }}">{{ 'Home'|t }}</a>
+                <span aria-hidden="true">/</span>
+                <span aria-current="page">{{ 'Explore courses'|t }}</span>
+            </nav>
+
+            <span class="eyebrow">
+                {{ 'Find your next skill'|t }}
+            </span>
+
+            <h1>
+                {{ 'Explore courses'|t }}
+            </h1>
+
+            <p class="lead">
+                {{ 'Build practical capability through structured courses, guided projects and mentor feedback.'|t }}
+            </p>
+
+        </div>
+    </section>
+
+    <section class="section" aria-labelledby="course-list-heading">
+        <div class="shell">
+
+            <h2 class="visually-hidden" id="course-list-heading">
+                {{ 'Knovara courses'|t }}
+            </h2>
+
+            <div class="filter-bar" data-course-filter-bar>
+
+                <div class="course-filter-form">
+                    {{ exposed }}
+                </div>
+
+                {% set result_count =
+                view.total_rows|default(view.result|length)
+                %}
+
+                <span class="result-count" data-result-count aria-live="polite">
+                    {{ result_count }}
+                    {{ result_count == 1 ? 'result'|t : 'results'|t }}
+                </span>
+
+            </div>
+
+            {{ attachment_before }}
+
+            {% if rows %}
+            {{ rows }}
+            {% elseif empty %}
+            {{ empty }}
+            {% endif %}
+
+            {% if pager %}
+            {{ pager }}
+            {% endif %}
+
+            {{ attachment_after }}
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="shell">
+
+            <div class="cta">
+                <div>
+                    <span class="eyebrow">
+                        {{ 'Personal guidance'|t }}
+                    </span>
+
+                    <h2>
+                        {{ 'Not sure where to begin?'|t }}
+                    </h2>
+
+                    <p>
+                        {{ 'Share your goal and a course advisor will help you choose a focused learning path.'|t }}
+                    </p>
+                </div>
+
+                <a class="button button--gold" href="{{ base_path }}contact">
+                    {{ 'Request guidance'|t }}
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    </div>

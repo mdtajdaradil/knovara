@@ -1,0 +1,22 @@
+uuid: 694c0c22-0399-4def-92d0-5f59a87db5df
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_module_summary
+    - paragraphs.paragraphs_type.course_module
+  module:
+    - text
+id: paragraph.course_module.field_module_summary
+field_name: field_module_summary
+entity_type: paragraph
+bundle: course_module
+label: 'Module Summary'
+description: 'Describe the topics and skills covered in this module.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

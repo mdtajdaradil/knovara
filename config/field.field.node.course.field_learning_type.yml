@@ -12,8 +12,8 @@ field_name: field_learning_type
 entity_type: node
 bundle: course
 label: 'Learning Type'
-description: ''
-required: false
+description: 'Select the teaching format used for this course.'
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

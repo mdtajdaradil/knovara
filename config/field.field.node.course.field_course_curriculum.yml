@@ -1,0 +1,31 @@
+uuid: 94bdcfa0-d725-4d72-a948-7c41b4b7e628
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_course_curriculum
+    - node.type.course
+    - paragraphs.paragraphs_type.course_module
+  module:
+    - entity_reference_revisions
+id: node.course.field_course_curriculum
+field_name: field_course_curriculum
+entity_type: node
+bundle: course
+label: 'Course Curriculum'
+description: 'Add curriculum modules in the order they should appear.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      course_module: course_module
+    negate: 0
+    target_bundles_drag_drop:
+      course_module:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions

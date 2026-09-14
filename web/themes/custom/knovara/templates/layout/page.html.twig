@@ -3,158 +3,152 @@
 * @file
 * Common page layout for the Knovara theme.
 *
-* This template contains:
-* - Top bar
-* - Header
-* - Primary navigation
-* - Header actions
-* - Main content regions
-* - Sidebar
-* - Footer
+* Faculty detail, Faculty listing, Courses listing, and Course detail
+* templates render their own hero and full-width sections.
 */
 #}
 
-<div class="site-page">
+{% set is_courses_listing = is_courses_listing|default(
+path('<current>') == base_path ~ 'courses'
+  ) %}
 
-  <header class="site-header" role="banner">
+  {% set self_contained_main =
+  is_faculty_detail|default(false)
+  or is_faculty_listing|default(false)
+  or is_courses_listing|default(false)
+  or is_course_detail|default(false)
+  %}
 
-    {% if page.top_bar %}
-    <div class="topbar">
-      <div class="shell topbar__inner">
-        {{ page.top_bar }}
-      </div>
-    </div>
-    {% endif %}
+  <div class="site-page">
 
-    <div class="shell site-nav">
+    <header class="site-header" role="banner">
 
-      {% if page.header %}
-      <div class="site-branding">
-        {{ page.header }}
-      </div>
-      {% endif %}
-
-      {% if page.primary_menu %}
-      <button class="icon-button nav-toggle" type="button" aria-label="{{ 'Open navigation'|t }}" aria-expanded="false"
-        aria-controls="primary-navigation" data-menu-toggle>
-        <span aria-hidden="true">☰</span>
-      </button>
-
-      <div class="primary-nav" id="primary-navigation" data-primary-nav>
-        {{ page.primary_menu }}
+      {% if page.top_bar %}
+      <div class="topbar">
+        <div class="shell topbar__inner">
+          {{ page.top_bar }}
+        </div>
       </div>
       {% endif %}
 
-      {% if page.header_actions %}
-      <div class="nav-actions">
-        {{ page.header_actions }}
+      <div class="shell site-nav">
+
+        {% if page.header %}
+        <div class="site-branding">
+          {{ page.header }}
+        </div>
+        {% endif %}
+
+        {% if page.primary_menu %}
+        <button class="icon-button nav-toggle" type="button" aria-label="{{ 'Open navigation'|t }}"
+          aria-expanded="false" aria-controls="primary-navigation" data-menu-toggle>
+          <span aria-hidden="true">☰</span>
+        </button>
+
+        <div class="primary-nav" id="primary-navigation" data-primary-nav>
+          {{ page.primary_menu }}
+        </div>
+        {% endif %}
+
+        {% if page.header_actions %}
+        <div class="nav-actions">
+          {{ page.header_actions }}
+        </div>
+        {% endif %}
+
       </div>
-      {% endif %}
+    </header>
 
-    </div>
-  </header>
+    <main id="main-content" class="site-main">
 
-  <main id="main-content" class="site-main">
+      {% if not self_contained_main %}
 
-    {#
-      Faculty listing aur Faculty detail apna hero, breadcrumb
-      aur sections khud render karte hain.
-    #}
-    {% if not is_faculty_detail and not is_faculty_listing %}
-  
       {% if page.hero %}
-        <div class="hero-region">
-          {{ page.hero }}
-        </div>
+      <div class="hero-region">
+        {{ page.hero }}
+      </div>
       {% endif %}
-  
+
       {% if page.highlighted %}
-        <section class="section section--compact section--soft">
-          <div class="shell">
-            {{ page.highlighted }}
-          </div>
-        </section>
-      {% endif %}
-  
-      {% if page.breadcrumb %}
+      <section class="section section--compact section--soft">
         <div class="shell">
-          {{ page.breadcrumb }}
+          {{ page.highlighted }}
         </div>
+      </section>
       {% endif %}
-  
-    {% endif %}
-  
-    {% block main_content %}
-  
-      {% if is_faculty_detail or is_faculty_listing %}
-  
-        {#
-          No outer section/shell wrapper.
-          Faculty Twig templates contain their own full-width sections.
-        #}
-        {{ page.content }}
-  
+
+      {% if page.breadcrumb %}
+      <div class="shell">
+        {{ page.breadcrumb }}
+      </div>
+      {% endif %}
+
+      {% endif %}
+
+      {% block main_content %}
+
+      {% if self_contained_main %}
+
+      {{ page.content }}
+
       {% else %}
-  
-        <section class="section">
-          <div class="shell">
-  
-            {% if page.sidebar %}
-              <div class="detail-grid">
-  
-                <div class="main-content">
-                  {{ page.content }}
-                </div>
-  
-                <aside
-                  class="detail-rail"
-                  role="complementary"
-                  aria-label="{{ 'Sidebar'|t }}">
-                  {{ page.sidebar }}
-                </aside>
-  
-              </div>
-            {% else %}
-              <div class="main-content">
-                {{ page.content }}
-              </div>
-            {% endif %}
-  
+
+      <section class="section">
+        <div class="shell">
+
+          {% if page.sidebar %}
+          <div class="detail-grid">
+
+            <div class="main-content">
+              {{ page.content }}
+            </div>
+
+            <aside class="detail-rail" role="complementary" aria-label="{{ 'Sidebar'|t }}">
+              {{ page.sidebar }}
+            </aside>
+
           </div>
-        </section>
-  
+          {% else %}
+          <div class="main-content">
+            {{ page.content }}
+          </div>
+          {% endif %}
+
+        </div>
+      </section>
+
       {% endif %}
-  
-    {% endblock %}
-  
-  </main>
 
-  {% if page.footer_top or page.footer or page.footer_bottom %}
-  <footer class="site-footer" role="contentinfo">
-    <div class="shell">
+      {% endblock %}
 
-      {% if page.footer_top %}
-      <div class="footer-grid">
-        {{ page.footer_top }}
+    </main>
+
+    {% if page.footer_top or page.footer or page.footer_bottom %}
+    <footer class="site-footer" role="contentinfo">
+      <div class="shell">
+
+        {% if page.footer_top %}
+        <div class="footer-grid">
+          {{ page.footer_top }}
+        </div>
+        {% endif %}
+
+        {% if page.footer %}
+        <div class="footer-content">
+          {{ page.footer }}
+        </div>
+        {% endif %}
+
+        {% if page.footer_bottom %}
+        <div class="footer-bottom">
+          {{ page.footer_bottom }}
+        </div>
+        {% endif %}
+
       </div>
-      {% endif %}
+    </footer>
+    {% endif %}
 
-      {% if page.footer %}
-      <div class="footer-content">
-        {{ page.footer }}
-      </div>
-      {% endif %}
+    <div class="visually-hidden" aria-live="polite" data-live-region></div>
 
-      {% if page.footer_bottom %}
-      <div class="footer-bottom">
-        {{ page.footer_bottom }}
-      </div>
-      {% endif %}
-
-    </div>
-  </footer>
-  {% endif %}
-
-  <div class="visually-hidden" aria-live="polite" data-live-region></div>
-
-</div>
+  </div>

@@ -1,0 +1,11 @@
+{# Resource Text Section paragraph. #}
+
+<section{{ attributes.addClass('resource-text-section') }}>
+    {% if paragraph.field_section_heading.value %}
+    <h2>{{ paragraph.field_section_heading.value }}</h2>
+    {% endif %}
+
+    {% if content.field_section_body %}
+    {{ content.field_section_body }}
+    {% endif %}
+    </section>

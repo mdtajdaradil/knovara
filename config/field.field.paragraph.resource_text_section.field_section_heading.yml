@@ -1,0 +1,19 @@
+uuid: 6bab840d-f4f1-44df-bd4e-1b3784bb23f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section_heading
+    - paragraphs.paragraphs_type.resource_text_section
+id: paragraph.resource_text_section.field_section_heading
+field_name: field_section_heading
+entity_type: paragraph
+bundle: resource_text_section
+label: 'Section Heading'
+description: 'Enter the section heading without a number. The theme will add 1, 2, 3 automatically.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

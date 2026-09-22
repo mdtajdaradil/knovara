@@ -1,0 +1,244 @@
+{#
+/**
+* @file
+* Full Event detail page.
+*
+* Date and list-label variables are prepared in knovara_preprocess_node().
+*/
+#}
+
+{{ attach_library('knovara/events') }}
+
+{% set event_type = node.field_event_type.value|default('') %}
+{% set event_format = node.field_event_format.value|default('') %}
+{% set event_lead = node.field_event_lead.value|default('') %}
+{% set details_heading = node.field_event_details_heading.value|default('') %}
+{% set price = node.field_event_price.value|default('') %}
+{% set registration_summary = node.field_registration_summary.value|default('') %}
+{% set registration_note = node.field_registration_note.value|default('') %}
+{% set seats_left = node.field_event_seats_left.value|default(null) %}
+{% set facilitator = node.field_event_facilitator.entity|default(null) %}
+{% set facilitator_specialty = node.field_facilitator_specialty.value|default('') %}
+{% set registration_id = 'event-registration-' ~ node.id() %}
+{% set email_id = 'event-email-' ~ node.id() %}
+
+{% set classes = [
+'event-detail-page',
+'node',
+'node--type-event',
+not node.isPublished() ? 'node--unpublished'
+] %}
+
+<article{{ attributes.addClass(classes) }}>
+  <section class="page-hero page-hero--dark">
+    <div class="shell">
+      <nav class="breadcrumb" aria-label="{{ 'Breadcrumb'|t }}">
+        <a href="{{ path('<front>') }}">{{ 'Home'|t }}</a>
+        <span aria-hidden="true">/</span>
+        <a href="{{ path('<front>') ~ 'events' }}">{{ 'Events'|t }}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ label }}</span>
+      </nav>
+
+      {{ title_prefix }}
+
+      {% if event_format %}
+      <span class="eyebrow">{{ event_format }}</span>
+      {% elseif event_type %}
+      <span class="eyebrow">{{ event_type }}</span>
+      {% endif %}
+
+      <h1{{ title_attributes }}>{{ label }}</h1>
+
+        {{ title_suffix }}
+
+        {% if event_lead %}
+        <p class="lead">{{ event_lead }}</p>
+        {% endif %}
+    </div>
+  </section>
+
+  <section class="section event-detail-section">
+    <div class="shell event-detail-layout">
+      <div class="event-detail-main">
+        <header class="event-detail-intro">
+          <span class="eyebrow">{{ 'Workshop details'|t }}</span>
+
+          {% if details_heading %}
+          <h2>{{ details_heading }}</h2>
+          {% endif %}
+
+          {% if not node.body.isEmpty() %}
+          <div class="event-detail-copy">
+            {{ content.body }}
+          </div>
+          {% endif %}
+        </header>
+
+        {% if not node.field_event_image.isEmpty() %}
+        {% set event_image = node.field_event_image.0 %}
+        <figure class="event-detail-media">
+          <img src="{{ file_url(event_image.entity.uri.value) }}" alt="{{ event_image.alt ?: label }}" {% if
+            event_image.width %}width="{{ event_image.width }}" {% endif %} {% if event_image.height
+            %}height="{{ event_image.height }}" {% endif %} decoding="async">
+        </figure>
+        {% endif %}
+
+        {% if not node.field_event_agenda.isEmpty() %}
+        <section class="event-agenda" aria-labelledby="event-agenda-heading-{{ node.id() }}">
+          <div class="event-section-heading">
+            <span class="eyebrow">{{ 'Step by step'|t }}</span>
+            <h2 id="event-agenda-heading-{{ node.id() }}">{{ 'Agenda'|t }}</h2>
+          </div>
+
+          <div class="event-timeline">
+            {{ content.field_event_agenda }}
+          </div>
+        </section>
+        {% endif %}
+
+        {% if not node.field_what_to_bring.isEmpty() %}
+        <section class="event-checklist" aria-labelledby="event-checklist-heading-{{ node.id() }}">
+          <div class="event-section-heading">
+            <span class="eyebrow">{{ 'Come prepared'|t }}</span>
+            <h2 id="event-checklist-heading-{{ node.id() }}">{{ 'What to bring'|t }}</h2>
+          </div>
+
+          <ul class="event-checklist__list">
+            {% for item in node.field_what_to_bring %}
+            {% if item.value|trim %}
+            <li>{{ item.value }}</li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </section>
+        {% endif %}
+
+        {% if facilitator %}
+        {% set facilitator_name = facilitator.label() %}
+        {% set facilitator_role = facilitator.field_faculty_role.value|default('') %}
+        {% set facilitator_photo = facilitator.field_faculty_photo.0|default(null) %}
+
+        <section class="event-facilitator" aria-labelledby="event-facilitator-heading-{{ node.id() }}">
+          {% if facilitator_photo and facilitator_photo.entity %}
+          <img class="event-facilitator__image" src="{{ file_url(facilitator_photo.entity.uri.value) }}"
+            alt="{{ facilitator_photo.alt ?: ('Portrait of @name'|t({'@name': facilitator_name})) }}" width="96"
+            height="96" loading="lazy" decoding="async">
+          {% endif %}
+
+          <div>
+            <span class="event-facilitator__label">{{ 'Your facilitator'|t }}</span>
+            <h2 id="event-facilitator-heading-{{ node.id() }}">
+              <a href="{{ path('entity.node.canonical', {'node': facilitator.id()}) }}">
+                {{ facilitator_name }}
+              </a>
+            </h2>
+
+            {% if facilitator_role or facilitator_specialty %}
+            <p>
+              {% if facilitator_role %}{{ facilitator_role }}{% endif %}
+              {% if facilitator_role and facilitator_specialty %}
+              <span aria-hidden="true"> · </span>
+              {% endif %}
+              {% if facilitator_specialty %}{{ facilitator_specialty }}{% endif %}
+            </p>
+            {% endif %}
+          </div>
+        </section>
+        {% endif %}
+      </div>
+
+      <aside class="event-registration" id="{{ registration_id }}"
+        aria-labelledby="registration-heading-{{ node.id() }}">
+        <div class="event-registration__card">
+          {% if event_registration_status or seats_left is not null %}
+          <div class="event-registration__topline">
+            {% if event_registration_status %}
+            <span class="badge">{{ event_registration_status }}</span>
+            {% endif %}
+
+            {% if seats_left is not null %}
+            <span class="event-registration__seats">
+              {{ '@count seats left'|t({'@count': seats_left}) }}
+            </span>
+            {% endif %}
+          </div>
+          {% endif %}
+
+          <h2 class="visually-hidden" id="registration-heading-{{ node.id() }}">
+            {{ 'Event registration'|t }}
+          </h2>
+
+          {% if price %}
+          <p class="event-registration__price">{{ price }}</p>
+          {% endif %}
+
+          {% if registration_summary %}
+          <p class="event-registration__summary">{{ registration_summary }}</p>
+          {% endif %}
+
+          {% if event_start or event_time_range or event_format or event_level %}
+          <dl class="event-registration__facts">
+            {% if event_start %}
+            <div>
+              <dt>{{ 'Date'|t }}</dt>
+              <dd>
+                <time datetime="{{ event_start.date_iso }}">{{ event_start.date }}</time>
+              </dd>
+            </div>
+            {% endif %}
+
+            {% if event_time_range %}
+            <div>
+              <dt>{{ 'Time'|t }}</dt>
+              <dd>
+                <time datetime="{{ event_start.iso }}">{{ event_time_range }}</time>
+              </dd>
+            </div>
+            {% endif %}
+
+            {% if event_format %}
+            <div>
+              <dt>{{ 'Format'|t }}</dt>
+              <dd>{{ event_format }}</dd>
+            </div>
+            {% endif %}
+
+            {% if event_level %}
+            <div>
+              <dt>{{ 'Level'|t }}</dt>
+              <dd>{{ event_level }}</dd>
+            </div>
+            {% endif %}
+          </dl>
+          {% endif %}
+
+          {% if event_registration_open and (seats_left is null or seats_left > 0) %}
+          <form class="event-registration__form" data-demo-form
+            data-success="{{ 'Your workshop seat is reserved.'|t }}">
+            <div class="form-field">
+              <label for="{{ email_id }}">{{ 'Email address'|t }}</label>
+              <input id="{{ email_id }}" name="email" type="email" autocomplete="email" placeholder="you@example.com"
+                required>
+            </div>
+
+            <button class="button button--teal button--block" type="submit">
+              {{ 'Reserve my seat'|t }}
+            </button>
+
+            <p class="form-message" role="status" aria-live="polite" tabindex="-1" data-form-message hidden></p>
+          </form>
+          {% else %}
+          <p class="event-registration__closed">
+            {{ 'Registration is not currently available for this event.'|t }}
+          </p>
+          {% endif %}
+
+          {% if registration_note %}
+          <p class="event-registration__note">{{ registration_note }}</p>
+          {% endif %}
+        </div>
+      </aside>
+    </div>
+  </section>
+  </article>

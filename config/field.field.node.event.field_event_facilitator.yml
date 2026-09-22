@@ -1,0 +1,29 @@
+uuid: 7463873a-c0f3-4ca8-a9bd-d6cf3617977e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_facilitator
+    - node.type.event
+    - node.type.faculty
+id: node.event.field_event_facilitator
+field_name: field_event_facilitator
+entity_type: node
+bundle: event
+label: 'Event facilitator'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      faculty: faculty
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

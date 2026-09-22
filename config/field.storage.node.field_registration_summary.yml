@@ -1,0 +1,19 @@
+uuid: 64e3f34d-ec88-4aa5-a905-c8e26a23549f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_registration_summary
+field_name: field_registration_summary
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

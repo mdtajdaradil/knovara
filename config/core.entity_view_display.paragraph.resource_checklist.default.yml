@@ -1,0 +1,21 @@
+uuid: 2e70f04d-a7b7-4231-a941-79fabfa27ebd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resource_checklist.field_checklist_items
+    - paragraphs.paragraphs_type.resource_checklist
+id: paragraph.resource_checklist.default
+targetEntityType: paragraph
+bundle: resource_checklist
+mode: default
+content:
+  field_checklist_items:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

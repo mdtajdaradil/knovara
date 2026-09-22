@@ -1,0 +1,23 @@
+uuid: 999efae0-f48a-45dd-9339-ccdbf8c2c0fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resource_order
+    - node.type.resource
+id: node.resource.field_resource_order
+field_name: field_resource_order
+entity_type: node
+bundle: resource
+label: 'Resource Order'
+description: 'Controls the listing order. Lower numbers appear first. Use 10, 20, 30 so another resource can be inserted later.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: 999
+  prefix: ''
+  suffix: ''
+field_type: integer

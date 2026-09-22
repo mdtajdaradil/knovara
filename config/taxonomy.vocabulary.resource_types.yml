@@ -1,0 +1,9 @@
+uuid: 956c28a2-63bc-4a21-a326-42dbdf3fc44d
+langcode: en
+status: true
+dependencies: {  }
+name: 'Resource Types'
+vid: resource_types
+description: 'Types used to organise and filter Knovara resources.'
+weight: 0
+new_revision: false

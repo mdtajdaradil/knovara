@@ -1,0 +1,41 @@
+uuid: 91c3e0b4-1b56-4e89-8d5f-4322242c1e1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resource_example.field_example_help
+    - field.field.paragraph.resource_example.field_example_label
+    - field.field.paragraph.resource_example.field_example_value
+    - paragraphs.paragraphs_type.resource_example
+id: paragraph.resource_example.default
+targetEntityType: paragraph
+bundle: resource_example
+mode: default
+content:
+  field_example_help:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_example_label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_example_value:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,10 @@
+uuid: 34e9973a-84ea-405f-b212-b88a343cf7f7
+langcode: en
+status: true
+dependencies: {  }
+id: resource_text_section
+label: 'Resource Text Section'
+icon_uuid: null
+icon_default: null
+description: 'A numbered article section with a heading and formatted content.'
+behavior_plugins: {  }

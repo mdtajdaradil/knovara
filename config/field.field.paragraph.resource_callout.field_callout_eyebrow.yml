@@ -1,0 +1,21 @@
+uuid: 77563610-a05a-4dc4-9db5-61fd556cb1a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_callout_eyebrow
+    - paragraphs.paragraphs_type.resource_callout
+id: paragraph.resource_callout.field_callout_eyebrow
+field_name: field_callout_eyebrow
+entity_type: paragraph
+bundle: resource_callout
+label: 'Callout Eyebrow'
+description: 'Short label displayed above the callout title.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Put it into practice'
+default_value_callback: ''
+settings: {  }
+field_type: string

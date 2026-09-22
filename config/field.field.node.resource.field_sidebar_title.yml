@@ -1,0 +1,19 @@
+uuid: 7a7644aa-ee40-4854-91d2-703ebd0ef95c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sidebar_title
+    - node.type.resource
+id: node.resource.field_sidebar_title
+field_name: field_sidebar_title
+entity_type: node
+bundle: resource
+label: 'Sidebar Title'
+description: 'Enter the sidebar checklist heading, for example “Before you publish”.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

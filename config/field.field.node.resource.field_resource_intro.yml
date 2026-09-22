@@ -1,0 +1,19 @@
+uuid: b4a0f884-cad7-4053-8640-4e29e0681b1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resource_intro
+    - node.type.resource
+id: node.resource.field_resource_intro
+field_name: field_resource_intro
+entity_type: node
+bundle: resource
+label: Introduction
+description: 'Add the short introductory paragraph displayed immediately before the main resource image.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

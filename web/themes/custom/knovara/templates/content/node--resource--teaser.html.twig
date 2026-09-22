@@ -1,0 +1,100 @@
+{#
+/**
+* @file
+* Resource card used by the Resources View teaser display.
+*/
+#}
+
+{{ attach_library('knovara/resources') }}
+
+{% set resource_type = node.field_resource_type.entity.name.value|default('Resource') %}
+{% set resource_subject = node.field_resource_subject.entity.name.value|default('') %}
+{% set type_key = resource_type|lower %}
+{% set filter_category = type_key == 'checklist' ? 'template' : type_key %}
+{% set is_featured = node.field_resource_featured.value == '1' %}
+{% set is_video = type_key == 'video' %}
+{% set is_first = node.field_resource_order.value == '10' %}
+
+{% set duration = node.field_resource_duration.value|default('') %}
+{% set duration_type = node.field_duration_type.value|default('read') %}
+{% set updated = node.field_resource_updated.value ? node.field_resource_updated.value|date('F Y') : '' %}
+
+{% set level_labels = {
+'beginner': 'Beginner-friendly',
+'intermediate': 'Intermediate',
+'advanced': 'Advanced',
+'all_levels': 'All levels'
+} %}
+{% set level = level_labels[node.field_resource_level.value]|default(node.field_resource_level.value) %}
+
+{% set order_value = node.field_resource_order.value|default('0') %}
+{% set card_number = (order_value / 10)|round(0, 'floor') %}
+
+{% set action_label = 'Open resource' %}
+{% if is_video %}
+{% set action_label = 'Watch resource' %}
+{% elseif is_featured and type_key == 'guide' %}
+{% set action_label = 'Resource details' %}
+{% endif %}
+
+{% set classes = ['resource-card'] %}
+{% if is_featured %}
+{% set classes = classes|merge(['resource-card--featured']) %}
+{% endif %}
+
+<article{{ attributes.addClass(classes).setAttribute('data-category', filter_category) }}>
+    <a class="resource-card__media" href="{{ url }}" tabindex="-1" aria-hidden="true">
+        {% if node.field_resource_image.entity %}
+        <img src="{{ file_url(node.field_resource_image.entity.uri.value) }}" alt=""
+            width="{{ node.field_resource_image.width|default(1600) }}"
+            height="{{ node.field_resource_image.height|default(1200) }}" decoding="async" {% if is_first
+            %}loading="eager" fetchpriority="high" {% else %}loading="lazy" {% endif %}>
+        {% endif %}
+
+        <span class="badge badge--gold">{{ resource_type }}</span>
+
+        {% if is_video %}
+        <span class="resource-card__play" aria-hidden="true">▶</span>
+        {% endif %}
+    </a>
+
+    <div class="resource-card__body">
+        <div class="resource-card__copy">
+            <div class="resource-card__header">
+                <p class="resource-card__topic">{{ resource_subject }}</p>
+                <span class="resource-card__number" aria-hidden="true">{{ '%02d'|format(card_number) }}</span>
+            </div>
+
+            <h3>
+                <a href="{{ url }}">
+                    <span class="visually-hidden">{{ resource_type }}: </span>{{ label }}
+                </a>
+            </h3>
+
+            <p>{{ node.field_resource_summary.value }}</p>
+
+            {% if is_featured %}
+            <div class="resource-card__details">
+                <h4>Resource details</h4>
+                <dl>
+                    <div>
+                        <dt>Level</dt>
+                        <dd>{{ level }}</dd>
+                    </div>
+                    <div>
+                        <dt>Updated</dt>
+                        <dd>{{ updated }}</dd>
+                    </div>
+                </dl>
+            </div>
+            {% endif %}
+
+            <div class="resource-card__meta">
+                <span>{{ duration }} min {{ duration_type }}</span>
+                <a class="text-link" href="{{ url }}">
+                    {{ action_label }} <span aria-hidden="true">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    </article>

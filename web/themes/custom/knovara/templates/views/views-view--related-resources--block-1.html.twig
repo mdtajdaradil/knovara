@@ -1,0 +1,22 @@
+{# Related Resources block wrapper. #}
+
+{{ attach_library('knovara/resources') }}
+
+{% if rows %}
+<section class="section resource-related" aria-labelledby="related-resources-heading">
+    <div class="shell">
+        <div class="section-head">
+            <div>
+                <span class="eyebrow">Continue learning</span>
+                <h2 id="related-resources-heading">Related resources</h2>
+            </div>
+
+            <a class="text-link" href="/resources">
+                Browse all resources <span aria-hidden="true">→</span>
+            </a>
+        </div>
+
+        {{ rows }}
+    </div>
+</section>
+{% endif %}

@@ -1,0 +1,9 @@
+{# Related Resources grid. #}
+
+{% if rows %}
+<div class="resource-related__grid">
+    {% for row in rows %}
+    {{ row.content }}
+    {% endfor %}
+</div>
+{% endif %}

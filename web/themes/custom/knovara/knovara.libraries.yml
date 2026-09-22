@@ -80,6 +80,13 @@ events:
   dependencies:
     - knovara/global
 
+resources:
+  css:
+    theme:
+      css/resources.css: {}
+  dependencies:
+    - knovara/global
+
 # Safe migration library: keeps all current pages styled while the remaining
 # Twig templates are converted to page-specific attach_library() calls.
 all-pages:

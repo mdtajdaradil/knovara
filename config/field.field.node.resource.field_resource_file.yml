@@ -1,0 +1,27 @@
+uuid: 2681f629-e829-4e7d-81fa-710280e051f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resource_file
+    - node.type.resource
+  module:
+    - file
+id: node.resource.field_resource_file
+field_name: field_resource_file
+entity_type: node
+bundle: resource
+label: 'Resource File'
+description: 'Upload a file only when the resource is downloadable, such as a checklist or template.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: resources/files
+  file_extensions: 'pdf doc docx xls xlsx ppt pptx zip'
+  max_filesize: '20 MB'
+  description_field: false
+field_type: file

@@ -1,0 +1,85 @@
+{#
+/**
+* @file
+* Resources listing page wrapper for the Resources View.
+*/
+#}
+
+{{ attach_library('knovara/resources') }}
+
+<section class="page-hero page-hero--resources">
+    <div class="shell">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Resources</span>
+        </nav>
+
+        <span class="eyebrow">Knovara library</span>
+
+        <h1>Practical resources for your next step</h1>
+
+        <p class="lead">
+            Use concise guides, checklists, templates and focused videos while you
+            learn and build.
+        </p>
+    </div>
+</section>
+
+{% set resource_count = view.result|length %}
+
+<section class="section resource-directory" aria-labelledby="resource-directory-heading">
+    <div class="shell">
+        <h1 class="visually-hidden">Resources</h1>
+        <h2 class="visually-hidden" id="resource-directory-heading">Browse resources</h2>
+
+        <div class="filter-bar" role="group" aria-label="Filter resources by type" data-filter-group
+            data-target="resource-list">
+
+            <label class="visually-hidden" for="resource-search">Search resources</label>
+            <input class="filter-search" id="resource-search" type="search" placeholder="Search resources"
+                autocomplete="off" enterkeyhint="search" aria-controls="resource-list" data-filter-search>
+
+            <button class="filter-chip" type="button" aria-pressed="true" aria-controls="resource-list"
+                data-filter="all">All resources</button>
+
+            <button class="filter-chip" type="button" aria-pressed="false" aria-controls="resource-list"
+                data-filter="guide">Guides</button>
+
+            <button class="filter-chip" type="button" aria-pressed="false" aria-controls="resource-list"
+                data-filter="template">Templates</button>
+
+            <button class="filter-chip" type="button" aria-pressed="false" aria-controls="resource-list"
+                data-filter="video">Videos</button>
+
+            <span class="result-count" data-result-count>
+                {{ resource_count }} {{ resource_count == 1 ? 'result' : 'results' }}
+            </span>
+        </div>
+
+        {% if rows %}
+        {{ rows }}
+        {% elseif empty %}
+        <div class="view-empty">
+            {{ empty }}
+        </div>
+        {% endif %}
+
+        {% if pager %}
+        {{ pager }}
+        {% endif %}
+    </div>
+</section>
+
+<section class="section resource-guidance">
+    <div class="shell">
+        <div class="cta">
+            <div>
+                <span class="eyebrow">Personal guidance</span>
+                <h2>Not sure where to begin?</h2>
+                <p>Share your goal and a course advisor will help you choose a focused learning path.</p>
+            </div>
+            <a class="button button--gold" href="/contact">Request guidance</a>
+        </div>
+    </div>
+</section>

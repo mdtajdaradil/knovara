@@ -1,0 +1,10 @@
+uuid: af5589ec-0028-4077-8fac-ed31a1638ca0
+langcode: en
+status: true
+dependencies: {  }
+id: resource_callout
+label: 'Resource Callout'
+icon_uuid: null
+icon_default: null
+description: 'The dark next-step callout displayed near the end of a resource.'
+behavior_plugins: {  }

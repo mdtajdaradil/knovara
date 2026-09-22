@@ -1,0 +1,19 @@
+uuid: 4856828a-d5f4-47df-9ca1-4f3bc7ac80b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_checklist_items
+    - paragraphs.paragraphs_type.resource_checklist
+id: paragraph.resource_checklist.field_checklist_items
+field_name: field_checklist_items
+entity_type: paragraph
+bundle: resource_checklist
+label: 'Checklist Items'
+description: 'Enter one checklist item per value. Use “Add another item” for the next item.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

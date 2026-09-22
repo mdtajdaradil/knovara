@@ -1,0 +1,13 @@
+{# Resource Quote paragraph. #}
+
+<blockquote{{ attributes.addClass(['quote', 'resource-quote' ]) }}>
+    {% if paragraph.field_quote_text.value %}
+    {{ paragraph.field_quote_text.value }}
+    {% endif %}
+
+    {% if paragraph.field_quote_attribution.value %}
+    <footer>
+        <cite>{{ paragraph.field_quote_attribution.value }}</cite>
+    </footer>
+    {% endif %}
+    </blockquote>

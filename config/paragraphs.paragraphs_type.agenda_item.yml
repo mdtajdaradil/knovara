@@ -1,0 +1,10 @@
+uuid: 58e49a81-02dd-48aa-ab03-3238b932b2af
+langcode: en
+status: true
+dependencies: {  }
+id: agenda_item
+label: 'Agenda item'
+icon_uuid: null
+icon_default: null
+description: 'A single scheduled item within an event agenda.'
+behavior_plugins: {  }

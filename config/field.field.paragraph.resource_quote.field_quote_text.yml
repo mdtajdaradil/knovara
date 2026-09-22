@@ -1,0 +1,19 @@
+uuid: 212c72e7-5e43-4cca-9c1b-79f167cd9269
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_quote_text
+    - paragraphs.paragraphs_type.resource_quote
+id: paragraph.resource_quote.field_quote_text
+field_name: field_quote_text
+entity_type: paragraph
+bundle: resource_quote
+label: 'Quote Text'
+description: 'Enter only the quotation text. Do not add quotation marks.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

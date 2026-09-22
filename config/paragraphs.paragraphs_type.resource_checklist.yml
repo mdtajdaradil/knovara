@@ -1,0 +1,10 @@
+uuid: 3ec4a747-d19c-4089-b0af-40f4b9e48e55
+langcode: en
+status: true
+dependencies: {  }
+id: resource_checklist
+label: 'Resource Checklist'
+icon_uuid: null
+icon_default: null
+description: 'A reusable list of checks shown within the article.'
+behavior_plugins: {  }

@@ -20,6 +20,12 @@ function knovara_preprocess_page(array &$variables): void {
     && $node instanceof \Drupal\node\NodeInterface
     && $node->bundle() === 'faculty';
 
+  // Event canonical detail page.
+  $variables['is_event_detail'] =
+    $route_name === 'entity.node.canonical'
+    && $node instanceof \Drupal\node\NodeInterface
+    && $node->bundle() === 'event';
+
   // Faculty listing View page.
   $variables['is_faculty_listing'] =
     $route_name === 'view.faculty_directory.page_1';
@@ -27,6 +33,128 @@ function knovara_preprocess_page(array &$variables): void {
   // Courses listing View page.
   $variables['is_courses_listing'] =
     $route_name === 'view.course_catalog.page_1';
+
+  // Events listing View page.
+  $variables['is_events_listing'] =
+    $route_name === 'view.event_directory.page_1';
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function knovara_preprocess_node(array &$variables): void {
+  $node = $variables['node'] ?? NULL;
+
+  if (
+    !$node instanceof \Drupal\node\NodeInterface
+    || $node->bundle() !== 'event'
+  ) {
+    return;
+  }
+
+  $variables['event_mode_key'] =
+    $node->get('field_event_mode')->value ?? '';
+  $variables['event_mode'] =
+    _knovara_event_list_label($node, 'field_event_mode');
+  $variables['event_level'] =
+    _knovara_event_list_label($node, 'field_event_level');
+  $variables['event_registration_status_key'] =
+    $node->get('field_registration_status')->value ?? '';
+  $variables['event_registration_status'] =
+    _knovara_event_list_label($node, 'field_registration_status');
+
+  $variables['event_registration_open'] = in_array(
+    $variables['event_registration_status_key'],
+    ['open', 'registration_open'],
+    TRUE
+  );
+
+  $variables['event_start'] = _knovara_event_date_data(
+    $node->get('field_event_start')->value ?? NULL
+  );
+  $variables['event_end'] = _knovara_event_date_data(
+    $node->get('field_event_end')->value ?? NULL
+  );
+
+  $variables['event_time_range'] = '';
+
+  if ($variables['event_start'] && $variables['event_end']) {
+    $variables['event_time_range'] =
+      $variables['event_start']['time']
+      . '–'
+      . $variables['event_end']['time']
+      . ' '
+      . $variables['event_start']['timezone'];
+  }
+  elseif ($variables['event_start']) {
+    $variables['event_time_range'] =
+      $variables['event_start']['time']
+      . ' '
+      . $variables['event_start']['timezone'];
+  }
+}
+
+/**
+ * Returns the configured label for a List field value.
+ */
+function _knovara_event_list_label(
+  \Drupal\node\NodeInterface $node,
+  string $field_name,
+): string {
+  if (!$node->hasField($field_name) || $node->get($field_name)->isEmpty()) {
+    return '';
+  }
+
+  $value = (string) $node->get($field_name)->value;
+  $storage = $node
+    ->get($field_name)
+    ->getFieldDefinition()
+    ->getFieldStorageDefinition();
+  $allowed_values = $storage->getSetting('allowed_values') ?? [];
+
+  return (string) (
+    $allowed_values[$value]
+    ?? ucwords(str_replace(['_', '-'], ' ', $value))
+  );
+}
+
+/**
+ * Builds consistently formatted Event date data in the site timezone.
+ */
+function _knovara_event_date_data(?string $value): array {
+  if (!$value) {
+    return [];
+  }
+
+  $timezone = \Drupal::config('system.date')->get('timezone.default')
+    ?: date_default_timezone_get();
+
+  try {
+    $date = \Drupal\Core\Datetime\DrupalDateTime::createFromFormat(
+      \Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface::DATETIME_STORAGE_FORMAT,
+      $value,
+      \Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface::STORAGE_TIMEZONE
+    );
+
+    if (!$date) {
+      return [];
+    }
+
+    $date->setTimezone(new \DateTimeZone($timezone));
+  }
+  catch (\Exception $exception) {
+    return [];
+  }
+
+  return [
+    'iso' => $date->format(\DateTimeInterface::ATOM),
+    'date_iso' => $date->format('Y-m-d'),
+    'date' => $date->format('j F Y'),
+    'day' => $date->format('d'),
+    'month' => $date->format('M'),
+    'time' => $date->format('g:i A'),
+    'timezone' => $date->format('T'),
+  ];
 }
 
 /**
@@ -54,3 +182,4 @@ function knovara_preprocess_views_exposed_form(array &$variables): void {
     $form['type']['#title_display'] = 'invisible';
   }
 }
+

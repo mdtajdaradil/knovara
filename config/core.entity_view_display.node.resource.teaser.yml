@@ -1,0 +1,118 @@
+uuid: 92bb0a6e-6c75-47d6-bffc-94af12cddce4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.resource.field_duration_type
+    - field.field.node.resource.field_image_caption
+    - field.field.node.resource.field_resource_access
+    - field.field.node.resource.field_resource_content
+    - field.field.node.resource.field_resource_duration
+    - field.field.node.resource.field_resource_featured
+    - field.field.node.resource.field_resource_file
+    - field.field.node.resource.field_resource_image
+    - field.field.node.resource.field_resource_intro
+    - field.field.node.resource.field_resource_lead
+    - field.field.node.resource.field_resource_level
+    - field.field.node.resource.field_resource_order
+    - field.field.node.resource.field_resource_subject
+    - field.field.node.resource.field_resource_summary
+    - field.field.node.resource.field_resource_type
+    - field.field.node.resource.field_resource_updated
+    - field.field.node.resource.field_resource_video_url
+    - field.field.node.resource.field_sidebar_badge
+    - field.field.node.resource.field_sidebar_cta
+    - field.field.node.resource.field_sidebar_items
+    - field.field.node.resource.field_sidebar_title
+    - node.type.resource
+  module:
+    - datetime
+    - image
+    - options
+    - user
+id: node.resource.teaser
+targetEntityType: node
+bundle: resource
+mode: teaser
+content:
+  field_duration_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_resource_duration:
+    type: number_unformatted
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_resource_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_resource_level:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_resource_subject:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_resource_summary:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_resource_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_resource_updated:
+    type: datetime_custom
+    label: above
+    settings:
+      timezone_override: Asia/Kolkata
+      date_format: 'F Y'
+    third_party_settings: {  }
+    weight: 7
+    region: content
+hidden:
+  field_image_caption: true
+  field_resource_access: true
+  field_resource_content: true
+  field_resource_featured: true
+  field_resource_file: true
+  field_resource_intro: true
+  field_resource_lead: true
+  field_resource_order: true
+  field_resource_video_url: true
+  field_sidebar_badge: true
+  field_sidebar_cta: true
+  field_sidebar_items: true
+  field_sidebar_title: true
+  links: true

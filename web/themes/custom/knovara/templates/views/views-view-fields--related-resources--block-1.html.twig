@@ -1,0 +1,15 @@
+{# Related Resource item. #}
+
+{% set related = row._entity %}
+{% set related_type = related.field_resource_type.entity.name.value|default('Resource') %}
+{% set related_duration = related.field_resource_duration.value|default('') %}
+{% set related_duration_type = related.field_duration_type.value|default('read') %}
+
+<a class="resource-related__item" href="{{ path('entity.node.canonical', {'node': related.id}) }}">
+    <span>{{ related_type }}</span>
+    <strong>{{ related.label }}</strong>
+
+    {% if related_duration %}
+    <small>{{ related_duration }} min {{ related_duration_type }}</small>
+    {% endif %}
+</a>

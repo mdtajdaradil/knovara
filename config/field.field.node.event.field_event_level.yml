@@ -1,0 +1,21 @@
+uuid: 4473d130-526c-4235-abd7-b0fa2e7d9e76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_level
+    - node.type.event
+  module:
+    - options
+id: node.event.field_event_level
+field_name: field_event_level
+entity_type: node
+bundle: event
+label: 'Event level'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

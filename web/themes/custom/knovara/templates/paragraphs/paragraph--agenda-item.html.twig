@@ -1,0 +1,26 @@
+{#
+/**
+* @file
+* One Event agenda timeline item.
+*/
+#}
+
+{% set agenda_time = paragraph.field_agenda_time.value|default('') %}
+{% set agenda_title = paragraph.field_agenda_title.value|default('') %}
+{% set agenda_description = paragraph.field_agenda_description.value|default('') %}
+
+<article{{ attributes.addClass('event-timeline__item') }}>
+  {% if agenda_time %}
+  <time>{{ agenda_time }}</time>
+  {% endif %}
+
+  <div>
+    {% if agenda_title %}
+    <h3>{{ agenda_title }}</h3>
+    {% endif %}
+
+    {% if agenda_description %}
+    <p>{{ agenda_description }}</p>
+    {% endif %}
+  </div>
+  </article>

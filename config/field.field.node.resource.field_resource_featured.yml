@@ -1,0 +1,21 @@
+uuid: 7b2ee6c9-085d-497f-b845-e393ed6bcc87
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resource_featured
+    - node.type.resource
+id: node.resource.field_resource_featured
+field_name: field_resource_featured
+entity_type: node
+bundle: resource
+label: 'Featured Layout'
+description: 'Enable this to display the resource as a wide featured card with Level and Updated information.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Featured card'
+  off_label: 'Standard card'
+field_type: boolean

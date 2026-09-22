@@ -1,0 +1,34 @@
+uuid: ec27b395-d1a1-4290-8277-859108c965cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resource_text_section.field_section_body
+    - field.field.paragraph.resource_text_section.field_section_heading
+    - paragraphs.paragraphs_type.resource_text_section
+  module:
+    - text
+id: paragraph.resource_text_section.default
+targetEntityType: paragraph
+bundle: resource_text_section
+mode: default
+content:
+  field_section_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_section_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

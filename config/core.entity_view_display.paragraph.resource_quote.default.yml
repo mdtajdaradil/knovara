@@ -1,0 +1,29 @@
+uuid: 6712cd32-fe01-4519-a331-b08f6678805b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resource_quote.field_quote_attribution
+    - field.field.paragraph.resource_quote.field_quote_text
+    - paragraphs.paragraphs_type.resource_quote
+id: paragraph.resource_quote.default
+targetEntityType: paragraph
+bundle: resource_quote
+mode: default
+content:
+  field_quote_attribution:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_quote_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

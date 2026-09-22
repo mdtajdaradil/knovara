@@ -1,0 +1,10 @@
+uuid: ac6964ce-f846-4a8d-be4a-3bb360588b75
+langcode: en
+status: true
+dependencies: {  }
+id: resource_quote
+label: 'Resource Quote'
+icon_uuid: null
+icon_default: null
+description: 'A highlighted quotation or key takeaway.'
+behavior_plugins: {  }

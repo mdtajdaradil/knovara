@@ -60,7 +60,7 @@ not node.isPublished() ? 'node--unpublished'
       <nav class="breadcrumb" aria-label="{{ 'Breadcrumb'|t }}">
         <a href="{{ path('<front>') }}">{{ 'Home'|t }}</a>
         <span aria-hidden="true">/</span>
-        <a href="{{ base_path }}courses">{{ 'Courses'|t }}</a>
+        <a href="{{ path('<front>') ~ 'courses' }}">{{ 'Courses'|t }}</a>
         <span aria-hidden="true">/</span>
         <span aria-current="page">{{ label }}</span>
       </nav>

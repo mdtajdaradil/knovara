@@ -1,0 +1,19 @@
+uuid: 4c576383-eb8f-47d5-a8f6-890d4c61580d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_facilitator_specialty
+    - node.type.event
+id: node.event.field_facilitator_specialty
+field_name: field_facilitator_specialty
+entity_type: node
+bundle: event
+label: 'Facilitator specialty'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

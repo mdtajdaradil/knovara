@@ -2,9 +2,9 @@ _core:
   default_config_hash: IVsFTD1mvR2NGBP_1myt9kFIFmGepH4PyaN5aQBYpno
 first_day: 0
 country:
-  default: null
+  default: IN
 timezone:
-  default: UTC
+  default: Asia/Kolkata
   user:
     configurable: true
     default: 0

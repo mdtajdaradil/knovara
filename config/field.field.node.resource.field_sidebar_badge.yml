@@ -1,0 +1,19 @@
+uuid: 063a2b2f-b101-4642-960e-422988a7774f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sidebar_badge
+    - node.type.resource
+id: node.resource.field_sidebar_badge
+field_name: field_sidebar_badge
+entity_type: node
+bundle: resource
+label: 'Sidebar Badge'
+description: 'Optional short label above the sidebar card, for example “Implementation checklist”.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

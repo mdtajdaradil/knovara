@@ -1,0 +1,30 @@
+uuid: c4f87a3b-e9e0-440b-8fde-fecf117afdca
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_resource_access
+field_name: field_resource_access
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: open
+      label: 'Open access'
+    -
+      value: registration
+      label: 'Registration required'
+    -
+      value: enrolled
+      label: 'Enrolled learners only'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,19 @@
+uuid: 975a67e5-f34b-4e9d-9a14-3cbc4649e932
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_agenda_time
+    - paragraphs.paragraphs_type.agenda_item
+id: paragraph.agenda_item.field_agenda_time
+field_name: field_agenda_time
+entity_type: paragraph
+bundle: agenda_item
+label: 'Agenda time'
+description: '11:00 AM'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

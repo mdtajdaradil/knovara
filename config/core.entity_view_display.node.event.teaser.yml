@@ -1,0 +1,96 @@
+uuid: a2d1c0d4-dee5-4723-8de5-098e7578d6eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.event.body
+    - field.field.node.event.field_card_summary
+    - field.field.node.event.field_event_agenda
+    - field.field.node.event.field_event_details_heading
+    - field.field.node.event.field_event_end
+    - field.field.node.event.field_event_facilitator
+    - field.field.node.event.field_event_format
+    - field.field.node.event.field_event_image
+    - field.field.node.event.field_event_lead
+    - field.field.node.event.field_event_level
+    - field.field.node.event.field_event_mode
+    - field.field.node.event.field_event_price
+    - field.field.node.event.field_event_seats_left
+    - field.field.node.event.field_event_start
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_facilitator_specialty
+    - field.field.node.event.field_registration_note
+    - field.field.node.event.field_registration_status
+    - field.field.node.event.field_registration_summary
+    - field.field.node.event.field_what_to_bring
+    - node.type.event
+  module:
+    - datetime
+    - image
+    - options
+    - user
+id: node.event.teaser
+targetEntityType: node
+bundle: event
+mode: teaser
+content:
+  field_card_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_event_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_event_mode:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_event_start:
+    type: datetime_custom
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'j M Y, g:i A'
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_event_type:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  body: true
+  field_event_agenda: true
+  field_event_details_heading: true
+  field_event_end: true
+  field_event_facilitator: true
+  field_event_format: true
+  field_event_lead: true
+  field_event_level: true
+  field_event_price: true
+  field_event_seats_left: true
+  field_facilitator_specialty: true
+  field_registration_note: true
+  field_registration_status: true
+  field_registration_summary: true
+  field_what_to_bring: true
+  links: true

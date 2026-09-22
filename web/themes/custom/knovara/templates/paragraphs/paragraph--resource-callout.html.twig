@@ -1,0 +1,19 @@
+{# Resource Callout paragraph. #}
+
+{% set callout_text = paragraph.field_callout_text.value|default('')|striptags|trim %}
+
+<aside{{ attributes.addClass('resource-next-step') }}>
+    {% if paragraph.field_callout_eyebrow.value %}
+    <span class="eyebrow">
+        {{ paragraph.field_callout_eyebrow.value }}
+    </span>
+    {% endif %}
+
+    {% if paragraph.field_callout_title.value %}
+    <h2>{{ paragraph.field_callout_title.value }}</h2>
+    {% endif %}
+
+    {% if callout_text %}
+    <p>{{ callout_text }}</p>
+    {% endif %}
+    </aside>

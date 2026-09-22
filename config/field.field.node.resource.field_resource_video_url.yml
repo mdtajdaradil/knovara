@@ -1,0 +1,23 @@
+uuid: 115c8735-5422-49b8-adc6-75a373f3c672
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resource_video_url
+    - node.type.resource
+  module:
+    - link
+id: node.resource.field_resource_video_url
+field_name: field_resource_video_url
+entity_type: node
+bundle: resource
+label: 'Video URL'
+description: 'For Video resources, enter the complete YouTube, Vimeo or approved video URL. Leave blank for non-video resources.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

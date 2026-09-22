@@ -1,0 +1,9 @@
+{# Resource Checklist paragraph. #}
+
+{% if paragraph.field_checklist_items is not empty %}
+<ul{{ attributes.addClass('resource-test-list') }} role="list">
+    {% for item in paragraph.field_checklist_items %}
+    <li>{{ item.value }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}

@@ -1,0 +1,17 @@
+uuid: c7fdb2ab-cf1e-45f2-a782-baae6e3f207f
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Event
+type: event
+description: 'Live workshops, webinars, portfolio sessions and community learning events.'
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

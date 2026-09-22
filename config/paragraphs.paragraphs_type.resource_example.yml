@@ -1,0 +1,10 @@
+uuid: f41a2e75-e964-47dc-94f2-0f51314af153
+langcode: en
+status: true
+dependencies: {  }
+id: resource_example
+label: 'Resource Example'
+icon_uuid: null
+icon_default: null
+description: 'An accessible form or interface example shown inside the article.'
+behavior_plugins: {  }

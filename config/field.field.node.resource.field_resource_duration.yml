@@ -1,0 +1,23 @@
+uuid: 27605cf0-60f6-4183-896b-b813ed9b924f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resource_duration
+    - node.type.resource
+id: node.resource.field_resource_duration
+field_name: field_resource_duration
+entity_type: node
+bundle: resource
+label: Duration
+description: 'Enter only the number of minutes, for example 8 or 22. Do not type “min”.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: 300
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,19 @@
+uuid: fd0fed2b-7f7d-4b52-bdae-f0a32485963a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_quote_attribution
+    - paragraphs.paragraphs_type.resource_quote
+id: paragraph.resource_quote.field_quote_attribution
+field_name: field_quote_attribution
+entity_type: paragraph
+bundle: resource_quote
+label: 'Quote Attribution'
+description: 'Optional person, organisation or source name.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

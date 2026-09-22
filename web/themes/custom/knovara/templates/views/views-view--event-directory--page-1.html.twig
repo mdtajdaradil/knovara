@@ -1,0 +1,101 @@
+{#
+/**
+* @file
+* Event Directory page display.
+*/
+#}
+
+{{ attach_library('knovara/events') }}
+
+<div{{ attributes.addClass('event-directory-view') }}>
+  <section class="page-hero">
+    <div class="shell">
+      <nav class="breadcrumb" aria-label="{{ 'Breadcrumb'|t }}">
+        <a href="{{ path('<front>') }}">{{ 'Home'|t }}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ 'Events'|t }}</span>
+      </nav>
+
+      {{ title_prefix }}
+      <span class="eyebrow">{{ 'Upcoming experiences'|t }}</span>
+      <h1>{{ 'Learn live with the community'|t }}</h1>
+      {{ title_suffix }}
+
+      <p class="lead">
+        {{ 'Join focused workshops, faculty conversations and practical portfolio sessions.'|t }}
+      </p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="events-list-heading">
+    <div class="shell">
+      <h2 class="visually-hidden" id="events-list-heading">
+        {{ 'Upcoming Knovara events'|t }}
+      </h2>
+
+      {% if header %}
+      <div class="event-directory__header">{{ header }}</div>
+      {% endif %}
+
+      <div class="filter-bar" role="group" aria-label="{{ 'Filter events by delivery mode'|t }}" data-filter-group
+        data-target="event-list">
+        <button class="filter-chip" type="button" aria-pressed="true" data-filter="all">
+          {{ 'All events'|t }}
+        </button>
+        <button class="filter-chip" type="button" aria-pressed="false" data-filter="online">
+          {{ 'Online'|t }}
+        </button>
+        <button class="filter-chip" type="button" aria-pressed="false" data-filter="hybrid">
+          {{ 'Hybrid'|t }}
+        </button>
+        {% set result_count = view.result|length %}
+        <span class="result-count" aria-live="polite" data-result-count>
+          {{ result_count }} {{ result_count == 1 ? 'result'|t : 'results'|t }}
+        </span>
+      </div>
+
+      {% if exposed %}
+      {{ exposed }}
+      {% endif %}
+
+      {{ attachment_before }}
+
+      {% if rows %}
+      {{ rows }}
+      {% elseif empty %}
+      <div class="event-directory__empty">{{ empty }}</div>
+      {% endif %}
+
+      {{ pager }}
+      {{ attachment_after }}
+
+      {% if more %}
+      {{ more }}
+      {% endif %}
+
+      {% if footer %}
+      <div class="event-directory__footer">{{ footer }}</div>
+      {% endif %}
+
+      {{ feed_icons }}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <div class="cta">
+        <div>
+          <span class="eyebrow">{{ 'Personal guidance'|t }}</span>
+          <h2>{{ 'Not sure where to begin?'|t }}</h2>
+          <p>
+            {{ 'Share your goal and a course advisor will help you choose a focused learning path.'|t }}
+          </p>
+        </div>
+
+        <a class="button button--gold" href="{{ base_path }}contact">
+          {{ 'Request guidance'|t }}
+        </a>
+      </div>
+    </div>
+  </section>
+  </div>

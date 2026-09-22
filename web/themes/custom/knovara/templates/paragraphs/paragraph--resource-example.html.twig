@@ -1,0 +1,17 @@
+{# Resource Example paragraph. #}
+
+<div{{ attributes.addClass('resource-example') }} role="group" {% if paragraph.field_example_label.value
+    %}aria-label="{{ paragraph.field_example_label.value }} example" {% endif %}>
+
+    {% if paragraph.field_example_label.value %}
+    <span class="resource-example__label">{{ paragraph.field_example_label.value }}</span>
+    {% endif %}
+
+    {% if paragraph.field_example_value.value %}
+    <span class="resource-example__field">{{ paragraph.field_example_value.value }}</span>
+    {% endif %}
+
+    {% if paragraph.field_example_help.value %}
+    <span class="resource-example__hint">{{ paragraph.field_example_help.value }}</span>
+    {% endif %}
+    </div>

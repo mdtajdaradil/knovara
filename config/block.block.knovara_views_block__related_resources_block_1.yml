@@ -1,0 +1,33 @@
+uuid: 6a0c2285-987f-45a3-beac-18ff67038018
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.related_resources
+  module:
+    - node
+    - views
+  theme:
+    - knovara
+id: knovara_views_block__related_resources_block_1
+theme: knovara
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:related_resources-block_1'
+settings:
+  id: 'views_block:related_resources-block_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      resource: resource

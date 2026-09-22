@@ -1,0 +1,73 @@
+{#
+/**
+* @file
+* Event card used by Event Directory in Teaser view mode.
+*/
+#}
+
+{{ attach_library('knovara/events') }}
+
+{% set event_type = node.field_event_type.value|default('') %}
+{% set summary = node.field_card_summary.value|default('') %}
+{% set event_image = node.field_event_image.0|default(null) %}
+{% set card_classes = [
+'event-card',
+'node',
+'node--type-event',
+not node.isPublished() ? 'node--unpublished'
+] %}
+
+<article {{ attributes.addClass(card_classes) }} {% if event_mode_key %}data-category="{{ event_mode_key|clean_class }}"
+  {% endif %}>
+  <div class="event-card__media">
+    {% if event_image and event_image.entity %}
+    <img src="{{ file_url(event_image.entity.uri.value) }}" alt="{{ event_image.alt ?: label }}" {% if event_image.width
+      %}width="{{ event_image.width }}" {% endif %} {% if event_image.height %}height="{{ event_image.height }}" {%
+      endif %} loading="lazy" decoding="async">
+    {% endif %}
+
+    {% if event_mode %}
+    <span class="event-card__mode">{{ event_mode }}</span>
+    {% endif %}
+  </div>
+
+  <div class="event-card__content">
+    <div class="event-card__heading{{ event_start ? '' : ' event-card__heading--no-date' }}">
+      {% if event_start %}
+      <time class="event-date" datetime="{{ event_start.date_iso }}">
+        <span class="event-date__day">{{ event_start.day }}</span>
+        <span class="event-date__month">{{ event_start.month }}</span>
+      </time>
+      {% endif %}
+
+      <div>
+        {% if event_type %}
+        <span class="event-card__kicker">{{ event_type }}</span>
+        {% endif %}
+
+        {{ title_prefix }}
+        <h3{{ title_attributes }}>
+          <a href="{{ url }}">{{ label }}</a>
+          </h3>
+          {{ title_suffix }}
+      </div>
+    </div>
+
+    {% if summary %}
+    <p>{{ summary }}</p>
+    {% endif %}
+
+    <footer class="event-card__footer">
+      {% if event_start %}
+      <time class="event-card__time" datetime="{{ event_start.iso }}">
+        <span aria-hidden="true">◷</span>
+        {{ event_start.time }} {{ event_start.timezone }}
+      </time>
+      {% endif %}
+
+      <a class="event-card__link" href="{{ url }}">
+        {{ 'Event details'|t }} <span aria-hidden="true">→</span>
+      </a>
+    </footer>
+  </div>
+</article>

@@ -1,0 +1,17 @@
+uuid: 595dc9ff-059a-432b-bf07-f7283091b813
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Resource
+type: resource
+description: 'Guides, checklists, templates and learning resources published by Knovara.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

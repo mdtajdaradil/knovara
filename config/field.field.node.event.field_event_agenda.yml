@@ -1,0 +1,34 @@
+uuid: 0de640f0-ed93-4bc8-819a-84a80b34658c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_agenda
+    - node.type.event
+    - paragraphs.paragraphs_type.agenda_item
+  module:
+    - entity_reference_revisions
+id: node.event.field_event_agenda
+field_name: field_event_agenda
+entity_type: node
+bundle: event
+label: 'Event agenda'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      agenda_item: agenda_item
+    negate: 0
+    target_bundles_drag_drop:
+      agenda_item:
+        weight: 3
+        enabled: true
+      course_module:
+        weight: 4
+        enabled: false
+field_type: entity_reference_revisions

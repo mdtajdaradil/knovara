@@ -1,0 +1,19 @@
+uuid: 55605656-0639-411b-8255-a7db7a3892cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_card_summary
+    - node.type.event
+id: node.event.field_card_summary
+field_name: field_card_summary
+entity_type: node
+bundle: event
+label: 'Card summary'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,19 @@
+uuid: afc0ffb8-5e9b-416f-93a1-04439a463d73
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sidebar_items
+    - node.type.resource
+id: node.resource.field_sidebar_items
+field_name: field_sidebar_items
+entity_type: node
+bundle: resource
+label: 'Sidebar Checklist'
+description: 'Enter one sidebar checklist item per value. Keep each item short and actionable.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

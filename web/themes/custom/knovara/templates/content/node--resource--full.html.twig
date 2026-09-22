@@ -1,0 +1,186 @@
+{#
+/**
+* @file
+* Full Resource node display.
+*/
+#}
+
+{{ attach_library('knovara/resources') }}
+
+{% set resource_type = node.field_resource_type.entity.name.value|default('Resource') %}
+{% set resource_subject = node.field_resource_subject.entity.name.value|default('') %}
+{% set duration = node.field_resource_duration.value|default('') %}
+{% set duration_type = node.field_duration_type.value|default('read') %}
+{% set updated = node.field_resource_updated.value ? node.field_resource_updated.value|date('F Y') : '' %}
+{% set video_link = node.field_resource_video_url.0|default(null) %}
+{% set resource_file = node.field_resource_file.entity|default(null) %}
+{% set access_value = node.field_resource_access.value|default('') %}
+
+{% set level_labels = {
+'beginner': 'Beginner-friendly',
+'intermediate': 'Intermediate',
+'advanced': 'Advanced',
+'all_levels': 'All levels'
+} %}
+{% set level = level_labels[node.field_resource_level.value]|default(node.field_resource_level.value) %}
+
+{% set access_labels = {
+'public': 'Public',
+'free': 'Free',
+'login': 'Login required',
+'login_required': 'Login required',
+'enrolled': 'Enrolled learners'
+} %}
+{% set access_level = access_labels[access_value]|default(access_value|replace({'_': ' '})|title) %}
+
+<article{{ attributes.addClass('page-resource-detail') }}>
+    <section class="page-hero page-hero--resource-detail">
+        <div class="shell">
+            <div class="resource-hero__content">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="/">Home</a>
+                    <span aria-hidden="true">/</span>
+                    <a href="/resources">Resources</a>
+                    <span aria-hidden="true">/</span>
+                    <span aria-current="page">{{ label }}</span>
+                </nav>
+
+                <span class="eyebrow">
+                    {{ resource_type }}{% if duration %} · {{ duration }} minute {{ duration_type }}{% endif %}
+                </span>
+
+                <h1>{{ label }}</h1>
+
+                {% if node.field_resource_lead.value %}
+                <p class="lead">{{ node.field_resource_lead.value }}</p>
+                {% elseif node.field_resource_summary.value %}
+                <p class="lead">{{ node.field_resource_summary.value }}</p>
+                {% endif %}
+
+                <div class="actions resource-actions">
+                    {% if video_link %}
+                    <a class="button button--outline" href="{{ video_link.url }}" target="_blank"
+                        rel="noopener noreferrer">
+                        {{ video_link.title|default('Watch video') }}
+                    </a>
+                    {% elseif resource_file %}
+                    <a class="button button--outline" href="{{ file_url(resource_file.uri.value) }}" download>
+                        Download resource
+                    </a>
+                    {% else %}
+                    <button class="button button--outline" type="button" aria-label="Save {{ resource_type|lower }}"
+                        aria-pressed="false" data-bookmark>
+                        Save {{ resource_type|lower }}
+                    </button>
+                    {% endif %}
+
+                    <button class="button button--ghost" type="button" data-print>
+                        Print {{ resource_type|lower }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section resource-detail-section">
+        <div class="shell resource-detail-layout">
+            <div class="prose resource-article">
+                {% if node.field_resource_intro.value %}
+                <p class="resource-intro">{{ node.field_resource_intro.value }}</p>
+                {% endif %}
+
+                {% if node.field_resource_image.entity %}
+                <figure class="resource-article__media">
+                    <img src="{{ file_url(node.field_resource_image.entity.uri.value) }}"
+                        alt="{{ node.field_resource_image.alt|default(label) }}"
+                        width="{{ node.field_resource_image.width|default(1600) }}"
+                        height="{{ node.field_resource_image.height|default(1200) }}" decoding="async"
+                        fetchpriority="high">
+
+                    {% if node.field_image_caption.value %}
+                    <figcaption>{{ node.field_image_caption.value }}</figcaption>
+                    {% endif %}
+                </figure>
+                {% endif %}
+
+                {% if content.field_resource_content %}
+                {{ content.field_resource_content }}
+                {% endif %}
+            </div>
+
+            <aside class="resource-sidebar" aria-label="Resource summary">
+                {% if node.field_sidebar_title.value or node.field_sidebar_items is not empty %}
+                <div class="resource-sidebar__card">
+                    {% if node.field_sidebar_badge.value %}
+                    <span class="badge">{{ node.field_sidebar_badge.value }}</span>
+                    {% endif %}
+
+                    {% if node.field_sidebar_title.value %}
+                    <h2>{{ node.field_sidebar_title.value }}</h2>
+                    {% endif %}
+
+                    {% if node.field_sidebar_items is not empty %}
+                    <ul class="feature-list" role="list">
+                        {% for item in node.field_sidebar_items %}
+                        <li>{{ item.value }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    {% if node.field_sidebar_cta.0 %}
+                    <a class="button button--teal button--block" href="{{ node.field_sidebar_cta.0.url }}">
+                        {{ node.field_sidebar_cta.0.title|default('Learn these skills') }}
+                    </a>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                <div class="resource-sidebar__meta">
+                    <h2>Resource details</h2>
+                    <dl>
+                        <div>
+                            <dt>Type</dt>
+                            <dd>{{ resource_type }}</dd>
+                        </div>
+
+                        {% if duration %}
+                        <div>
+                            <dt>{{ duration_type == 'video' ? 'Video length' : (duration_type == 'activity' ? 'Activity
+                                time' : 'Reading time') }}</dt>
+                            <dd>{{ duration }} minutes</dd>
+                        </div>
+                        {% endif %}
+
+                        {% if level %}
+                        <div>
+                            <dt>Level</dt>
+                            <dd>{{ level }}</dd>
+                        </div>
+                        {% endif %}
+
+                        {% if updated %}
+                        <div>
+                            <dt>Updated</dt>
+                            <dd>{{ updated }}</dd>
+                        </div>
+                        {% endif %}
+
+                        {% if resource_subject %}
+                        <div>
+                            <dt>Subject</dt>
+                            <dd>{{ resource_subject }}</dd>
+                        </div>
+                        {% endif %}
+
+                        {% if access_level %}
+                        <div>
+                            <dt>Access</dt>
+                            <dd>{{ access_level }}</dd>
+                        </div>
+                        {% endif %}
+                    </dl>
+                </div>
+            </aside>
+        </div>
+    </section>
+    </article>

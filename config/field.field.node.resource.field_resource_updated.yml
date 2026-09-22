@@ -1,0 +1,21 @@
+uuid: 0ad3eb12-548e-43a8-9a0f-e0a0688da0b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resource_updated
+    - node.type.resource
+  module:
+    - datetime
+id: node.resource.field_resource_updated
+field_name: field_resource_updated
+entity_type: node
+bundle: resource
+label: 'Updated Date'
+description: 'Enter the date when the resource was last meaningfully reviewed. Do not change this date for minor spelling or formatting edits.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

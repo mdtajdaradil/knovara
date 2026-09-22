@@ -1,0 +1,22 @@
+uuid: 7557838d-1525-4ced-b6c4-74d518be99a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section_body
+    - paragraphs.paragraphs_type.resource_text_section
+  module:
+    - text
+id: paragraph.resource_text_section.field_section_body
+field_name: field_section_body
+entity_type: paragraph
+bundle: resource_text_section
+label: 'Section Body'
+description: 'Add the paragraphs for this section. Use links, bold text or lists when needed. Do not add another H2 heading.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

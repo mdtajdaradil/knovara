@@ -1,0 +1,38 @@
+uuid: 16e820c9-5501-4ba5-823d-826c7481bacb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.agenda_item.field_agenda_description
+    - field.field.paragraph.agenda_item.field_agenda_time
+    - field.field.paragraph.agenda_item.field_agenda_title
+    - paragraphs.paragraphs_type.agenda_item
+id: paragraph.agenda_item.default
+targetEntityType: paragraph
+bundle: agenda_item
+mode: default
+content:
+  field_agenda_description:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_agenda_time:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_agenda_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

@@ -1,0 +1,57 @@
+uuid: 8199c7eb-4aa4-43ad-80c0-9a8748dd0bf4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resource_content
+    - node.type.resource
+    - paragraphs.paragraphs_type.resource_callout
+    - paragraphs.paragraphs_type.resource_checklist
+    - paragraphs.paragraphs_type.resource_example
+    - paragraphs.paragraphs_type.resource_quote
+    - paragraphs.paragraphs_type.resource_text_section
+  module:
+    - entity_reference_revisions
+id: node.resource.field_resource_content
+field_name: field_resource_content
+entity_type: node
+bundle: resource
+label: 'Resource Content'
+description: 'Build the article in reading order. Add text sections, examples, quotations, checklists and a final callout as needed.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      resource_text_section: resource_text_section
+      resource_example: resource_example
+      resource_quote: resource_quote
+      resource_checklist: resource_checklist
+      resource_callout: resource_callout
+    negate: 0
+    target_bundles_drag_drop:
+      agenda_item:
+        weight: -15
+        enabled: false
+      course_module:
+        weight: -14
+        enabled: false
+      resource_callout:
+        weight: -9
+        enabled: true
+      resource_checklist:
+        weight: -10
+        enabled: true
+      resource_example:
+        weight: -12
+        enabled: true
+      resource_quote:
+        weight: -11
+        enabled: true
+      resource_text_section:
+        weight: -13
+        enabled: true
+field_type: entity_reference_revisions

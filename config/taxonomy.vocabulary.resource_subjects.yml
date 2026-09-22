@@ -1,0 +1,9 @@
+uuid: 6694957d-ae84-496d-9156-11085701d3c5
+langcode: en
+status: true
+dependencies: {  }
+name: 'Resource Subjects'
+vid: resource_subjects
+description: 'Subjects used to organise and relate Knovara resources.'
+weight: 0
+new_revision: false

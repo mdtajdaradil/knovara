@@ -1,0 +1,24 @@
+uuid: 5c74cfe0-256f-4e9a-925c-5b3e438c2c26
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_callout_text
+    - filter.format.basic_html
+    - paragraphs.paragraphs_type.resource_callout
+  module:
+    - text
+id: paragraph.resource_callout.field_callout_text
+field_name: field_callout_text
+entity_type: paragraph
+bundle: resource_callout
+label: 'Callout Text'
+description: 'Explain the next step in one short paragraph. Links may be included.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

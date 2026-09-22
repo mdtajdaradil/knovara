@@ -1,0 +1,21 @@
+uuid: 5a3e6bea-eff8-4b71-8361-8ce3ae78a04f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resource_level
+    - node.type.resource
+  module:
+    - options
+id: node.resource.field_resource_level
+field_name: field_resource_level
+entity_type: node
+bundle: resource
+label: Level
+description: 'Select the experience level most appropriate for this resource.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

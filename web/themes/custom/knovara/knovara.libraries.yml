@@ -16,6 +16,7 @@ home:
       css/home.css: {}
   dependencies:
     - knovara/global
+    - knovara/courses
 
 faculty:
   css:
@@ -84,6 +85,20 @@ resources:
   css:
     theme:
       css/resources.css: {}
+  dependencies:
+    - knovara/global
+
+about:
+  css:
+    theme:
+      css/about.css: {}
+  dependencies:
+    - knovara/global
+
+contact:
+  css:
+    theme:
+      css/contact.css: {}
   dependencies:
     - knovara/global
 

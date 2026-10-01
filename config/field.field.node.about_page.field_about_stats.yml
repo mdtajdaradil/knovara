@@ -1,0 +1,58 @@
+uuid: ff42312f-e4ef-47e4-b22c-fa4497fb9139
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_about_stats
+    - node.type.about_page
+    - paragraphs.paragraphs_type.about_stat
+  module:
+    - entity_reference_revisions
+id: node.about_page.field_about_stats
+field_name: field_about_stats
+entity_type: node
+bundle: about_page
+label: Statistics
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      about_stat: about_stat
+    negate: 0
+    target_bundles_drag_drop:
+      about_stat:
+        weight: 11
+        enabled: true
+      about_step:
+        weight: 12
+        enabled: false
+      about_value:
+        weight: 13
+        enabled: false
+      agenda_item:
+        weight: 14
+        enabled: false
+      course_module:
+        weight: 15
+        enabled: false
+      resource_callout:
+        weight: 16
+        enabled: false
+      resource_checklist:
+        weight: 17
+        enabled: false
+      resource_example:
+        weight: 18
+        enabled: false
+      resource_quote:
+        weight: 19
+        enabled: false
+      resource_text_section:
+        weight: 20
+        enabled: false
+field_type: entity_reference_revisions

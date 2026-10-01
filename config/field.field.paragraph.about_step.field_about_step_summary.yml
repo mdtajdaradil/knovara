@@ -1,0 +1,19 @@
+uuid: 75a787a0-645d-4496-aae8-0331e10c3a49
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_about_step_summary
+    - paragraphs.paragraphs_type.about_step
+id: paragraph.about_step.field_about_step_summary
+field_name: field_about_step_summary
+entity_type: paragraph
+bundle: about_step
+label: 'Step summary'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

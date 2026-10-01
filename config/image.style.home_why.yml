@@ -1,0 +1,15 @@
+uuid: b8c2dc5e-230b-479e-8d58-1ca4c3e81c1d
+langcode: en
+status: true
+dependencies: {  }
+name: home_why
+label: 'Home why'
+effects:
+  074261e7-5d4e-419e-b322-7f17bffb5bce:
+    uuid: 074261e7-5d4e-419e-b322-7f17bffb5bce
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 900
+      anchor: center-center

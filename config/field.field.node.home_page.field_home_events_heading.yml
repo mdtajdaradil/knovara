@@ -1,0 +1,19 @@
+uuid: 1bd49a90-d318-4afd-9c10-aa7102162b62
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_events_heading
+    - node.type.home_page
+id: node.home_page.field_home_events_heading
+field_name: field_home_events_heading
+entity_type: node
+bundle: home_page
+label: 'Events heading'
+description: 'Enter the main heading for the upcoming events section.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

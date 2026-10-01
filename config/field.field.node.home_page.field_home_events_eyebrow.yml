@@ -1,0 +1,19 @@
+uuid: f56050f1-f2dc-4f76-9875-4a5462723232
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_events_eyebrow
+    - node.type.home_page
+id: node.home_page.field_home_events_eyebrow
+field_name: field_home_events_eyebrow
+entity_type: node
+bundle: home_page
+label: 'Events eyebrow'
+description: 'Enter a short introductory line above the upcoming events heading.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

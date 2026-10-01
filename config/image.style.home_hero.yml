@@ -1,0 +1,15 @@
+uuid: 679ec6a4-aaaf-4954-a98d-78a71797995c
+langcode: en
+status: true
+dependencies: {  }
+name: home_hero
+label: 'Home hero'
+effects:
+  843d47ae-144c-4112-acca-cd738700bcd4:
+    uuid: 843d47ae-144c-4112-acca-cd738700bcd4
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1280
+      height: 1024
+      anchor: center-center

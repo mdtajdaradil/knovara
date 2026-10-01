@@ -1,0 +1,22 @@
+uuid: 944dfcbf-7cd4-4bfa-9b8d-c6289747a19c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.contact_page
+id: node.contact_page.promote
+field_name: promote
+entity_type: node
+bundle: contact_page
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,29 @@
+uuid: 68445b3f-5e96-4d26-bbac-0a4bf49ab2d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.about_value.field_about_value_summary
+    - field.field.paragraph.about_value.field_about_value_title
+    - paragraphs.paragraphs_type.about_value
+id: paragraph.about_value.default
+targetEntityType: paragraph
+bundle: about_value
+mode: default
+content:
+  field_about_value_summary:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_about_value_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

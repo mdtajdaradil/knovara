@@ -1,0 +1,19 @@
+uuid: c8b7571d-939f-4012-b55e-07c17f43dc69
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_about_values_title
+    - node.type.about_page
+id: node.about_page.field_about_values_title
+field_name: field_about_values_title
+entity_type: node
+bundle: about_page
+label: 'Values heading'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

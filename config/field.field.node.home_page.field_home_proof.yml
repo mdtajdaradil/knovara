@@ -1,0 +1,19 @@
+uuid: d802b037-48d8-452a-9d2e-27d8286e299f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_proof
+    - node.type.home_page
+id: node.home_page.field_home_proof
+field_name: field_home_proof
+entity_type: node
+bundle: home_page
+label: 'Hero proof points'
+description: 'Add one short benefit per item, up to three items.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

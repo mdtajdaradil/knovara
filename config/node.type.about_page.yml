@@ -1,0 +1,18 @@
+uuid: 35f47764-fb6e-4524-a8e4-3c382db28e75
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:menu_link_content:bfc5e8bf-8695-4be7-b78f-76071632d8cf'
+name: 'About Page'
+type: about_page
+description: 'Editable content for Knovara’s About page, including its purpose, learning model, values, and guidance section.'
+help: 'Add the About page content and arrange statistics, learning steps, and values in display order.'
+new_revision: true
+preview_mode: 1
+display_submitted: false

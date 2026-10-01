@@ -1,0 +1,15 @@
+uuid: 7692e6f1-21bb-40db-abe7-1e75f4cdcd64
+langcode: en
+status: true
+dependencies: {  }
+name: home_event
+label: 'Home event'
+effects:
+  b3cf9d08-729b-4ea6-a077-06a1cd7481f1:
+    uuid: b3cf9d08-729b-4ea6-a077-06a1cd7481f1
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 960
+      height: 540
+      anchor: center-center

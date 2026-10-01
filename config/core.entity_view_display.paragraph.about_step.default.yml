@@ -1,0 +1,38 @@
+uuid: f098d006-46f8-4036-8ad2-929746a3bf47
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.about_step.field_about_step_number
+    - field.field.paragraph.about_step.field_about_step_summary
+    - field.field.paragraph.about_step.field_about_step_title
+    - paragraphs.paragraphs_type.about_step
+id: paragraph.about_step.default
+targetEntityType: paragraph
+bundle: about_step
+mode: default
+content:
+  field_about_step_number:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_about_step_summary:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_about_step_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

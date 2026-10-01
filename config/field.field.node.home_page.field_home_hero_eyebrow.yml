@@ -1,0 +1,19 @@
+uuid: d5642c68-956d-4d70-91fd-1cfff52d3f29
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_hero_eyebrow
+    - node.type.home_page
+id: node.home_page.field_home_hero_eyebrow
+field_name: field_home_hero_eyebrow
+entity_type: node
+bundle: home_page
+label: 'Hero eyebrow'
+description: 'Enter a short introductory line above the main hero heading.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

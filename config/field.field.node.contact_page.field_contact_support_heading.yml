@@ -1,0 +1,19 @@
+uuid: e4086c77-77e6-4832-ae81-fcb5e954fc76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_support_heading
+    - node.type.contact_page
+id: node.contact_page.field_contact_support_heading
+field_name: field_contact_support_heading
+entity_type: node
+bundle: contact_page
+label: 'Support heading'
+description: 'Heading for the contact information sidebar.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

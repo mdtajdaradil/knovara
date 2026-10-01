@@ -1,0 +1,19 @@
+uuid: 6e42ecbb-b01f-4d9c-8f14-acfa719df5e5
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_about_step_summary
+field_name: field_about_step_summary
+entity_type: paragraph
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

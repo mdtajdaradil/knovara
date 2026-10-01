@@ -1,0 +1,19 @@
+uuid: 565dc37a-c0b9-4d63-ae59-6b5a9cf595c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_form_heading
+    - node.type.contact_page
+id: node.contact_page.field_contact_form_heading
+field_name: field_contact_form_heading
+entity_type: node
+bundle: contact_page
+label: 'Form heading'
+description: 'Heading displayed above the contact form.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

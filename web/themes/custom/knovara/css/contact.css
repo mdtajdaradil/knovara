@@ -1,0 +1,287 @@
+/**
+ * Contact page styles extracted from the contact layout in styles(2).css.
+ * Shared header, footer, typography, shell and buttons stay in the theme's
+ * global library. Webform supplies the live form markup.
+ */
+
+.page-contact .page-hero {
+    padding: 80px 0 64px;
+    background: radial-gradient(circle at 86% 5%, #dff1ed, transparent 32%), var(--bg, #f7f8f4);
+}
+
+.page-contact .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+    color: var(--muted, #667085);
+    font-size: .78rem;
+}
+
+.page-contact .breadcrumb a {
+    color: var(--teal-dark, #0f6e69);
+    font-weight: 700;
+}
+
+.page-contact .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: var(--teal, #178d86);
+    font-size: .76rem;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.page-contact .eyebrow::before {
+    width: 26px;
+    height: 2px;
+    content: "";
+    background: var(--gold, #efb748);
+}
+
+.page-contact .lead {
+    max-width: 690px;
+    margin: 18px 0 0;
+    color: var(--muted, #667085);
+    font-size: clamp(1rem, 1.6vw, 1.18rem);
+}
+
+.page-contact>.section {
+    padding: 78px 0;
+}
+
+.page-contact .detail-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    align-items: start;
+    gap: 48px;
+}
+
+.page-contact .contact-main {
+    min-width: 0;
+}
+
+.page-contact .detail-rail {
+    position: sticky;
+    top: 130px;
+    border: 1px solid var(--line, #dfe5e8);
+    border-radius: var(--radius, 18px);
+    padding: 24px;
+    background: var(--paper, #fff);
+    box-shadow: var(--shadow-sm, 0 8px 24px rgba(16, 35, 63, .08));
+}
+
+.page-contact .detail-rail h3 {
+    margin-top: 0;
+}
+
+.page-contact .detail-rail .muted {
+    color: var(--muted, #667085);
+}
+
+.page-contact .detail-rail .divider {
+    height: 1px;
+    margin: 24px 0;
+    background: var(--line, #dfe5e8);
+}
+
+.page-contact .detail-rail .text-link {
+    color: var(--teal-dark, #0f6e69);
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-color: rgba(23, 141, 134, .3);
+    text-underline-offset: 4px;
+}
+
+.page-contact .contact-form {
+    margin-top: 28px;
+}
+
+/* Webform's successful inline confirmation matches the original form alert. */
+.page-contact .contact-form .webform-confirmation__message {
+    border-left: 4px solid var(--teal, #178d86);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--navy, #10233f);
+    background: var(--soft, #e9f4f2);
+    font-size: .84rem;
+}
+
+.page-contact .contact-form .webform-confirmation__message> :first-child {
+    margin-top: 0;
+}
+
+.page-contact .contact-form .webform-confirmation__message> :last-child {
+    margin-bottom: 0;
+}
+
+/* Match the static two-column form with Drupal Webform elements. */
+.page-contact .contact-form .webform-submission-form,
+.page-contact .contact-form .webform-submission-form>.webform-elements {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px 21px;
+}
+
+.page-contact .contact-form .webform-submission-form>*,
+.page-contact .contact-form .webform-elements>* {
+    min-width: 0;
+    margin-block: 0;
+    grid-column: 1 / -1;
+}
+
+.page-contact .contact-form .webform-submission-form>.form-item-name,
+.page-contact .contact-form .webform-submission-form>.form-item-email,
+.page-contact .contact-form .webform-elements>.form-item-name,
+.page-contact .contact-form .webform-elements>.form-item-email,
+.page-contact .contact-form .webform-submission-form> :has(> input[name="name"]),
+.page-contact .contact-form .webform-submission-form> :has(> input[name="email"]),
+.page-contact .contact-form .webform-elements> :has(> input[name="name"]),
+.page-contact .contact-form .webform-elements> :has(> input[name="email"]) {
+    grid-column: auto;
+}
+
+.page-contact .contact-form .form-item>label,
+.page-contact .contact-form .form-item>legend,
+.page-contact .contact-form label:not(.option) {
+    display: block;
+    margin-bottom: 7px;
+    color: #344054;
+    font-size: .82rem;
+    font-weight: 800;
+}
+
+.page-contact .contact-form input[type="text"],
+.page-contact .contact-form input[type="email"],
+.page-contact .contact-form select,
+.page-contact .contact-form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid #cdd6db;
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: var(--ink, #172033);
+    background: var(--paper, #fff);
+    font: inherit;
+}
+
+.page-contact .contact-form textarea {
+    min-height: 156px;
+    height: 156px;
+    resize: vertical;
+}
+
+.page-contact .contact-form input[aria-invalid="true"],
+.page-contact .contact-form select[aria-invalid="true"],
+.page-contact .contact-form textarea[aria-invalid="true"] {
+    border-color: var(--danger, #b42318);
+}
+
+.page-contact .contact-form input:focus-visible,
+.page-contact .contact-form select:focus-visible,
+.page-contact .contact-form textarea:focus-visible {
+    outline: 2px solid var(--teal, #178d86);
+    outline-offset: 2px;
+}
+
+.page-contact .contact-form .form-item-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    color: #475467;
+    font-size: .82rem;
+}
+
+.page-contact .contact-form .form-item-consent label {
+    margin: 0;
+    font-size: .82rem;
+    font-weight: 800;
+}
+
+.page-contact .contact-form .form-item-consent input[type="checkbox"] {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    margin: 3px 0 0;
+    accent-color: var(--teal, #178d86);
+    vertical-align: middle;
+}
+
+.page-contact .contact-form .form-actions,
+.page-contact .contact-form .webform-actions {
+    width: 100%;
+}
+
+.page-contact .contact-form .form-submit {
+    display: inline-flex;
+    width: 100%;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--teal, #178d86);
+    border-radius: var(--radius-sm, 10px);
+    padding: 11px 18px;
+    color: #fff;
+    background: var(--teal, #178d86);
+    font: inherit;
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .18s ease, transform .18s ease;
+}
+
+.page-contact .contact-form .form-submit:hover {
+    transform: translateY(-1px);
+    background: var(--teal-dark, #0f6e69);
+}
+
+.page-contact .contact-form .form-submit:focus-visible {
+    outline: 2px solid var(--navy, #10233f);
+    outline-offset: 3px;
+}
+
+.page-contact .contact-form .messages,
+.contact-notices .messages {
+    margin-bottom: 18px;
+}
+
+@media (max-width: 1040px) {
+    .page-contact .detail-grid {
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 28px;
+    }
+}
+
+@media (max-width: 860px) {
+    .page-contact .detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-contact .detail-rail {
+        position: static;
+    }
+}
+
+@media (max-width: 620px) {
+    .page-contact .page-hero {
+        padding: 57px 0 45px;
+    }
+
+    .page-contact>.section {
+        padding: 56px 0;
+    }
+
+    .page-contact .contact-form .webform-submission-form,
+    .page-contact .contact-form .webform-submission-form>.webform-elements {
+        grid-template-columns: 1fr;
+    }
+
+    .page-contact .contact-form .webform-submission-form>*,
+    .page-contact .contact-form .webform-elements>* {
+        grid-column: 1;
+    }
+}

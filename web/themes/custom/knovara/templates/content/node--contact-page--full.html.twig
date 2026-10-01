@@ -1,0 +1,103 @@
+{# Contact Page node, Full content view mode. #}
+{{ attach_library('knovara/contact') }}
+
+<article{{ attributes.addClass('page-contact') }}>
+    {{ title_prefix }}{{ title_suffix }}
+
+    <section class="page-hero page-hero--contact">
+        <div class="shell">
+            <nav class="breadcrumb" aria-label="{{ 'Breadcrumb'|t }}">
+                <a href="{{ path('<front>') }}">{{ 'Home'|t }}</a>
+                <span aria-hidden="true">/</span>
+                <span aria-current="page">{{ node.label }}</span>
+            </nav>
+
+            {% if node.field_contact_hero_eyebrow is not empty %}
+            <span class="eyebrow">{{ node.field_contact_hero_eyebrow.value }}</span>
+            {% endif %}
+
+            <h1>{{ node.label }}</h1>
+
+            {% if node.field_contact_hero_intro is not empty %}
+            <p class="lead">{{ node.field_contact_hero_intro.value }}</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="shell detail-grid">
+            <div class="contact-main">
+                {% if node.field_contact_form_eyebrow is not empty %}
+                <span class="eyebrow">{{ node.field_contact_form_eyebrow.value }}</span>
+                {% endif %}
+
+                {% if node.field_contact_form_heading is not empty %}
+                <h2>{{ node.field_contact_form_heading.value }}</h2>
+                {% endif %}
+
+                {% if node.field_contact_webform is not empty %}
+                <div class="contact-form">
+                    {{ content.field_contact_webform }}
+                </div>
+                {% endif %}
+            </div>
+
+            <aside class="detail-rail" aria-label="{{ 'Contact information'|t }}">
+                {% if node.field_contact_support_heading is not empty %}
+                <h3>{{ node.field_contact_support_heading.value }}</h3>
+                {% endif %}
+
+                {% if node.field_contact_hours is not empty %}
+                <p class="muted">{{ node.field_contact_hours.value }}</p>
+                {% endif %}
+
+                {% if node.field_contact_email is not empty or node.field_contact_phone is not empty %}
+                <div class="divider"></div>
+
+                {% if node.field_contact_email is not empty %}
+                {% set support_email = node.field_contact_email.value %}
+                <strong>{{ 'Email'|t }}</strong>
+                <p>
+                    <a class="text-link" href="mailto:{{ support_email }}">
+                        {{ support_email }}
+                    </a>
+                </p>
+                {% endif %}
+
+                {% if node.field_contact_phone is not empty %}
+                {% set support_phone = node.field_contact_phone.value %}
+                <strong>{{ 'Call'|t }}</strong>
+                <p>
+                    <a class="text-link" href="tel:{{ support_phone|replace({' ': '', '-': '', '(': '', ')': ''}) }}">
+                        {{ support_phone }}
+                    </a>
+                </p>
+                {% endif %}
+                {% endif %}
+
+                {% if node.field_contact_before_heading is not empty
+                or node.field_contact_before_text is not empty
+                or node.field_contact_courses_link is not empty %}
+                <div class="divider"></div>
+
+                {% if node.field_contact_before_heading is not empty %}
+                <h3>{{ node.field_contact_before_heading.value }}</h3>
+                {% endif %}
+
+                {% if node.field_contact_before_text is not empty %}
+                <p class="muted">{{ node.field_contact_before_text.value }}</p>
+                {% endif %}
+
+                {% if node.field_contact_courses_link is not empty %}
+                {% set course_link = node.field_contact_courses_link.0 %}
+                {{ link(
+                course_link.title|default('Browse courses'|t),
+                course_link.getUrl(),
+                create_attribute({'class': ['button', 'button--outline', 'button--block']})
+                ) }}
+                {% endif %}
+                {% endif %}
+            </aside>
+        </div>
+    </section>
+    </article>

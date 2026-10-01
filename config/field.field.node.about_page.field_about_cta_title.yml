@@ -1,0 +1,19 @@
+uuid: 2c7ec2d8-8ae7-4078-8b9c-2f52d35293fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_about_cta_title
+    - node.type.about_page
+id: node.about_page.field_about_cta_title
+field_name: field_about_cta_title
+entity_type: node
+bundle: about_page
+label: 'Guidance heading'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,80 @@
+{# About Page content type: machine name about_page; full view mode. #}
+{{ attach_library('knovara/about') }}
+
+<article{{ attributes.addClass('page-about') }}>
+    {{ title_prefix }}{{ title_suffix }}
+
+    <section class="page-hero page-hero--about">
+        <div class="shell">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="{{ path('<front>') }}">{{ 'Home'|t }}</a>
+                <span aria-hidden="true">/</span>
+                <span aria-current="page">{{ node.field_about_hero_title.value }}</span>
+            </nav>
+            <span class="eyebrow">{{ node.field_about_hero_eyebrow.value }}</span>
+            <h1>{{ node.field_about_hero_title.value }}</h1>
+            <p class="lead">{{ node.field_about_hero_lead.value }}</p>
+        </div>
+    </section>
+
+    <section class="section about-intro">
+        <div
+            class="shell about-intro__layout{{ node.field_about_intro_image is empty ? ' about-intro__layout--no-media' : '' }}">
+            <div class="about-intro__copy">
+                <span class="eyebrow">{{ node.field_about_intro_eyebrow.value }}</span>
+                <h2>{{ node.field_about_intro_title.value }}</h2>
+                <p class="lead">{{ node.field_about_intro_lead.value }}</p>
+            </div>
+
+            {% if node.field_about_intro_image is not empty %}
+            <figure class="about-intro__media">
+                {{ content.field_about_intro_image }}
+            </figure>
+            {% endif %}
+
+            {% if node.field_about_stats is not empty %}
+            {{ content.field_about_stats }}
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="section section--soft about-model">
+        <div class="shell">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow">{{ node.field_about_model_eyebrow.value }}</span>
+                    <h2>{{ node.field_about_model_title.value }}</h2>
+                </div>
+            </div>
+            {% if node.field_about_steps is not empty %}
+            {{ content.field_about_steps }}
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="section about-values">
+        <div class="shell">
+            <span class="eyebrow">{{ node.field_about_values_eyebrow.value }}</span>
+            <h2>{{ node.field_about_values_title.value }}</h2>
+            {% if node.field_about_values is not empty %}
+            {{ content.field_about_values }}
+            {% endif %}
+        </div>
+    </section>
+
+    {% if node.field_about_cta_link is not empty %}
+    <section class="section about-guidance">
+        <div class="shell">
+            <div class="cta">
+                <div>
+                    <span class="eyebrow">{{ node.field_about_cta_eyebrow.value }}</span>
+                    <h2>{{ node.field_about_cta_title.value }}</h2>
+                    <p>{{ node.field_about_cta_text.value }}</p>
+                </div>
+                {{ link(node.field_about_cta_link.0.title, node.field_about_cta_link.0.getUrl(),
+                create_attribute({'class': ['button', 'button--gold']})) }}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+    </article>

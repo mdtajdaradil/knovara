@@ -1,0 +1,19 @@
+uuid: 487104be-c34e-45b2-a8ac-e285b775ee63
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_about_value_title
+    - paragraphs.paragraphs_type.about_value
+id: paragraph.about_value.field_about_value_title
+field_name: field_about_value_title
+entity_type: paragraph
+bundle: about_value
+label: 'Value title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

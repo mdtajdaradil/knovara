@@ -1,0 +1,19 @@
+uuid: 6ab49525-d4df-42c8-83ff-09c68d473b45
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_home_featured_courses
+field_name: field_home_featured_courses
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 3
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

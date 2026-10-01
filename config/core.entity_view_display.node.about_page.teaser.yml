@@ -1,0 +1,56 @@
+uuid: 290991e2-6b85-42d7-ade6-24350324485a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.about_page.field_about_cta_eyebrow
+    - field.field.node.about_page.field_about_cta_link
+    - field.field.node.about_page.field_about_cta_text
+    - field.field.node.about_page.field_about_cta_title
+    - field.field.node.about_page.field_about_hero_eyebrow
+    - field.field.node.about_page.field_about_hero_lead
+    - field.field.node.about_page.field_about_hero_title
+    - field.field.node.about_page.field_about_intro_eyebrow
+    - field.field.node.about_page.field_about_intro_image
+    - field.field.node.about_page.field_about_intro_lead
+    - field.field.node.about_page.field_about_intro_title
+    - field.field.node.about_page.field_about_model_eyebrow
+    - field.field.node.about_page.field_about_model_title
+    - field.field.node.about_page.field_about_stats
+    - field.field.node.about_page.field_about_steps
+    - field.field.node.about_page.field_about_values
+    - field.field.node.about_page.field_about_values_eyebrow
+    - field.field.node.about_page.field_about_values_title
+    - node.type.about_page
+  module:
+    - user
+id: node.about_page.teaser
+targetEntityType: node
+bundle: about_page
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_about_cta_eyebrow: true
+  field_about_cta_link: true
+  field_about_cta_text: true
+  field_about_cta_title: true
+  field_about_hero_eyebrow: true
+  field_about_hero_lead: true
+  field_about_hero_title: true
+  field_about_intro_eyebrow: true
+  field_about_intro_image: true
+  field_about_intro_lead: true
+  field_about_intro_title: true
+  field_about_model_eyebrow: true
+  field_about_model_title: true
+  field_about_stats: true
+  field_about_steps: true
+  field_about_values: true
+  field_about_values_eyebrow: true
+  field_about_values_title: true

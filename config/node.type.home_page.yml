@@ -1,0 +1,18 @@
+uuid: c1f92b85-e8c6-40c9-b10e-0352dc8abe5b
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Home Page'
+type: home_page
+description: 'Editable homepage hero, subjects, featured courses, learning approach, events and guidance links.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

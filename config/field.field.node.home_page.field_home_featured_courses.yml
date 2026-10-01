@@ -1,0 +1,29 @@
+uuid: 46121bf8-38b7-41b1-9551-675efaadc161
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_featured_courses
+    - node.type.course
+    - node.type.home_page
+id: node.home_page.field_home_featured_courses
+field_name: field_home_featured_courses
+entity_type: node
+bundle: home_page
+label: 'Featured courses'
+description: 'Select up to three published Course items in the order their cards should appear.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      course: course
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

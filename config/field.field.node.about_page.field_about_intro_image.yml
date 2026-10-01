@@ -1,0 +1,38 @@
+uuid: 7ab54390-4cc3-4074-b7d0-4bfcbb0c6d5a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_about_intro_image
+    - node.type.about_page
+  module:
+    - image
+id: node.about_page.field_about_intro_image
+field_name: field_about_intro_image
+entity_type: node
+bundle: about_page
+label: 'Story image'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: images
+  file_extensions: 'png jpg jpeg webp'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: 1600x1200
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

@@ -1,0 +1,7 @@
+{% if items %}
+  <div{{ attributes.addClass('grid', 'grid--3', 'about-values__grid') }}>
+    {% for item in items %}
+      {{ item.content }}
+    {% endfor %}
+  </div>
+{% endif %}

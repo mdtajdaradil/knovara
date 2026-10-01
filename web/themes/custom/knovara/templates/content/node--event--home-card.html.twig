@@ -1,0 +1,20 @@
+{# Only Event -> Home card. Dates are formatted by the module in site timezone. #}
+{{ home_card_cache }}
+<article{{ attributes.addClass('card', 'home-event' ) }}>
+  {% if home_card.image %}<div class="home-event__media">{{ home_card.image }}</div>{% endif %}
+  <div class="card__body">
+    <div class="cluster">
+      {% if home_card.date %}<time class="badge badge--gold" datetime="{{ home_card.date.iso }}">{{ home_card.date.badge
+        }}</time>{% endif %}
+      {% if home_card.mode %}<span class="badge">{{ home_card.mode }}</span>{% endif %}
+    </div>
+    {{ title_prefix }}
+    <h3{{ title_attributes }}><a href="{{ url }}">{{ label }}</a></h3>
+      {{ title_suffix }}
+      {% if home_card.summary %}<p>{{ home_card.summary }}</p>{% endif %}
+      <div class="card__meta">
+        <span>{% if home_card.date %}{{ home_card.date.time }}{% endif %}</span>
+        <a class="text-link" href="{{ url }}">{{ 'View event'|t }}</a>
+      </div>
+  </div>
+  </article>

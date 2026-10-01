@@ -1,0 +1,19 @@
+uuid: b880c577-b058-4c84-bfa7-427f3b331690
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_about_step_title
+    - paragraphs.paragraphs_type.about_step
+id: paragraph.about_step.field_about_step_title
+field_name: field_about_step_title
+entity_type: paragraph
+bundle: about_step
+label: 'Step title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

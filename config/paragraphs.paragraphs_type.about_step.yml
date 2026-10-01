@@ -1,0 +1,10 @@
+uuid: a6d77919-2edd-4bec-925d-53ae53a2cd66
+langcode: en
+status: true
+dependencies: {  }
+id: about_step
+label: 'About Step'
+icon_uuid: null
+icon_default: null
+description: 'Adds one numbered step to Knovara’s learning model.'
+behavior_plugins: {  }

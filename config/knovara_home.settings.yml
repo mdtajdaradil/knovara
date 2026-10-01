@@ -1,0 +1,17 @@
+_core:
+  default_config_hash: n5sOBphU7cnKFi1hVIYERmkpLQ4kvGO4iQv1hmASrnQ
+course_category_field: field_course_category
+course_image_field: field_course_image
+course_summary_field: field_course_summary
+course_level_field: field_course_level
+course_duration_field: field_course_duration
+course_mode_field: field_delivery_mode
+course_price_field: field_course_price
+event_image_field: field_event_image
+event_summary_field: field_card_summary
+event_start_field: field_event_start
+event_mode_field: field_event_mode
+event_type_field: field_event_type
+workshop_match: workshop
+course_search_parameter: course_search
+course_category_parameter: course_category

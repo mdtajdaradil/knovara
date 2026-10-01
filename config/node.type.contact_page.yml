@@ -1,0 +1,17 @@
+uuid: 9310a30c-699a-4fc6-ba2e-2568470fc61b
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Contact Page'
+type: contact_page
+description: 'Editable contact page with learner support details and a Webform.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

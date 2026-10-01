@@ -1,0 +1,359 @@
+<?php
+
+/**
+ * @file
+ * Computed Home content for the Knovara theme (Drupal 10/11).
+ */
+
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function knovara_home_preprocess_node(array &$variables): void {
+  $node = $variables['node'] ?? NULL;
+  if (!$node instanceof NodeInterface) {
+    return;
+  }
+  $mode = $variables['view_mode'] ?? '';
+  if ($node->bundle() === 'home_page' && $mode === 'full') {
+    _knovara_home_page_data($variables, $node);
+  }
+  elseif (in_array($node->bundle(), ['course', 'event'], TRUE) && $mode === 'home_card') {
+    _knovara_home_card_data($variables, $node);
+  }
+}
+
+/**
+ * Implements hook_cron().
+ *
+ * Relative dates need invalidation even if no editor saves an Event. This tag
+ * reaches cached anonymous pages too. Run Drupal cron every five minutes.
+ */
+function knovara_home_cron(): void {
+  \Drupal::service('cache_tags.invalidator')->invalidateTags(['knovara_home:clock']);
+}
+
+/**
+ * Returns field items only when field access permits it, keeping access metadata.
+ */
+function _knovara_home_field(FieldableEntityInterface $entity, string $name, CacheableMetadata $cache): ?FieldItemListInterface {
+  $cache->addCacheableDependency($entity);
+  if ($name === '' || !$entity->hasField($name)) {
+    return NULL;
+  }
+  $items = $entity->get($name);
+  $access = $items->access('view', NULL, TRUE);
+  $cache->addCacheableDependency($access);
+  $definition = $items->getFieldDefinition();
+  $cache->addCacheableDependency($definition);
+  $cache->addCacheableDependency($definition->getFieldStorageDefinition());
+  return $access->isAllowed() ? $items : NULL;
+}
+
+/**
+ * Returns a plain scalar for Twig's normal automatic escaping.
+ */
+function _knovara_home_text(FieldableEntityInterface $entity, string $name, CacheableMetadata $cache): string {
+  $items = _knovara_home_field($entity, $name, $cache);
+  return $items && !$items->isEmpty() ? (string) $items->first()->value : '';
+}
+
+/**
+ * Returns the allowed-values label for a list field, or its plain text value.
+ */
+function _knovara_home_label(FieldableEntityInterface $entity, string $name, CacheableMetadata $cache): string {
+  $items = _knovara_home_field($entity, $name, $cache);
+  if (!$items || $items->isEmpty()) {
+    return '';
+  }
+  $value = (string) $items->first()->value;
+  $definition = $items->getFieldDefinition();
+  if (str_starts_with($definition->getType(), 'list_')) {
+    $allowed = options_allowed_values($definition->getFieldStorageDefinition(), $entity);
+    return (string) ($allowed[$value] ?? $value);
+  }
+  return $value;
+}
+
+/**
+ * Resolves the current content-language translation and caches entity access.
+ */
+function _knovara_home_visible_node(NodeInterface $node, CacheableMetadata $cache): ?NodeInterface {
+  $node = \Drupal::service('entity.repository')->getTranslationFromContext($node);
+  $cache->addCacheableDependency($node);
+  $access = $node->access('view', NULL, TRUE);
+  $cache->addCacheableDependency($access);
+  return $node->isPublished() && $access->isAllowed() ? $node : NULL;
+}
+
+/**
+ * Base query for published content; Drupal's node grants apply.
+ */
+function _knovara_home_query(string $bundle) {
+  return \Drupal::entityTypeManager()->getStorage('node')->getQuery()
+    ->accessCheck(TRUE)->condition('type', $bundle)->condition('status', 1);
+}
+
+/**
+ * Checks a configurable Node field before adding a query condition.
+ */
+function _knovara_home_has_node_field(string $bundle, string $field): bool {
+  $definitions = \Drupal::service('entity_field.manager')->getFieldDefinitions('node', $bundle);
+  return isset($definitions[$field]);
+}
+
+/**
+ * Adds a workshop filter using either the event type or its title.
+ *
+ * Editors can keep a specific type like "Project planning" while using
+ * "Workshop" in the title. Both fields use the same configured keyword.
+ */
+function _knovara_home_add_workshop_condition($query, string $type, string $match): void {
+  $group = $query->orConditionGroup()
+    ->condition('title', $match, 'CONTAINS');
+  if (_knovara_home_has_node_field('event', $type)) {
+    $group->condition($type . '.value', $match, 'CONTAINS');
+  }
+  $query->condition($group);
+}
+
+/**
+ * Returns an upcoming-event query, optionally restricted to workshops.
+ */
+function _knovara_home_event_query(bool $workshops_only = FALSE) {
+  $config = \Drupal::config('knovara_home.settings');
+  $start = (string) $config->get('event_start_field');
+  if (!_knovara_home_has_node_field('event', $start)) {
+    return NULL;
+  }
+  $now = gmdate('Y-m-d\TH:i:s', \Drupal::time()->getRequestTime());
+  $query = _knovara_home_query('event')->condition($start . '.value', $now, '>=');
+  if ($workshops_only) {
+    $type = (string) $config->get('event_type_field');
+    $match = trim((string) $config->get('workshop_match'));
+    if ($match === '') {
+      return NULL;
+    }
+    _knovara_home_add_workshop_condition($query, $type, $match);
+  }
+  return $query->sort($start . '.value', 'ASC')->sort('nid', 'ASC');
+}
+
+/**
+ * Converts a UTC Date-and-time field into dates in the site's timezone.
+ */
+function _knovara_home_date(NodeInterface $node, CacheableMetadata $cache): array {
+  $config = \Drupal::config('system.date');
+  $cache->addCacheableDependency($config);
+  $name = (string) \Drupal::config('knovara_home.settings')->get('event_start_field');
+  $value = _knovara_home_text($node, $name, $cache);
+  if ($value === '') {
+    return [];
+  }
+  try {
+    $date = \DateTimeImmutable::createFromFormat('!Y-m-d\TH:i:s', $value, new \DateTimeZone('UTC'));
+    $errors = \DateTimeImmutable::getLastErrors();
+    if (!$date || ($errors && ($errors['warning_count'] || $errors['error_count']))) {
+      return [];
+    }
+    $date = $date->setTimezone(new \DateTimeZone($config->get('timezone.default') ?: 'UTC'));
+    return ['iso' => $date->format(DATE_ATOM), 'badge' => $date->format('j M'),
+      'short_date' => $date->format('j F'), 'date' => $date->format('j F Y'),
+      'time' => $date->format('g:i A T')];
+  }
+  catch (\Exception $exception) {
+    return [];
+  }
+}
+
+/**
+ * Generates a local URL, preserving language/base-path cache metadata.
+ */
+function _knovara_home_url(Url $url, CacheableMetadata $cache): string {
+  $generated = $url->toString(TRUE);
+  $cache->addCacheableDependency($generated);
+  return $generated->getGeneratedUrl();
+}
+
+/**
+ * Alters core Image formatter attributes for Drupal 10 and Drupal 11.
+ */
+function _knovara_home_image(array $build, bool $hero = FALSE): array {
+  foreach ($build as $key => &$item) {
+    if (is_int($key) && is_array($item) && ($item['#theme'] ?? '') === 'image_formatter') {
+      foreach (['#item_attributes', '#attributes'] as $attribute_key) {
+        $item[$attribute_key]['loading'] = $hero ? 'eager' : 'lazy';
+        $item[$attribute_key]['decoding'] = 'async';
+        $item[$attribute_key]['class'][] = $hero ? 'home-hero__image' : 'card__image';
+        if ($hero) {
+          $item[$attribute_key]['fetchpriority'] = 'high';
+        }
+      }
+    }
+  }
+  unset($item);
+  return $build;
+}
+
+/**
+ * Builds Home-specific card variables without changing other view modes.
+ */
+function _knovara_home_card_data(array &$variables, NodeInterface $node): void {
+  $config = \Drupal::config('knovara_home.settings');
+  $cache = (new CacheableMetadata())->addCacheableDependency($config)->addCacheableDependency($node);
+  $cache->addCacheContexts(['languages:language_content']);
+  $kind = $node->bundle();
+  $image_name = (string) $config->get($kind . '_image_field');
+  $image = _knovara_home_field($node, $image_name, $cache);
+  $card = ['image' => $image && !$image->isEmpty()
+    ? _knovara_home_image($variables['content'][$image_name] ?? []) : [],
+    'summary' => _knovara_home_text($node, (string) $config->get($kind . '_summary_field'), $cache)];
+  if ($kind === 'course') {
+    foreach (['level', 'duration', 'mode'] as $key) {
+      $card[$key] = _knovara_home_label($node, (string) $config->get('course_' . $key . '_field'), $cache);
+    }
+    $price = _knovara_home_text($node, (string) $config->get('course_price_field'), $cache);
+    $card['price'] = $price !== '' && is_numeric($price) ? $price : NULL;
+  }
+  else {
+    $card['mode'] = _knovara_home_label($node, (string) $config->get('event_mode_field'), $cache);
+    $card['date'] = _knovara_home_date($node, $cache);
+  }
+  $variables['home_card'] = $card;
+  $variables['home_card_cache'] = ['#markup' => ''];
+  $cache->applyTo($variables['home_card_cache']);
+}
+
+/**
+ * Supplies editable copy, referenced entities, and automatically computed data.
+ */
+function _knovara_home_page_data(array &$variables, NodeInterface $node): void {
+  $config = \Drupal::config('knovara_home.settings');
+  $cache = (new CacheableMetadata())->addCacheableDependency($node)->addCacheableDependency($config);
+  $cache->addCacheTags(['node_list', 'taxonomy_term_list', 'knovara_home:clock']);
+  $cache->addCacheContexts(['user.permissions', 'user.node_grants:view', 'languages:language_content']);
+  $cache->setCacheMaxAge(300);
+  $home = ['text' => [], 'links' => [], 'proof' => [], 'subjects' => [], 'featured' => [], 'events' => [], 'next_workshop' => NULL];
+  $text_keys = ['hero_eyebrow', 'hero_lead', 'visual_heading', 'visual_text',
+    'subject_eyebrow', 'subject_heading', 'featured_eyebrow', 'featured_heading',
+    'why_eyebrow', 'why_heading', 'why_text', 'events_eyebrow', 'events_heading',
+    'cta_eyebrow', 'cta_heading', 'cta_text'];
+  foreach ($text_keys as $key) {
+    $home['text'][$key] = _knovara_home_text($node, 'field_home_' . $key, $cache);
+  }
+  $link_classes = ['subject_link' => ['text-link'], 'featured_link' => ['text-link'],
+    'events_link' => ['text-link'], 'why_primary_link' => ['button'],
+    'why_secondary_link' => ['button', 'button--outline'], 'cta_link' => ['button', 'button--gold']];
+  foreach ($link_classes as $key => $classes) {
+    $items = _knovara_home_field($node, 'field_home_' . $key, $cache);
+    $home['links'][$key] = [];
+    if ($items && !$items->isEmpty()) {
+      $item = $items->first();
+      $home['links'][$key] = ['#type' => 'link', '#title' => $item->title ?: t('Learn more'),
+        '#url' => $item->getUrl(), '#attributes' => ['class' => $classes]];
+    }
+  }
+  $proof = _knovara_home_field($node, 'field_home_proof', $cache);
+  if ($proof) {
+    foreach ($proof as $item) {
+      if (trim((string) $item->value) !== '') {
+        $home['proof'][] = (string) $item->value;
+      }
+    }
+  }
+  foreach (['hero_image', 'why_image'] as $key) {
+    $items = _knovara_home_field($node, 'field_home_' . $key, $cache);
+    $home[$key] = $items && !$items->isEmpty()
+      ? _knovara_home_image($variables['content']['field_home_' . $key] ?? [], $key === 'hero_image') : [];
+  }
+  $home['search_action'] = _knovara_home_url(Url::fromUserInput('/courses'), $cache);
+  $home['search_parameter'] = $config->get('course_search_parameter');
+  $home['course_count'] = (int) _knovara_home_query('course')->count()->execute();
+  $home['faculty_count'] = (int) _knovara_home_query('faculty')->count()->execute();
+  $home['course_count_label'] = \Drupal::translation()->formatPlural($home['course_count'], '1 practical course', '@count practical courses');
+  $home['workshop_count'] = 0;
+  $type_field = (string) $config->get('event_type_field');
+  $match = trim((string) $config->get('workshop_match'));
+  if ($match !== '') {
+    $workshops = _knovara_home_query('event');
+    _knovara_home_add_workshop_condition($workshops, $type_field, $match);
+    $home['workshop_count'] = (int) $workshops->count()->execute();
+  }
+  $subjects = _knovara_home_field($node, 'field_home_subjects', $cache);
+  $category_field = (string) $config->get('course_category_field');
+  $seen = [];
+  if ($subjects && _knovara_home_has_node_field('course', $category_field)) {
+    foreach ($subjects->referencedEntities() as $term) {
+      $term = \Drupal::service('entity.repository')->getTranslationFromContext($term);
+      $cache->addCacheableDependency($term);
+      $access = $term->access('view', NULL, TRUE);
+      $cache->addCacheableDependency($access);
+      if (!$access->isAllowed() || !$term->isPublished() || isset($seen[$term->id()])) {
+        continue;
+      }
+      $seen[$term->id()] = TRUE;
+      $count = (int) _knovara_home_query('course')
+        ->condition($category_field . '.target_id', $term->id())->count()->execute();
+      $url = Url::fromUserInput('/courses', ['query' => [$config->get('course_category_parameter') => $term->id()]]);
+      $home['subjects'][] = ['name' => $term->label(), 'count' => $count, 'url' => _knovara_home_url($url, $cache)];
+    }
+  }
+  $home['track_count'] = count($home['subjects']);
+  $featured = _knovara_home_field($node, 'field_home_featured_courses', $cache);
+  $builder = \Drupal::entityTypeManager()->getViewBuilder('node');
+  $seen = [];
+  if ($featured) {
+    foreach ($featured->referencedEntities() as $course) {
+      if (!$course instanceof NodeInterface || $course->bundle() !== 'course') {
+        continue;
+      }
+      $course = _knovara_home_visible_node($course, $cache);
+      if ($course && !isset($seen[$course->id()])) {
+        $home['featured'][] = $builder->view($course, 'home_card');
+        $seen[$course->id()] = TRUE;
+      }
+      if (count($home['featured']) >= 3) {
+        break;
+      }
+    }
+  }
+  $storage = \Drupal::entityTypeManager()->getStorage('node');
+  $query = _knovara_home_event_query();
+  if ($query) {
+    $ids = $query->range(0, 2)->execute();
+    $events = $storage->loadMultiple($ids);
+    foreach ($ids as $id) {
+      $event = isset($events[$id]) ? _knovara_home_visible_node($events[$id], $cache) : NULL;
+      if ($event) {
+        $home['events'][] = $builder->view($event, 'home_card');
+      }
+    }
+  }
+  $query = _knovara_home_event_query(TRUE);
+  if ($query) {
+    $ids = $query->range(0, 1)->execute();
+    if ($ids) {
+      $loaded = $storage->load(reset($ids));
+      $event = $loaded instanceof NodeInterface ? _knovara_home_visible_node($loaded, $cache) : NULL;
+      if ($event) {
+        $date = _knovara_home_date($event, $cache);
+        if ($date) {
+          $title = trim(preg_replace('/\bworkshop\b/iu', '', $event->label()) ?? '');
+          $words = preg_split('/\s+/u', $title, -1, PREG_SPLIT_NO_EMPTY) ?: [];
+          $short_title = implode(' ', array_slice($words, 0, 2));
+          $home['next_workshop'] = ['title' => $event->label(),
+            'short_title' => $short_title ?: (string) t('Upcoming event'),
+            'date' => $date, 'url' => _knovara_home_url($event->toUrl(), $cache)];
+        }
+      }
+    }
+  }
+  $variables['home'] = $home;
+  $variables['home_cache'] = ['#markup' => ''];
+  $cache->applyTo($variables['home_cache']);
+}

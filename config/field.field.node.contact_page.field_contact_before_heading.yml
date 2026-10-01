@@ -1,0 +1,19 @@
+uuid: 585dcb34-f8f6-4b3d-82bd-3ae1b514abc3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_before_heading
+    - node.type.contact_page
+id: node.contact_page.field_contact_before_heading
+field_name: field_contact_before_heading
+entity_type: node
+bundle: contact_page
+label: 'Before you write heading'
+description: 'Heading for the additional guidance section.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

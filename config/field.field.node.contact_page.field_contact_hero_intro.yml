@@ -1,0 +1,19 @@
+uuid: 3cf43e0c-12ca-46d0-a421-fd63ec7e5852
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_hero_intro
+    - node.type.contact_page
+id: node.contact_page.field_contact_hero_intro
+field_name: field_contact_hero_intro
+entity_type: node
+bundle: contact_page
+label: 'Hero introduction'
+description: 'Brief introduction displayed below the page heading.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,10 @@
+uuid: bb21d508-8903-42b7-8e88-b5680bfd12c0
+langcode: en
+status: true
+dependencies: {  }
+id: about_stat
+label: 'About Stat'
+icon_uuid: null
+icon_default: null
+description: 'Adds one statistic and its label to the About page.'
+behavior_plugins: {  }

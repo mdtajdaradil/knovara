@@ -1,0 +1,23 @@
+uuid: 211a0207-9b3a-4b67-86c1-7647a6c7957c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_courses_link
+    - node.type.contact_page
+  module:
+    - link
+id: node.contact_page.field_contact_courses_link
+field_name: field_contact_courses_link
+entity_type: node
+bundle: contact_page
+label: 'Courses button'
+description: 'Link to the courses page; enter both the URL and button text.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 1
+field_type: link

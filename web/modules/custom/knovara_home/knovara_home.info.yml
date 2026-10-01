@@ -1,0 +1,12 @@
+name: Knovara Home
+type: module
+description: 'Supplies permission-aware Home data, selected Course cards, and upcoming Event cards.'
+package: Knovara
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:node
+  - drupal:taxonomy
+  - drupal:image
+  - drupal:link
+  - drupal:datetime
+  - drupal:options

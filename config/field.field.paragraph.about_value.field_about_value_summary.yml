@@ -1,0 +1,19 @@
+uuid: 3a3526fa-337b-4f95-a670-b822b534d8d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_about_value_summary
+    - paragraphs.paragraphs_type.about_value
+id: paragraph.about_value.field_about_value_summary
+field_name: field_about_value_summary
+entity_type: paragraph
+bundle: about_value
+label: 'Value summary'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

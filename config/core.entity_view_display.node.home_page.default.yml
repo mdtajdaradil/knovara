@@ -1,0 +1,93 @@
+uuid: e8567805-7c41-4ebf-8d34-6b2f73ca3672
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.home_page.body
+    - field.field.node.home_page.field_home_cta_eyebrow
+    - field.field.node.home_page.field_home_cta_heading
+    - field.field.node.home_page.field_home_cta_link
+    - field.field.node.home_page.field_home_cta_text
+    - field.field.node.home_page.field_home_events_eyebrow
+    - field.field.node.home_page.field_home_events_heading
+    - field.field.node.home_page.field_home_events_link
+    - field.field.node.home_page.field_home_featured_courses
+    - field.field.node.home_page.field_home_featured_eyebrow
+    - field.field.node.home_page.field_home_featured_heading
+    - field.field.node.home_page.field_home_featured_link
+    - field.field.node.home_page.field_home_hero_eyebrow
+    - field.field.node.home_page.field_home_hero_image
+    - field.field.node.home_page.field_home_hero_lead
+    - field.field.node.home_page.field_home_proof
+    - field.field.node.home_page.field_home_subject_eyebrow
+    - field.field.node.home_page.field_home_subject_heading
+    - field.field.node.home_page.field_home_subject_link
+    - field.field.node.home_page.field_home_subjects
+    - field.field.node.home_page.field_home_visual_heading
+    - field.field.node.home_page.field_home_visual_text
+    - field.field.node.home_page.field_home_why_eyebrow
+    - field.field.node.home_page.field_home_why_heading
+    - field.field.node.home_page.field_home_why_image
+    - field.field.node.home_page.field_home_why_primary_link
+    - field.field.node.home_page.field_home_why_secondary_link
+    - field.field.node.home_page.field_home_why_text
+    - image.style.home_why
+    - node.type.home_page
+  module:
+    - image
+    - user
+id: node.home_page.default
+targetEntityType: node
+bundle: home_page
+mode: default
+content:
+  field_home_hero_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: home_hero
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_home_why_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: home_why
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  body: true
+  field_home_cta_eyebrow: true
+  field_home_cta_heading: true
+  field_home_cta_link: true
+  field_home_cta_text: true
+  field_home_events_eyebrow: true
+  field_home_events_heading: true
+  field_home_events_link: true
+  field_home_featured_courses: true
+  field_home_featured_eyebrow: true
+  field_home_featured_heading: true
+  field_home_featured_link: true
+  field_home_hero_eyebrow: true
+  field_home_hero_lead: true
+  field_home_proof: true
+  field_home_subject_eyebrow: true
+  field_home_subject_heading: true
+  field_home_subject_link: true
+  field_home_subjects: true
+  field_home_visual_heading: true
+  field_home_visual_text: true
+  field_home_why_eyebrow: true
+  field_home_why_heading: true
+  field_home_why_primary_link: true
+  field_home_why_secondary_link: true
+  field_home_why_text: true
+  links: true

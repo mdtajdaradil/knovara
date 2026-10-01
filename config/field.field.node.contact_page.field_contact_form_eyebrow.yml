@@ -1,0 +1,19 @@
+uuid: 160652e2-8135-4c83-87db-3f163411c44b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_form_eyebrow
+    - node.type.contact_page
+id: node.contact_page.field_contact_form_eyebrow
+field_name: field_contact_form_eyebrow
+entity_type: node
+bundle: contact_page
+label: 'Form eyebrow'
+description: 'Short label displayed above the form heading.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

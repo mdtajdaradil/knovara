@@ -1,0 +1,88 @@
+uuid: 6002041e-4f2c-446a-b0ed-94fb486690bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.about_page.field_about_cta_eyebrow
+    - field.field.node.about_page.field_about_cta_link
+    - field.field.node.about_page.field_about_cta_text
+    - field.field.node.about_page.field_about_cta_title
+    - field.field.node.about_page.field_about_hero_eyebrow
+    - field.field.node.about_page.field_about_hero_lead
+    - field.field.node.about_page.field_about_hero_title
+    - field.field.node.about_page.field_about_intro_eyebrow
+    - field.field.node.about_page.field_about_intro_image
+    - field.field.node.about_page.field_about_intro_lead
+    - field.field.node.about_page.field_about_intro_title
+    - field.field.node.about_page.field_about_model_eyebrow
+    - field.field.node.about_page.field_about_model_title
+    - field.field.node.about_page.field_about_stats
+    - field.field.node.about_page.field_about_steps
+    - field.field.node.about_page.field_about_values
+    - field.field.node.about_page.field_about_values_eyebrow
+    - field.field.node.about_page.field_about_values_title
+    - node.type.about_page
+  module:
+    - entity_reference_revisions
+    - image
+    - user
+id: node.about_page.full
+targetEntityType: node
+bundle: about_page
+mode: full
+content:
+  field_about_intro_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_about_stats:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_about_steps:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_about_values:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  field_about_cta_eyebrow: true
+  field_about_cta_link: true
+  field_about_cta_text: true
+  field_about_cta_title: true
+  field_about_hero_eyebrow: true
+  field_about_hero_lead: true
+  field_about_hero_title: true
+  field_about_intro_eyebrow: true
+  field_about_intro_lead: true
+  field_about_intro_title: true
+  field_about_model_eyebrow: true
+  field_about_model_title: true
+  field_about_values_eyebrow: true
+  field_about_values_title: true
+  links: true

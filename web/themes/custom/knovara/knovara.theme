@@ -37,6 +37,34 @@ function knovara_preprocess_page(array &$variables): void {
   // Events listing View page.
   $variables['is_events_listing'] =
     $route_name === 'view.event_directory.page_1';
+
+  // Resources listing View page.
+  $variables['is_resources_listing'] =
+    $route_name === 'view.resources.page_1';
+
+  // Resource canonical detail page.
+  $variables['is_resources_detail'] =
+    $route_name === 'entity.node.canonical'
+    && $node instanceof \Drupal\node\NodeInterface
+    && $node->bundle() === 'resource';
+
+  // About canonical page.
+  $variables['is_about_page'] =
+    $route_name === 'entity.node.canonical'
+    && $node instanceof \Drupal\node\NodeInterface
+    && $node->bundle() === 'about_page';
+
+  // Contact canonical page.
+  $variables['is_contact_page'] =
+    $route_name === 'entity.node.canonical'
+    && $node instanceof \Drupal\node\NodeInterface
+    && $node->bundle() === 'contact_page';
+
+  // Home canonical page; its node template renders the full-width sections.
+  $variables['is_home_page'] =
+    $route_name === 'entity.node.canonical'
+    && $node instanceof \Drupal\node\NodeInterface
+    && $node->bundle() === 'home_page';
 }
 
 /**

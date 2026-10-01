@@ -1,0 +1,23 @@
+uuid: 224be1dd-6065-45fe-a098-09e916fa54ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_events_link
+    - node.type.home_page
+  module:
+    - link
+id: node.home_page.field_home_events_link
+field_name: field_home_events_link
+entity_type: node
+bundle: home_page
+label: 'Events link'
+description: 'Enter the events listing URL and the visible link text.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

@@ -1,0 +1,11 @@
+uuid: c587e7fb-a452-4447-954a-96a158373b2d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.home_card
+label: 'Home card'
+description: 'Displays Course and Event content as cards on the homepage.'
+targetEntityType: node
+cache: true

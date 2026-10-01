@@ -1,0 +1,23 @@
+uuid: 126b3c83-c550-444f-b9c0-ac5cd8c9c941
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_why_primary_link
+    - node.type.home_page
+  module:
+    - link
+id: node.home_page.field_home_why_primary_link
+field_name: field_home_why_primary_link
+entity_type: node
+bundle: home_page
+label: 'Why primary button'
+description: 'Enter the destination URL and button text for the primary button, such as the About page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

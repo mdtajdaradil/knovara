@@ -1,0 +1,19 @@
+uuid: fcad5d4d-77de-4557-9d9b-d3849d799a57
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_about_metric
+    - paragraphs.paragraphs_type.about_stat
+id: paragraph.about_stat.field_about_metric
+field_name: field_about_metric
+entity_type: paragraph
+bundle: about_stat
+label: Metric
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

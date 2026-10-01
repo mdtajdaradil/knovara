@@ -1,0 +1,25 @@
+uuid: afd17e2a-315f-4154-bf1c-dd933a11cb65
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_webform
+    - node.type.contact_page
+  module:
+    - webform
+id: node.contact_page.field_contact_webform
+field_name: field_contact_webform
+entity_type: node
+bundle: contact_page
+label: 'Contact form'
+description: 'Select the Knovara Contact webform.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform

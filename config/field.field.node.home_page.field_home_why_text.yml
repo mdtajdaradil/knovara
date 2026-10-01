@@ -1,0 +1,19 @@
+uuid: ad62e7be-0cd1-4378-8a46-462366a6e0f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_why_text
+    - node.type.home_page
+id: node.home_page.field_home_why_text
+field_name: field_home_why_text
+entity_type: node
+bundle: home_page
+label: 'Why description'
+description: 'Briefly explain Knovara’s learning approach. Use plain text.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

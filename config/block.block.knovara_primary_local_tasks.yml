@@ -2,6 +2,8 @@ uuid: 7137e6c0-b1b2-4535-a8e3-7923f4b5242f
 langcode: en
 status: true
 dependencies:
+  module:
+    - system
   theme:
     - knovara
 _core:
@@ -19,4 +21,8 @@ settings:
   provider: core
   primary: true
   secondary: false
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: ''

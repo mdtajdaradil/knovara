@@ -1,0 +1,78 @@
+uuid: cdee23a9-3dd5-488f-8f69-401c1d3b6db5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.home_card
+    - field.field.node.course.body
+    - field.field.node.course.field_capstone_project
+    - field.field.node.course.field_course_benefits
+    - field.field.node.course.field_course_category
+    - field.field.node.course.field_course_certificate
+    - field.field.node.course.field_course_code
+    - field.field.node.course.field_course_curriculum
+    - field.field.node.course.field_course_duration
+    - field.field.node.course.field_course_enroll_link
+    - field.field.node.course.field_course_image
+    - field.field.node.course.field_course_instructor
+    - field.field.node.course.field_course_lessons
+    - field.field.node.course.field_course_level
+    - field.field.node.course.field_course_overview_heading
+    - field.field.node.course.field_course_payment_note
+    - field.field.node.course.field_course_price
+    - field.field.node.course.field_course_projects
+    - field.field.node.course.field_course_requirements
+    - field.field.node.course.field_course_start_date
+    - field.field.node.course.field_course_summary
+    - field.field.node.course.field_delivery_mode
+    - field.field.node.course.field_enrollment_status
+    - field.field.node.course.field_featured_course
+    - field.field.node.course.field_learning_outcomes
+    - field.field.node.course.field_learning_type
+    - image.style.home_course
+    - node.type.course
+  module:
+    - image
+    - user
+id: node.course.home_card
+targetEntityType: node
+bundle: course
+mode: home_card
+content:
+  field_course_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: home_course
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_capstone_project: true
+  field_course_benefits: true
+  field_course_category: true
+  field_course_certificate: true
+  field_course_code: true
+  field_course_curriculum: true
+  field_course_duration: true
+  field_course_enroll_link: true
+  field_course_instructor: true
+  field_course_lessons: true
+  field_course_level: true
+  field_course_overview_heading: true
+  field_course_payment_note: true
+  field_course_price: true
+  field_course_projects: true
+  field_course_requirements: true
+  field_course_start_date: true
+  field_course_summary: true
+  field_delivery_mode: true
+  field_enrollment_status: true
+  field_featured_course: true
+  field_learning_outcomes: true
+  field_learning_type: true
+  links: true

@@ -1,0 +1,10 @@
+uuid: b4ed2770-de3c-45ba-a50d-5e81596529b0
+langcode: en
+status: true
+dependencies: {  }
+id: about_value
+label: 'About Value'
+icon_uuid: null
+icon_default: null
+description: 'Adds one principle to the About page’s values section.'
+behavior_plugins: {  }

@@ -1,0 +1,19 @@
+uuid: d18c92b2-d41d-4633-9f52-6fa0d7ca5c1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_subject_heading
+    - node.type.home_page
+id: node.home_page.field_home_subject_heading
+field_name: field_home_subject_heading
+entity_type: node
+bundle: home_page
+label: 'Subject heading'
+description: 'Enter the main heading for the subjects section.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

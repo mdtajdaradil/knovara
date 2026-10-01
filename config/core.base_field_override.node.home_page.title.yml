@@ -1,0 +1,18 @@
+uuid: 2fcf2d5f-6797-461a-96bb-011bf6b6c2ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.home_page
+id: node.home_page.title
+field_name: title
+entity_type: node
+bundle: home_page
+label: 'Hero heading'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

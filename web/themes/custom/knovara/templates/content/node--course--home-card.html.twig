@@ -1,0 +1,24 @@
+{# Only Course -> Home card; Full content and Teaser keep their existing templates. #}
+{{ home_card_cache }}
+<article{{ attributes.addClass('card', 'home-course' ) }}>
+  {% if home_card.image %}
+  <div class="card__art home-course__media">
+    {{ home_card.image }}
+    {% if home_card.level %}<span class="badge badge--gold">{{ home_card.level }}</span>{% endif %}
+  </div>
+  {% endif %}
+  <div class="card__body">
+    {% if not home_card.image and home_card.level %}<div class="cluster"><span class="badge badge--gold">{{
+        home_card.level }}</span></div>{% endif %}
+    {{ title_prefix }}
+    <h3{{ title_attributes }}><a href="{{ url }}">{{ label }}</a></h3>
+      {{ title_suffix }}
+      {% if home_card.summary %}<p>{{ home_card.summary }}</p>{% endif %}
+      <div class="card__meta">
+        <span>{{ home_card.duration }}{% if home_card.duration and home_card.mode %} · {% endif %}{{ home_card.mode
+          }}</span>
+        {% if home_card.price is not null %}<strong>₹{{ home_card.price|number_format(0, '.', ',') }}</strong>{% endif
+        %}
+      </div>
+  </div>
+  </article>

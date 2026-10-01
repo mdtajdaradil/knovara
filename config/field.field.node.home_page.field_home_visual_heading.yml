@@ -1,0 +1,19 @@
+uuid: c2738eb1-cd23-48d9-b46e-f191a2a4848a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_visual_heading
+    - node.type.home_page
+id: node.home_page.field_home_visual_heading
+field_name: field_home_visual_heading
+entity_type: node
+bundle: home_page
+label: 'Visual heading'
+description: 'Enter the heading displayed in the caption below the hero image.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

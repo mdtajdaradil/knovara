@@ -1,0 +1,19 @@
+uuid: 3ea9b51d-cc3e-4903-91eb-6661d6594e88
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_before_text
+    - node.type.contact_page
+id: node.contact_page.field_contact_before_text
+field_name: field_contact_before_text
+entity_type: node
+bundle: contact_page
+label: 'Before you write text'
+description: 'Short guidance for visitors before they submit the form.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

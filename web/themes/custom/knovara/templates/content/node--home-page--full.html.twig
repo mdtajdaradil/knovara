@@ -1,0 +1,144 @@
+{# Home canonical content. Header, footer and main belong to page.html.twig. #}
+{{ attach_library('knovara/home') }}
+{{ home_cache }}
+<article{{ attributes.addClass('page-home', 'home-page-node' ) }}>
+  <section class="home-hero" aria-labelledby="home-heading-{{ node.id }}">
+    <div class="shell home-hero__grid{% if not home.hero_image %} home-grid--single{% endif %}">
+      <div class="home-hero__copy">
+        {% if home.text.hero_eyebrow %}<span class="eyebrow">{{ home.text.hero_eyebrow }}</span>{% endif %}
+        {{ title_prefix }}
+        <h1{{ title_attributes.setAttribute('id', 'home-heading-' ~ node.id) }}>{{ label }}</h1>
+          {{ title_suffix }}
+          {% if home.text.hero_lead %}<p class="hero__lead">{{ home.text.hero_lead }}</p>{% endif %}
+          <form class="search-box" action="{{ home.search_action }}" method="get" role="search">
+            <label>
+              <span aria-hidden="true">⌕</span>
+              <span class="visually-hidden">{{ 'Search courses'|t }}</span>
+              <input name="{{ home.search_parameter }}" type="search"
+                placeholder="{{ 'What do you want to learn?'|t }}">
+            </label>
+            <button class="button button--teal" type="submit">{{ 'Search'|t }}</button>
+          </form>
+          {% if home.proof %}
+          <div class="proof-list">{% for item in home.proof %}<span>{{ item }}</span>{% endfor %}</div>
+          {% endif %}
+      </div>
+      <div class="home-hero__visual">
+        {% if home.hero_image %}
+        <figure class="home-hero__figure">
+          {{ home.hero_image }}
+          {% if home.text.visual_heading or home.text.visual_text %}
+          <figcaption class="home-hero__caption">
+            <span class="home-hero__symbol" aria-hidden="true">&lt;/&gt;</span>
+            <div>
+              {% if home.text.visual_heading %}<strong>{{ home.text.visual_heading }}</strong>{% endif %}
+              {% if home.text.visual_text %}<p>{{ home.text.visual_text }}</p>{% endif %}
+            </div>
+          </figcaption>
+          {% endif %}
+        </figure>
+        {% endif %}
+        <div class="home-hero__notes">
+          <div><strong>{{ home.course_count_label }}</strong><span>{{ 'Built around outcomes'|t }}</span></div>
+          {% if home.next_workshop %}
+          <div>
+            <strong>{{ 'Next workshop'|t }}</strong>
+            <span><a class="home-workshop-link" href="{{ home.next_workshop.url }}"
+                aria-label="{{ home.next_workshop.title }} · {{ home.next_workshop.date.date }}">{{
+                home.next_workshop.short_title }} · <time datetime="{{ home.next_workshop.date.iso }}">{{
+                  home.next_workshop.date.short_date }}</time></a></span>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% if home.subjects %}
+  <section class="section home-subjects">
+    <div class="shell">
+      <div class="section-head">
+        <div>
+          {% if home.text.subject_eyebrow %}<span class="eyebrow">{{ home.text.subject_eyebrow }}</span>{% endif %}
+          {% if home.text.subject_heading %}<h2>{{ home.text.subject_heading }}</h2>{% endif %}
+        </div>
+        {{ home.links.subject_link }}
+      </div>
+      <div class="grid grid--4">
+        {% for subject in home.subjects %}
+        <a class="stat-card" href="{{ subject.url }}"><strong>{{ subject.count }}</strong><span>{{ '@subject
+            courses'|t({'@subject': subject.name}) }}</span></a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if home.featured %}
+  <section class="section section--soft home-featured">
+    <div class="shell">
+      <div class="section-head">
+        <div>
+          {% if home.text.featured_eyebrow %}<span class="eyebrow">{{ home.text.featured_eyebrow }}</span>{% endif %}
+          {% if home.text.featured_heading %}<h2>{{ home.text.featured_heading }}</h2>{% endif %}
+        </div>
+        {{ home.links.featured_link }}
+      </div>
+      <div class="grid grid--3">{% for card in home.featured %}{{ card }}{% endfor %}</div>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="section home-why">
+    <div class="shell">
+      <div class="home-why__grid{% if not home.why_image %} home-grid--single{% endif %}">
+        <div class="home-why__copy">
+          {% if home.text.why_eyebrow %}<span class="eyebrow">{{ home.text.why_eyebrow }}</span>{% endif %}
+          {% if home.text.why_heading %}<h2>{{ home.text.why_heading }}</h2>{% endif %}
+          {% if home.text.why_text %}<p class="lead">{{ home.text.why_text }}</p>{% endif %}
+          {% if home.links.why_primary_link or home.links.why_secondary_link %}
+          <div class="actions home-why__actions">{{ home.links.why_primary_link }}{{ home.links.why_secondary_link }}
+          </div>
+          {% endif %}
+        </div>
+        {% if home.why_image %}<figure class="home-why__figure">{{ home.why_image }}</figure>{% endif %}
+      </div>
+      <div class="home-metrics">
+        <div class="stat-card"><strong>{{ home.course_count }}</strong><span>{{ 'Practical courses'|t }}</span></div>
+        <div class="stat-card"><strong>{{ home.faculty_count }}</strong><span>{{ 'Expert faculty'|t }}</span></div>
+        <div class="stat-card"><strong>{{ home.workshop_count }}</strong><span>{{ 'Live workshops'|t }}</span></div>
+        <div class="stat-card"><strong>{{ home.track_count }}</strong><span>{{ 'Learning tracks'|t }}</span></div>
+      </div>
+    </div>
+  </section>
+
+  {% if home.events %}
+  <section class="section section--soft home-events">
+    <div class="shell">
+      <div class="section-head">
+        <div>
+          {% if home.text.events_eyebrow %}<span class="eyebrow">{{ home.text.events_eyebrow }}</span>{% endif %}
+          {% if home.text.events_heading %}<h2>{{ home.text.events_heading }}</h2>{% endif %}
+        </div>
+        {{ home.links.events_link }}
+      </div>
+      <div class="grid grid--2">{% for card in home.events %}{{ card }}{% endfor %}</div>
+    </div>
+  </section>
+  {% endif %}
+
+  {% if home.text.cta_heading or home.text.cta_text or home.links.cta_link %}
+  <section class="section home-guidance">
+    <div class="shell">
+      <div class="cta">
+        <div>
+          {% if home.text.cta_eyebrow %}<span class="eyebrow">{{ home.text.cta_eyebrow }}</span>{% endif %}
+          {% if home.text.cta_heading %}<h2>{{ home.text.cta_heading }}</h2>{% endif %}
+          {% if home.text.cta_text %}<p>{{ home.text.cta_text }}</p>{% endif %}
+        </div>
+        {{ home.links.cta_link }}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  </article>

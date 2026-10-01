@@ -1,0 +1,15 @@
+uuid: 4e3397f3-4468-4413-9958-b1da7c71bb9f
+langcode: en
+status: true
+dependencies: {  }
+name: home_course
+label: 'Home course'
+effects:
+  faef98e8-8405-4c06-90d8-d0f4fe5a2710:
+    uuid: faef98e8-8405-4c06-90d8-d0f4fe5a2710
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 800
+      height: 500
+      anchor: center-center

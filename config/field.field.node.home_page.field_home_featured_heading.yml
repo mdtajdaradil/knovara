@@ -1,0 +1,19 @@
+uuid: 97489f10-6983-48dc-a60f-9ab480083ec4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_featured_heading
+    - node.type.home_page
+id: node.home_page.field_home_featured_heading
+field_name: field_home_featured_heading
+entity_type: node
+bundle: home_page
+label: 'Featured heading'
+description: 'Enter the main heading for the featured courses section.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

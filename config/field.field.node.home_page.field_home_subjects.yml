@@ -1,0 +1,29 @@
+uuid: e4a581cb-4960-4848-bced-5d9d62292d33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_subjects
+    - node.type.home_page
+    - taxonomy.vocabulary.course_categories
+id: node.home_page.field_home_subjects
+field_name: field_home_subjects
+entity_type: node
+bundle: home_page
+label: Subjects
+description: 'Select up to four existing Course Categories in the order they should appear on the homepage.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      course_categories: course_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

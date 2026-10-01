@@ -1,0 +1,49 @@
+knovara_home.settings:
+  type: config_object
+  label: Knovara Home settings
+  mapping:
+    course_category_field:
+      type: string
+      label: Course category field
+    course_image_field:
+      type: string
+      label: Course image field
+    course_summary_field:
+      type: string
+      label: Course summary field
+    course_level_field:
+      type: string
+      label: Course level field
+    course_duration_field:
+      type: string
+      label: Course duration field
+    course_mode_field:
+      type: string
+      label: Course mode field
+    course_price_field:
+      type: string
+      label: Course price field
+    event_image_field:
+      type: string
+      label: Event image field
+    event_summary_field:
+      type: string
+      label: Event summary field
+    event_start_field:
+      type: string
+      label: Event start field
+    event_mode_field:
+      type: string
+      label: Event mode field
+    event_type_field:
+      type: string
+      label: Event type field
+    workshop_match:
+      type: string
+      label: Workshop match
+    course_search_parameter:
+      type: string
+      label: Course search parameter
+    course_category_parameter:
+      type: string
+      label: Course category parameter

@@ -1,0 +1,32 @@
+uuid: a3defa28-0cc7-4787-8a43-295813efa6b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.about_stat.field_about_metric
+    - field.field.paragraph.about_stat.field_about_metric_label
+    - paragraphs.paragraphs_type.about_stat
+id: paragraph.about_stat.default
+targetEntityType: paragraph
+bundle: about_stat
+mode: default
+content:
+  field_about_metric:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_about_metric_label:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

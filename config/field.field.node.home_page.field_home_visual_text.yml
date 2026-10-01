@@ -1,0 +1,19 @@
+uuid: ad010b7b-6ce9-4d9f-8cdf-032e9d93f853
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_visual_text
+    - node.type.home_page
+id: node.home_page.field_home_visual_text
+field_name: field_home_visual_text
+entity_type: node
+bundle: home_page
+label: 'Visual description'
+description: 'Enter a short supporting sentence for the hero image caption.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

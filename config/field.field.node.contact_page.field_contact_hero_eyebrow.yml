@@ -1,0 +1,19 @@
+uuid: 4558f8a0-205b-4f0c-85ce-0545c422a847
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_hero_eyebrow
+    - node.type.contact_page
+id: node.contact_page.field_contact_hero_eyebrow
+field_name: field_contact_hero_eyebrow
+entity_type: node
+bundle: contact_page
+label: 'Hero eyebrow'
+description: 'Short label displayed above the page heading.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

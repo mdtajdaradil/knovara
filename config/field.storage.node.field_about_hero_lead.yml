@@ -1,0 +1,19 @@
+uuid: 69a3f0d5-b48e-47b4-928d-ef7eb096fbf9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_about_hero_lead
+field_name: field_about_hero_lead
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

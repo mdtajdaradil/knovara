@@ -1,0 +1,19 @@
+uuid: 2504fade-cc54-484e-b264-b18e4f6bccdd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_hours
+    - node.type.contact_page
+id: node.contact_page.field_contact_hours
+field_name: field_contact_hours
+entity_type: node
+bundle: contact_page
+label: 'Support hours'
+description: 'Enter the actual days, hours and time zone when support is available.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

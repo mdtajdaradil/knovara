@@ -1,0 +1,23 @@
+uuid: 1e4193d6-fa9d-4d3c-bafc-57c1dbc69c98
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_cta_link
+    - node.type.home_page
+  module:
+    - link
+id: node.home_page.field_home_cta_link
+field_name: field_home_cta_link
+entity_type: node
+bundle: home_page
+label: 'Guidance button'
+description: 'Enter the Contact page URL and the visible button text.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

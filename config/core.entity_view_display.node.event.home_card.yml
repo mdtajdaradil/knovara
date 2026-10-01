@@ -1,0 +1,68 @@
+uuid: 9fdcaa28-1a90-4128-8903-c2112fff53f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.home_card
+    - field.field.node.event.body
+    - field.field.node.event.field_card_summary
+    - field.field.node.event.field_event_agenda
+    - field.field.node.event.field_event_details_heading
+    - field.field.node.event.field_event_end
+    - field.field.node.event.field_event_facilitator
+    - field.field.node.event.field_event_format
+    - field.field.node.event.field_event_image
+    - field.field.node.event.field_event_lead
+    - field.field.node.event.field_event_level
+    - field.field.node.event.field_event_mode
+    - field.field.node.event.field_event_price
+    - field.field.node.event.field_event_seats_left
+    - field.field.node.event.field_event_start
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_facilitator_specialty
+    - field.field.node.event.field_registration_note
+    - field.field.node.event.field_registration_status
+    - field.field.node.event.field_registration_summary
+    - field.field.node.event.field_what_to_bring
+    - image.style.home_event
+    - node.type.event
+  module:
+    - image
+    - user
+id: node.event.home_card
+targetEntityType: node
+bundle: event
+mode: home_card
+content:
+  field_event_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: home_event
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_card_summary: true
+  field_event_agenda: true
+  field_event_details_heading: true
+  field_event_end: true
+  field_event_facilitator: true
+  field_event_format: true
+  field_event_lead: true
+  field_event_level: true
+  field_event_mode: true
+  field_event_price: true
+  field_event_seats_left: true
+  field_event_start: true
+  field_event_type: true
+  field_facilitator_specialty: true
+  field_registration_note: true
+  field_registration_status: true
+  field_registration_summary: true
+  field_what_to_bring: true
+  links: true

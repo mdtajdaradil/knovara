@@ -11,29 +11,29 @@ Course node's **Full content** view mode and
 
 ## What becomes dynamic
 
-| UI area | Drupal source |
-| --- | --- |
-| Breadcrumb title and H1 | Course node title |
-| Hero eyebrow | `field_course_category` + `field_course_level` |
-| Hero lead | `field_course_summary` |
-| Duration | `field_course_duration` |
-| Lesson count | `field_course_lessons` |
-| Project count | `field_course_projects` |
-| Certificate text | `field_course_certificate` |
-| Overview H2 | `field_course_overview_heading` |
-| Overview copy | `body` |
-| What you will learn | `field_learning_outcomes` |
-| Curriculum accordions | `field_course_curriculum` Paragraphs |
-| Accordion title | `field_module_title` |
-| Accordion panel | `field_module_summary` |
-| Capstone | `field_capstone_project` |
-| Requirements | `field_course_requirements` |
-| Enrollment badge | `field_enrollment_status` |
-| Price | `field_course_price` |
-| Payment note | `field_course_payment_note` |
-| Enroll button URL/title | `field_course_enroll_link` |
-| Start date | `field_course_start_date` |
-| Rail checklist | `field_course_benefits` |
+| UI area                         | Drupal source                                     |
+| ------------------------------- | ------------------------------------------------- |
+| Breadcrumb title and H1         | Course node title                                 |
+| Hero eyebrow                    | `field_course_category` + `field_course_level`    |
+| Hero lead                       | `field_course_summary`                            |
+| Duration                        | `field_course_duration`                           |
+| Lesson count                    | `field_course_lessons`                            |
+| Project count                   | `field_course_projects`                           |
+| Certificate text                | `field_course_certificate`                        |
+| Overview H2                     | `field_course_overview_heading`                   |
+| Overview copy                   | `body`                                            |
+| What you will learn             | `field_learning_outcomes`                         |
+| Curriculum accordions           | `field_course_curriculum` Paragraphs              |
+| Accordion title                 | `field_module_title`                              |
+| Accordion panel                 | `field_module_summary`                            |
+| Capstone                        | `field_capstone_project`                          |
+| Requirements                    | `field_course_requirements`                       |
+| Enrollment badge                | `field_enrollment_status`                         |
+| Price                           | `field_course_price`                              |
+| Payment note                    | `field_course_payment_note`                       |
+| Enroll button URL/title         | `field_course_enroll_link`                        |
+| Start date                      | `field_course_start_date`                         |
+| Rail checklist                  | `field_course_benefits`                           |
 | Instructor photo/name/role/link | Referenced `field_course_instructor` Faculty node |
 
 ## Files to copy
@@ -44,13 +44,13 @@ Theme root in this guide:
 web/themes/custom/knovara
 ```
 
-| Package file | Destination |
-| --- | --- |
-| `templates/content/node--course--full.html.twig` | `templates/content/node--course--full.html.twig` |
-| `templates/paragraphs/paragraph--course-module.html.twig` | `templates/paragraphs/paragraph--course-module.html.twig` |
-| `templates/layout/page.html.twig` | Replace the current corrected `templates/layout/page.html.twig` |
-| `css/course-detail.css` | `css/course-detail.css` |
-| `js/course-detail.js` | `js/course-detail.js` |
+| Package file                                              | Destination                                                     |
+| --------------------------------------------------------- | --------------------------------------------------------------- |
+| `templates/content/node--course--full.html.twig`          | `templates/content/node--course--full.html.twig`                |
+| `templates/paragraphs/paragraph--course-module.html.twig` | `templates/paragraphs/paragraph--course-module.html.twig`       |
+| `templates/layout/page.html.twig`                         | Replace the current corrected `templates/layout/page.html.twig` |
+| `css/course-detail.css`                                   | `css/course-detail.css`                                         |
+| `js/course-detail.js`                                     | `js/course-detail.js`                                           |
 
 The supplied page template is based on the corrected `/courses` listing page.
 Its only Course-detail change is adding `is_course_detail` to
@@ -156,13 +156,13 @@ Go to:
 
 Keep these five formatted/rendered fields enabled:
 
-| Field | Label | Formatter/settings |
-| --- | --- | --- |
-| Course Description | Hidden | Default; do not use Trimmed |
-| Learning Outcomes | Hidden | Default |
-| Course Curriculum | Hidden | Rendered entity; view mode Default |
-| Capstone Project | Hidden | Default |
-| Course Requirements | Hidden | Default |
+| Field               | Label  | Formatter/settings                 |
+| ------------------- | ------ | ---------------------------------- |
+| Course Description  | Hidden | Default; do not use Trimmed        |
+| Learning Outcomes   | Hidden | Default                            |
+| Course Curriculum   | Hidden | Rendered entity; view mode Default |
+| Capstone Project    | Hidden | Default                            |
+| Course Requirements | Hidden | Default                            |
 
 Move other Course fields to **Disabled** in Full content. The custom template
 reads their safe scalar/entity values directly and places them in the original
@@ -181,10 +181,10 @@ Go to:
 
 Use these settings:
 
-| Field | Status | Label | Formatter |
-| --- | --- | --- | --- |
-| Module Title | Disabled | — | The Paragraph Twig prints it in the button |
-| Module Summary | Enabled | Hidden | Default |
+| Field          | Status   | Label  | Formatter                                  |
+| -------------- | -------- | ------ | ------------------------------------------ |
+| Module Title   | Disabled | —      | The Paragraph Twig prints it in the button |
+| Module Summary | Enabled  | Hidden | Default                                    |
 
 Save the display.
 
@@ -221,16 +221,16 @@ Then hard-refresh one Course node URL with `Ctrl + Shift + R`.
 Open a published Course node and run this in the browser console:
 
 ```js
-const detail = document.querySelector('.course-detail-node');
-const modules = [...document.querySelectorAll('[data-accordion-trigger]')];
+const detail = document.querySelector(".course-detail-node");
+const modules = [...document.querySelectorAll("[data-accordion-trigger]")];
 
 console.log({
   detailFound: Boolean(detail),
-  heroes: document.querySelectorAll('main .page-hero').length,
-  rails: detail?.querySelectorAll('.detail-rail').length ?? 0,
+  heroes: document.querySelectorAll("main .page-hero").length,
+  rails: detail?.querySelectorAll(".detail-rail").length ?? 0,
   modules: modules.length,
   openModules: modules.filter(
-    (button) => button.getAttribute('aria-expanded') === 'true'
+    (button) => button.getAttribute("aria-expanded") === "true"
   ).length,
   courseDetailLibrary: Boolean(Drupal?.behaviors?.knovaraCourseDetail),
 });
@@ -260,11 +260,13 @@ Run:
 
 ```js
 console.log({
-  detail: document.querySelectorAll('.course-detail-node').length,
-  heroes: document.querySelectorAll('main .page-hero').length,
+  detail: document.querySelectorAll(".course-detail-node").length,
+  heroes: document.querySelectorAll("main .page-hero").length,
   outerMainContent: Boolean(
-    document.querySelector('main > section > .shell > .main-content .course-detail-node')
-  )
+    document.querySelector(
+      "main > section > .shell > .main-content .course-detail-node"
+    )
+  ),
 });
 ```
 

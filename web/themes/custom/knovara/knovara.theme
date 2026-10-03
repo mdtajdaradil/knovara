@@ -65,6 +65,10 @@ function knovara_preprocess_page(array &$variables): void {
     $route_name === 'entity.node.canonical'
     && $node instanceof \Drupal\node\NodeInterface
     && $node->bundle() === 'home_page';
+
+  // Search View page; its template renders its own hero and breadcrumb.
+  $variables['is_search_page'] =
+    $route_name === 'view.knovara_search.page_1';
 }
 
 /**
@@ -211,3 +215,69 @@ function knovara_preprocess_views_exposed_form(array &$variables): void {
   }
 }
 
+
+// Append this new function at the END of knovara.theme, outside other functions.
+/**
+ * Prepares category radios and result counts for the public search View.
+ */
+function knovara_preprocess_views_view(array &$variables): void {
+  $view = $variables['view'] ?? NULL;
+  if (!$view || $view->id() !== 'knovara_search' || $view->current_display !== 'page_1') {
+    return;
+  }
+
+  $input = $view->getExposedInput();
+  $keyword = $input['search_api_fulltext'] ?? '';
+  $keyword = is_string($keyword) ? trim($keyword) : '';
+  $variables['knovara_search_keyword'] = $keyword;
+  if ($view->total_rows !== NULL) {
+    $variables['knovara_search_total'] = (int) $view->total_rows;
+  }
+  $selected = $input['content_type'] ?? '';
+  $selected = is_string($selected) ? $selected : '';
+  $categories = [
+    'All' => t('All results'),
+    'course' => t('Courses'),
+    'faculty' => t('Faculty'),
+    'event' => t('Events'),
+    'resource' => t('Resources'),
+  ];
+  if (!isset($categories[$selected])) {
+    $selected = 'All';
+  }
+  $sort = $input['sort_by'] ?? 'search_api_relevance';
+  $variables['knovara_search_sort'] = in_array($sort, ['search_api_relevance', 'title_sort'], TRUE)
+    ? $sort
+    : 'search_api_relevance';
+
+  $variables['knovara_search_links'] = [];
+  foreach ($categories as $value => $label) {
+    // Re-run the same Search API View with each category selected. This keeps
+    // the badges accurate for the current keyword and the current user's access.
+    $count = 0;
+    $counter = \Drupal\views\Views::getView('knovara_search');
+    if ($counter && $counter->setDisplay('page_1') && $counter->access('page_1')) {
+      $counter->setExposedInput([
+        'search_api_fulltext' => $keyword,
+        'content_type' => $value,
+      ]);
+      $counter->setItemsPerPage(1);
+      $counter->get_total_rows = TRUE;
+      $counter->execute();
+      $count = (int) ($counter->total_rows ?? 0);
+    }
+
+    $variables['knovara_search_links'][] = [
+      'label' => $label,
+      'value' => $value,
+      'count' => $count,
+      'active' => $selected === $value,
+    ];
+  }
+
+  // The count Views share this display's pager ID. Their 1-item pagers replace
+  // the public pager in Drupal's pager manager, so restore the main View here.
+  if ($view->usePager()) {
+    $view->getPager()->updatePageInfo();
+  }
+}

@@ -1,0 +1,91 @@
+{# Search API View: Knovara Search, page_1. Uses Drupal's exposed form and rows. #}
+{{ attach_library('knovara/search') }}
+
+<div{{ attributes.addClass('kn-search-page') }}>
+    {{ title_prefix }}{{ title_suffix }}
+    <section class="search-hero" aria-labelledby="search-page-title">
+        <div class="shell">
+            <nav class="breadcrumb" aria-label="{{ 'Breadcrumb'|t }}">
+                <a href="{{ path('<front>') }}">{{ 'Home'|t }}</a>
+                <span aria-hidden="true">/</span>
+                <span aria-current="page">{{ 'Search'|t }}</span>
+            </nav>
+            <span class="eyebrow">{{ 'Explore Knovara'|t }}</span>
+            <h1 id="search-page-title">{{ 'Search Knovara'|t }}</h1>
+            <p class="lead">{{ 'Find your next course, meet a mentor, or explore an idea worth learning.'|t }}</p>
+            {% if exposed %}<div class="kn-search-form">{{ exposed }}</div>{% endif %}
+        </div>
+    </section>
+
+    <section class="search-content" aria-labelledby="search-results-title">
+        <div class="shell search-layout">
+            <aside class="search-sidebar" aria-label="{{ 'Search filters'|t }}">
+                <form id="knovara-search-controls" action="{{ path('view.knovara_search.page_1') }}" method="get">
+                    {% if knovara_search_keyword %}
+                    <input type="hidden" name="search_api_fulltext" value="{{ knovara_search_keyword }}">
+                    {% endif %}
+                    <fieldset class="search-filters">
+                        <legend>{{ 'Search in'|t }}</legend>
+                        <div class="search-filter-list">
+                            {% for link in knovara_search_links %}
+                            <label class="search-filter">
+                                <input type="radio" name="content_type" value="{{ link.value }}" {% if link.active %}
+                                    checked{% endif %}>
+                                <span>{{ link.label }}</span>
+                                <span class="search-filter__count" aria-hidden="true">{{ link.count }}</span>
+                            </label>
+                            {% endfor %}
+                        </div>
+                        <button class="search-category-submit" type="submit">{{ 'Show results'|t }}</button>
+                    </fieldset>
+                </form>
+                <div class="search-help">
+                    <h2>{{ 'Make your search count.'|t }}</h2>
+                    <p>{{ 'Start with a topic or a name. Choose a category to narrow your results.'|t }}</p>
+                    <a href="{{ path('view.course_catalog.page_1') }}">{{ 'Browse all courses'|t }} <span
+                            aria-hidden="true">→</span></a>
+                </div>
+            </aside>
+
+            <div class="search-results">
+                <div class="search-toolbar">
+                    <div>
+                        <h2 id="search-results-title">{{ 'Search results'|t }}</h2>
+                        {% if knovara_search_total is defined %}
+                        <p class="search-summary">
+                            {{ knovara_search_total }}
+                            {{ (knovara_search_total == 1 ? 'result' : 'results')|t }}
+                            {% if knovara_search_keyword %}
+                            {{ 'for'|t }} “<strong>{{ knovara_search_keyword }}</strong>”
+                            {% endif %}
+                        </p>
+                        {% endif %}
+                    </div>
+                    <div class="search-sort">
+                        <label for="knovara-search-sort">{{ 'Sort by'|t }}</label>
+                        <select id="knovara-search-sort" name="sort_by" form="knovara-search-controls">
+                            <option value="search_api_relevance" {% if knovara_search_sort=='search_api_relevance' %}
+                                selected{% endif %}>{{ 'Default order'|t }}</option>
+                            <option value="title_sort" {% if knovara_search_sort=='title_sort' %} selected{% endif %}>{{
+                                'Title (A–Z)'|t }}</option>
+                        </select>
+                        <button class="search-sort-submit" type="submit" form="knovara-search-controls">{{ 'Apply'|t
+                            }}</button>
+                    </div>
+                </div>
+                {% if header %}<div class="search-summary">{{ header }}</div>{% endif %}
+                {% if attachment_before %}{{ attachment_before }}{% endif %}
+                {% if rows %}
+                <div class="search-result-list">{{ rows }}</div>
+                {% elseif empty %}
+                <div class="search-empty">{{ empty }}</div>
+                {% endif %}
+                {% if pager %}<div class="search-pager">{{ pager }}</div>{% endif %}
+                {% if attachment_after %}{{ attachment_after }}{% endif %}
+                {% if footer %}{{ footer }}{% endif %}
+                {% if more %}{{ more }}{% endif %}
+                {% if feed_icons %}{{ feed_icons }}{% endif %}
+            </div>
+        </div>
+    </section>
+    </div>

@@ -1,0 +1,12 @@
+features:
+  node_user_picture: 1
+  comment_user_picture: 1
+  comment_user_verification: 1
+  favicon: 1
+logo:
+  use_default: 0
+  path: 'public://knovara-logo.svg'
+favicon:
+  use_default: 0
+  path: 'public://knovara-favicon.svg'
+  mimetype: image/svg+xml

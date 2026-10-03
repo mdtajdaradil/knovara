@@ -23,7 +23,8 @@
         "drush/drush": "^11 || ^12",
         "drupal/admin_toolbar": "^3.6",
         "drupal/paragraphs": "^1.23",
-        "drupal/webform": "^6.3"
+        "drupal/webform": "^6.3",
+        "drupal/search_api": "^1.41"
     },
     "require-dev": {
         "drupal/core-dev": "^10"

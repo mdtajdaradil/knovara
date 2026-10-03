@@ -102,6 +102,15 @@ contact:
   dependencies:
     - knovara/global
 
+search:
+  css:
+    theme:
+      css/search.css: {}
+  dependencies:
+    - knovara/global
+    - core/drupal
+    - core/once
+
 # Safe migration library: keeps all current pages styled while the remaining
 # Twig templates are converted to page-specific attach_library() calls.
 all-pages:

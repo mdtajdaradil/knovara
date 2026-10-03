@@ -1,0 +1,49 @@
+{# One result from the Knovara Search View. Field IDs must match the README. #}
+{% set kind = fields.type.content|render|striptags|trim|lower %}
+{% set summary = '' %}
+{% if kind == 'course' %}
+{% set summary = fields.field_course_summary.content|default('')|render|striptags|trim %}
+{% elseif kind == 'event' %}
+{% set summary = fields.field_card_summary.content|default('')|render|striptags|trim %}
+{% elseif kind == 'faculty' %}
+{% set summary = fields.field_faculty_summary.content|default('')|render|striptags|trim %}
+{% elseif kind == 'resource' %}
+{% set summary = fields.field_resource_summary.content|default('')|render|striptags|trim %}
+{% endif %}
+
+<article class="search-result search-result--{{ kind|clean_class }}">
+    <span class="search-result__icon" aria-hidden="true">
+        {% if kind == 'faculty' %}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M4 21v-2a8 8 0 0 1 16 0v2" />
+        </svg>
+        {% elseif kind == 'event' %}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <rect x="3" y="5" width="18" height="16" rx="2" />
+            <path d="M7 3v4m10-4v4M3 11h18" />
+        </svg>
+        {% elseif kind == 'resource' %}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <path d="M5 3h10l4 4v14H5V3Z" />
+            <path d="M14 3v5h5M8 12h8m-8 4h6" />
+        </svg>
+        {% else %}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <path d="m3 8 9-5 9 5-9 5-9-5Z" />
+            <path d="M6 10v6c3 3 9 3 12 0v-6M21 8v8" />
+        </svg>
+        {% endif %}
+    </span>
+    <div class="search-result__copy">
+        <span class="search-result__type">{{ fields.type.content }}</span>
+        <h3>{{ fields.title.content }}</h3>
+        {% if summary %}<p>{{ summary }}</p>{% endif %}
+    </div>
+    <span class="search-result__arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+            stroke-linejoin="round" focusable="false">
+            <path d="M5 12h14m-6-6 6 6-6 6" />
+        </svg>
+    </span>
+</article>
